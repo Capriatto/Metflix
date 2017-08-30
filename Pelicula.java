@@ -24,8 +24,8 @@ public class Pelicula implements Serializable {
 	private Date anio_lanzamiento;
 	@Column(name="precio")
 	private double precio;
-	@Column(name="estado")
-	private boolean estado;
+	@Column(name="duracionpelicula")
+	private long duracionpelicula;
 	
 	private static final long serialVersionUID = 1L; 
 
