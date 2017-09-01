@@ -9,7 +9,7 @@ Resource Definitions //EN" "http://www.sun.com/software/appserver/dtds/sunresour
 		datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"
 		res-type="javax.sql.DataSource">
 		<property name="user" value="root" />
-		<property name="password" value="12345" />
+		<property name="password" value="0000" />
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/metflix" />
 	</jdbc-connection-pool>
 	<jdbc-resource enabled="true" jndi-name="jdbc/Metflix"
