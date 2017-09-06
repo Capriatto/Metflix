@@ -1,0 +1,12 @@
+{
+	"consulta_tecnica": [
+		{
+			"id": "1",
+			"consulta": "CONSULTA",
+			"estado": "1",
+			"F_CONSULTATECNICA": "2017-10-04",
+			"CLIENTE_ID_cedula": "3",
+			"EMPLEADO_ID_cedula": "2"
+		}
+	]
+}

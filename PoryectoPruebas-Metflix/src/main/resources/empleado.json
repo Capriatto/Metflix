@@ -1,0 +1,9 @@
+{
+	"empleado": [
+		{
+			"cedula": "2",
+			"puesto" : "caja",
+			"sueldo": "10000"
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"pelicula": [
+		{
+			"id": "1",
+			"ANIO_LANZAMIENTO":"2017-10-04",
+			"descripcion": "Valencia",
+			"estado": "1",
+			"nombre": "cars",
+			"precio": "10000"
+		}
+	]
+}

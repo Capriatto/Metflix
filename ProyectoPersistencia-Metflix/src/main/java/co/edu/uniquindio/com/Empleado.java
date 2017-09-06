@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 /**
  * Esta entidad representa a la clase (Entidad) Empleado.
  *
@@ -17,7 +16,6 @@ public class Empleado extends Persona  implements Serializable  {
 	private double sueldo;
 	@Column(name = "puesto", length=30) // puesto del Empleado de tipo String
 	private String puesto;
-	@OneToOne
 
 
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para la des-serializacion)

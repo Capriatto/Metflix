@@ -18,7 +18,7 @@ public class Consulta_tecnica implements Serializable {
 	
 	@Id
 	@Column(name = "id") // identificador de la clase consulta_tecnica de tipo integer
-	private int id;
+	private String id;
 	@Temporal(TemporalType.TIMESTAMP) // fecha de la consulta de tipo Timestamp
 	private Date f_consultatecnica;
 	@Column(name = "consulta") //  consulta de tipo String
@@ -45,11 +45,12 @@ public class Consulta_tecnica implements Serializable {
 	 * Este metodo permite la comparacion de entidades por medio de su token hash
 	 * @see java.lang.Object#hashCode()
 	 */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -74,14 +75,14 @@ public class Consulta_tecnica implements Serializable {
 	/*
 	 * Metodo get del atributo id, devuelve un entero
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 	/*
 	 * Metodo set del atributo id
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

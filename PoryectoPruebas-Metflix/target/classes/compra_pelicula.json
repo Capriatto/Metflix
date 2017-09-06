@@ -1,0 +1,10 @@
+{
+	"compra_pelicula": [
+		{
+			"id": "1",
+			"F_COMPRA" : "2017-10-04",
+			"CLIENTE_ID_cedula": "3",
+			"PELICULA_ID_id": "1"
+		}
+	]
+}

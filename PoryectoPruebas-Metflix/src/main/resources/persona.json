@@ -1,0 +1,34 @@
+{
+  "persona": [
+    {
+      "cedula": "1",
+      "DTYPE": "administrador",
+      "apellido": "Valencia",
+      "contrasena": "12345",
+      "correo": "valencia@gmail.com",
+      "estado": "1",
+      "nombre": "German F",
+      "usuario": "cheche94"
+    },
+    {
+      "cedula": "2",
+      "DTYPE": "empleado",
+      "apellido": "Valencia",
+      "contrasena": "12345",
+      "correo": "valenca@gmail.com",
+      "estado": "1",
+      "nombre": "German F",
+      "usuario": "cheche94"
+    },
+    {
+      "cedula": "3",
+      "DTYPE": "cliente",
+      "apellido": "Valencia",
+      "contrasena": "12345",
+      "correo": "valenci@gmail.com",
+      "estado": "1",
+      "nombre": "German F",
+      "usuario": "cheche94"
+    }
+  ]
+}

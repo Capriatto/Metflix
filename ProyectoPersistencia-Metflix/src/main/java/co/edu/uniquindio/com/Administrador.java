@@ -4,19 +4,21 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 /*
 Esta entidad representa el usuario administrador de Metflix
 */
 @Entity
 public class Administrador extends Persona implements Serializable {
-	@Column(name = "sueldo") // sueldo del administrador de tipo double 
+	@Column(name = "sueldo") // sueldo del administrador de tipo double
 	private double sueldo;
 
-	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para la des-serializacion)
-	
+	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
+														// la des-serializacion)
+
 	/*
 	 * Metodo constructor de la clase(Entidad) Administrador
-	 * */
+	 */
 	public Administrador() {
 		super();
 	}
@@ -35,6 +37,4 @@ public class Administrador extends Persona implements Serializable {
 		this.sueldo = sueldo;
 	}
 
-
-	
 }

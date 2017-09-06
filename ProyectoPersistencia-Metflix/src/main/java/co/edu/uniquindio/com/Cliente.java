@@ -8,31 +8,30 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /*
 Esta entidad representa a la clase (Entidad) Cliente. 
 */
 @Entity
-public class Cliente extends Persona implements Serializable{
-	
-	@Temporal(TemporalType.TIMESTAMP)// fecha de registro del ciente de tipo date
+public class Cliente extends Persona implements Serializable {
+
+	@Temporal(TemporalType.TIMESTAMP) // fecha de registro del ciente de tipo date
 	private Date f_registro;
-	@Temporal(TemporalType.DATE)// fecha de nacimiento del cliente de tipo date
+	@Temporal(TemporalType.DATE) // fecha de nacimiento del cliente de tipo date
 	private Date f_nacimiento;
 	@ElementCollection
 	private List<String> telefono; // telefono(s) del cliente de tipo string
-	
 
+	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
+														// la des-serializacion)
 
-	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para la des-serializacion)
-	
-	
 	/*
 	 * Metodo constructor de la clase(Entidad) Cliente
-	 * */
+	 */
 	public Cliente() {
 		super();
 	}
-	
+
 	/*
 	 * Metodo get del atributo f_registro, devuelve un timestamp
 	 */
@@ -75,6 +74,4 @@ public class Cliente extends Persona implements Serializable{
 		this.telefono = telefono;
 	}
 
-
-	
 }

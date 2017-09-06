@@ -1,0 +1,11 @@
+{
+	"pelicula_calificacion": [
+		{
+			"id": "1",
+			"calificacion" : "5",
+			"resena": "Valencia",
+			"CLIENTE_ID_cedula": "3",
+			"PELICULA_ID_id": "1"
+		}
+	]
+}
