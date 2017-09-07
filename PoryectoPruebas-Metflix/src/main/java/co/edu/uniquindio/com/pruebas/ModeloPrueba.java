@@ -83,7 +83,7 @@ public class ModeloPrueba {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "persona.json", "empleado.json", "cliente.json" })
 	public void removeTest() {
-		Empleado miEmpleado = entityManager.find(Empleado.class, "3");
+		Empleado miEmpleado = entityManager.find(Empleado.class, "2");
 	    Assert.assertNull(miEmpleado);
 		entityManager.remove(miEmpleado);
 	}
