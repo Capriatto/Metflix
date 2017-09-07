@@ -69,4 +69,24 @@ public class ModeloPrueba {
 		consultas.add(consulta);
 		entityManager.persist(empleado);
 	}
+	
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "persona.json", "empleado.json", "cliente.json" })
+	public void mergeTest() {
+		Empleado miEmpleado = entityManager.find(Empleado.class, "2");
+		miEmpleado.setPuesto("soporte");
+	    entityManager.merge(miEmpleado);
+	}
+	
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "persona.json", "empleado.json", "cliente.json" })
+	public void removeTest() {
+		Empleado miEmpleado = entityManager.find(Empleado.class, "3");
+	    Assert.assertNull(miEmpleado);
+		entityManager.remove(miEmpleado);
+	}
+	
+	
 }
