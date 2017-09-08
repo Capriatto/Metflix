@@ -1,10 +1,10 @@
 package co.edu.uniquindio.com.pruebas;
 
 import java.util.ArrayList;
-//import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -17,12 +17,18 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import co.edu.uniquindio.com.*;
+
+import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Consulta_tecnica;
+import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Persona;
 
 @RunWith(Arquillian.class)
-/*
- * Clase que nos permitira la creacion de las tablas en la BD. hace uso de la
- * clase arquillian
+/**
+ * Clase que permite la creacion de pruebas unitarias por medio de junit
+ * 
+ * @author Juan
+ *
  */
 public class ModeloPrueba {
 	/*
@@ -51,7 +57,6 @@ public class ModeloPrueba {
 	@UsingDataSet({ "persona.json", "administrador.json" })
 	public void findTest() {
 		Administrador persona = entityManager.find(Administrador.class, "1");
-		System.out.println(persona);
 		Assert.assertEquals("valencia@gmail.com", persona.getCorreo());
 	}
 
@@ -81,11 +86,24 @@ public class ModeloPrueba {
 
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "persona.json", "empleado.json", "cliente.json" })
+	@UsingDataSet({ "persona.json", "administrador.json" })
 	public void removeTest() {
-		Empleado miEmpleado = entityManager.find(Empleado.class, "2");
-		entityManager.remove(miEmpleado);
-		Assert.assertNull(miEmpleado);
+
+		Administrador persona = entityManager.find(Administrador.class, "1");
+		entityManager.remove(persona);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "persona.json" })
+	public void QueryTest() {
+		String usuario = null;
+		String contrasena = null;
+		Persona persona = entityManager.find(Persona.class, "3");
+		usuario = persona.getUsuario();
+		Assert.assertNotNull(usuario);
+		contrasena = persona.getContrasena();
+		Assert.assertNotNull(contrasena);
 	}
 
 }
