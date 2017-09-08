@@ -49,11 +49,9 @@ public class ModeloPrueba {
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 
-	/*
-	 * Metodo que obliga la creacion de las tablas en la BD cuando se ejecuta la
-	 * clase.
+	/**
+	 * Metodo que permite realizar prueba de busqueda de un registro
 	 */
-
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "persona.json", "administrador.json" })
@@ -61,7 +59,10 @@ public class ModeloPrueba {
 		Administrador persona = entityManager.find(Administrador.class, "1");
 		Assert.assertEquals("valencia@gmail.com", persona.getCorreo());
 	}
-
+	
+	/**
+	 * Metodo que permite realizar prueba de persistencia de un registro 
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "persona.json", "empleado.json", "consulta_tecnica.json", "cliente.json" })
@@ -76,7 +77,9 @@ public class ModeloPrueba {
 		consultas.add(consulta);
 		entityManager.persist(empleado);
 	}
-
+	/**
+	 * Metodo que permite realizar prueba de actualizacion de un registro
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "persona.json", "empleado.json", "cliente.json" })
@@ -86,6 +89,9 @@ public class ModeloPrueba {
 		entityManager.merge(miEmpleado);
 	}
 
+	/**
+	 * Metodo que permite realizar prueba de eliminacion de un registro
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "persona.json", "administrador.json" })
@@ -99,6 +105,9 @@ public class ModeloPrueba {
 		
 	}
 
+	/**
+	 * Metodo que permite realizar prueba de consulta de un registro
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "persona.json" })
