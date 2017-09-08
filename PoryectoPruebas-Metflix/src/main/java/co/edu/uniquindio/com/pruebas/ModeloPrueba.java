@@ -91,6 +91,10 @@ public class ModeloPrueba {
 
 		Administrador persona = entityManager.find(Administrador.class, "1");
 		entityManager.remove(persona);
+		
+		Administrador persona1 = entityManager.find(Administrador.class, "1");				
+		Assert.assertNull(persona1);
+		
 	}
 
 	@Test
