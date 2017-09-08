@@ -9,19 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  * Esta entidad representa a la clase (Entidad) consulta_tecnica.
- *
+ * 
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
  */
 @Entity
 public class Consulta_tecnica implements Serializable {
-	
+
 	@Id
 	@Column(name = "id") // identificador de la clase consulta_tecnica de tipo integer
 	private String id;
 	@Temporal(TemporalType.TIMESTAMP) // fecha de la consulta de tipo Timestamp
 	private Date f_consultatecnica;
-	@Column(name = "consulta") //  consulta de tipo String
+	@Column(name = "consulta") // consulta de tipo String
 	private String consulta;
 	@Column(name = "estado") // estado de la consulta de tipo int
 	private int estado;
@@ -30,22 +34,22 @@ public class Consulta_tecnica implements Serializable {
 	@ManyToOne
 	private Cliente cliente_id; // ralacion muchos a uno con la clase(Entidad) Cliente
 
+	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
+														// la des-serializacion)
 
-	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para la des-serializacion)
-	
-	
 	/*
 	 * Metodo constructor de la clase(Entidad) consulta_tecnica
-	 * */
+	 */
 	public Consulta_tecnica() {
 		super();
 	}
 
 	/*
 	 * Este metodo permite la comparacion de entidades por medio de su token hash
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -56,6 +60,7 @@ public class Consulta_tecnica implements Serializable {
 
 	/*
 	 * Este metodo permite la comparacion de entidades por su tipo y nombre
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -155,5 +160,5 @@ public class Consulta_tecnica implements Serializable {
 	public void setCliente_id(Cliente cliente_id) {
 		this.cliente_id = cliente_id;
 	}
-	
+
 }

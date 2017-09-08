@@ -5,9 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-/*
-Esta entidad representa el usuario administrador de Metflix
-*/
+/**
+ * Esta entidad representa el usuario administrador de Metflix
+ * 
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
+ */
 @Entity
 public class Administrador extends Persona implements Serializable {
 	@Column(name = "sueldo") // sueldo del administrador de tipo double

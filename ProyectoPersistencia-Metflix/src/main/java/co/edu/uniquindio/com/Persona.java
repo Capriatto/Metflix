@@ -9,7 +9,10 @@ import static javax.persistence.InheritanceType.JOINED;
 
 /**
  * Esta entidad representa a la clase (Entidad) Persona.
- *
+ * 
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
  */
 @Entity
 @Inheritance(strategy = JOINED)

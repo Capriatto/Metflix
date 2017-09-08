@@ -9,9 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/*
-Esta entidad representa a la clase (Entidad) Cliente. 
-*/
+/**
+ * Esta entidad representa a la clase (Entidad) Cliente.
+ * 
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
+ */
 @Entity
 public class Cliente extends Persona implements Serializable {
 

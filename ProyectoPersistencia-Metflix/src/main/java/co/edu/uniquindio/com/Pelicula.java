@@ -13,40 +13,43 @@ import javax.persistence.TemporalType;
 
 /**
  * Esta entidad representa a la clase (Entidad) Pelicula.
- *
+ * 
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
  */
 @Entity
 public class Pelicula implements Serializable {
-	   
+
 	@Id
-	@Column(name="id")   //identificador de Pelicula de tipo integer
+	@Column(name = "id") // identificador de Pelicula de tipo integer
 	private int id_pelicula;
-	@Column(name="nombre", length=30)  // nombre de la pelicula de tipo String
+	@Column(name = "nombre", length = 30) // nombre de la pelicula de tipo String
 	private String nombre;
-	@Column(name="descripcion") //descripcion de la pelicula de tipo String
+	@Column(name = "descripcion") // descripcion de la pelicula de tipo String
 	private String descripcion;
-	@Temporal(TemporalType.DATE)// anio lanzamiento de la pelicula de tipo Date
+	@Temporal(TemporalType.DATE) // anio lanzamiento de la pelicula de tipo Date
 	private Date anio_lanzamiento;
-	@Column(name="precio") // precio de la pelicula de tipo double
+	@Column(name = "precio") // precio de la pelicula de tipo double
 	private double precio;
-	@Column(name="estado") // estado de la pelicula de tipo boolean
+	@Column(name = "estado") // estado de la pelicula de tipo boolean
 	private int estado;
 	@ElementCollection
 	private List<String> idioma; // idioma(s) de la pelicula de tipo lista
 	@ElementCollection
-	private List<String> categoria; //categoria(s) de la pelicula de tipo lista
-	private static final long serialVersionUID = 1L; 
+	private List<String> categoria; // categoria(s) de la pelicula de tipo lista
+	private static final long serialVersionUID = 1L;
 
-	
 	/*
 	 * Metodo constructor de la clase(Entidad) Pelicula
-	 * */
+	 */
 	public Pelicula() {
 		super();
-	}  
-	
+	}
+
 	/*
 	 * Este metodo permite la comparacion de entidades por medio de su token hash
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -59,6 +62,7 @@ public class Pelicula implements Serializable {
 
 	/*
 	 * Este metodo permite la comparacion de entidades por su tipo y nombre
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -81,7 +85,7 @@ public class Pelicula implements Serializable {
 	public int getId() {
 		return id_pelicula;
 	}
-	
+
 	/*
 	 * Metodo set del atributo id
 	 */
@@ -144,6 +148,7 @@ public class Pelicula implements Serializable {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
 	/*
 	 * Metodo get del atributo idioma, devuelve una lista
 	 */
@@ -185,7 +190,5 @@ public class Pelicula implements Serializable {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
-	
-   
+
 }

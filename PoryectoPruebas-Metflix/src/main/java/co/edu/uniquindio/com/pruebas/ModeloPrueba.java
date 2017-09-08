@@ -27,7 +27,9 @@ import co.edu.uniquindio.com.Persona;
 /**
  * Clase que permite la creacion de pruebas unitarias por medio de junit
  * 
- * @author Juan
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
  *
  */
 public class ModeloPrueba {
