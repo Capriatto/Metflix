@@ -50,6 +50,13 @@ public class ModeloPrueba {
 	}
 
 	/**
+	 * Metodo que permite generar las tablas en la base de datos.
+	 */
+	@Test
+	public void generacionTest() {
+	}
+
+	/**
 	 * Metodo que permite realizar prueba de busqueda de un registro
 	 */
 	@Test
@@ -59,9 +66,9 @@ public class ModeloPrueba {
 		Administrador persona = entityManager.find(Administrador.class, "1");
 		Assert.assertEquals("valencia@gmail.com", persona.getCorreo());
 	}
-	
+
 	/**
-	 * Metodo que permite realizar prueba de persistencia de un registro 
+	 * Metodo que permite realizar prueba de persistencia de un registro
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -77,6 +84,7 @@ public class ModeloPrueba {
 		consultas.add(consulta);
 		entityManager.persist(empleado);
 	}
+
 	/**
 	 * Metodo que permite realizar prueba de actualizacion de un registro
 	 */
@@ -99,10 +107,10 @@ public class ModeloPrueba {
 
 		Administrador persona = entityManager.find(Administrador.class, "1");
 		entityManager.remove(persona);
-		
-		Administrador persona1 = entityManager.find(Administrador.class, "1");				
+
+		Administrador persona1 = entityManager.find(Administrador.class, "1");
 		Assert.assertNull(persona1);
-		
+
 	}
 
 	/**
