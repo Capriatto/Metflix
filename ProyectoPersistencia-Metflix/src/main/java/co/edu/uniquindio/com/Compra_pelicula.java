@@ -2,8 +2,10 @@ package co.edu.uniquindio.com;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -26,8 +28,8 @@ public class Compra_pelicula implements Serializable {
 	private int id;
 	@Temporal(TemporalType.TIMESTAMP) // fecha_compra de la pelicula de tipo Timestamp
 	private Date f_compra;
-	@ManyToOne
-	private Pelicula pelicula_id; // relacion muchos a uno con la clase(Entidad) Pelicula
+	@ElementCollection
+	private List<String> pelicula_ids; // pelicula o peliculas que serán compradas
 	@ManyToOne
 	private Cliente cliente_id; // relación muchos a uno con la clase(Entidad) Cliente
 	private static final long serialVersionUID = 1L;
@@ -98,21 +100,23 @@ public class Compra_pelicula implements Serializable {
 	public void setF_compra(Date f_compra) {
 		this.f_compra = f_compra;
 	}
-
+	
 	/*
 	 * Metodo get del atributo Pelicula, devuelve un objeto de tipo Pelicula
 	 */
-	public Pelicula getPelicula_id() {
-		return pelicula_id;
+	
+	public List<String> getPelicula_ids() {
+		return pelicula_ids;
 	}
-
+	
 	/*
 	 * Metodo set del atributo pelicula_id
 	 */
-	public void setPelicula_id(Pelicula pelicula_id) {
-		this.pelicula_id = pelicula_id;
+	public void setPelicula_ids(List<String> pelicula_ids) {
+		this.pelicula_ids = pelicula_ids;
 	}
-
+	
+	
 	/*
 	 * Metodo get del atributo cliente_id, devuelve un objeto de tipo Cliente
 	 */
@@ -126,5 +130,6 @@ public class Compra_pelicula implements Serializable {
 	public void setCliente_id(Cliente cliente_id) {
 		this.cliente_id = cliente_id;
 	}
-
+	
+	
 }
