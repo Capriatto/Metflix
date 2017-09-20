@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Esta entidad representa el usuario administrador de Metflix
@@ -13,12 +15,15 @@ import javax.persistence.Entity;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Administrador.GET_ALL, query = "SELECT administrador FROM Administrador administrador") })
 public class Administrador extends Persona implements Serializable {
 	@Column(name = "sueldo") // sueldo del administrador de tipo double
 	private double sueldo;
 
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
+
+	public static final String GET_ALL = "persona_GetAll";
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Administrador
