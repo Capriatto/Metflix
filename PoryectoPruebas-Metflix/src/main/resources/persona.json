@@ -3,7 +3,7 @@
     {
       "cedula": "1",
       "DTYPE": "administrador",
-      "apellido": "Valencia",
+      "apellido": "Ocampo",
       "contrasena": "12345",
       "correo": "valencia@gmail.com",
       "estado": "1",
@@ -23,7 +23,37 @@
     {
       "cedula": "3",
       "DTYPE": "cliente",
+      "apellido": "Rodriguez",
+      "contrasena": "12345",
+      "correo": "valenci@gmail.com",
+      "estado": "1",
+      "nombre": "German F",
+      "usuario": "cheche94"
+    },
+    {
+      "cedula": "4",
+      "DTYPE": "empleado",
       "apellido": "Valencia",
+      "contrasena": "12345",
+      "correo": "valenci@gmail.com",
+      "estado": "1",
+      "nombre": "German F",
+      "usuario": "cheche94"
+    },
+    {
+      "cedula": "5",
+      "DTYPE": "",
+      "apellido": "Maria",
+      "contrasena": "12345",
+      "correo": "valenci@gmail.com",
+      "estado": "1",
+      "nombre": "German F",
+      "usuario": "cheche94"
+    },
+    {
+      "cedula": "6",
+      "DTYPE": "administrador",
+      "apellido": "Gonzalez",
       "contrasena": "12345",
       "correo": "valenci@gmail.com",
       "estado": "1",

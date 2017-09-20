@@ -2,10 +2,34 @@
 	"pelicula": [
 		{
 			"id": "1",
-			"ANIO_LANZAMIENTO":"2017-10-04",
-			"descripcion": "Valencia",
+			"ANIO_LANZAMIENTO":"2017-10-06",
+			"descripcion": "Suspenso",
 			"estado": "1",
 			"nombre": "cars",
+			"precio": "10000"
+		},
+		{
+			"id": "2",
+			"ANIO_LANZAMIENTO":"2014-06-04",
+			"descripcion": "Accion",
+			"estado": "1",
+			"nombre": "tiburon 1",
+			"precio": "10000"
+		},
+		{
+			"id": "3",
+			"ANIO_LANZAMIENTO":"2002-10-04",
+			"descripcion": "Humor",
+			"estado": "1",
+			"nombre": "Toy Story",
+			"precio": "10000"
+		},
+		{
+			"id": "4",
+			"ANIO_LANZAMIENTO":"2006-10-04",
+			"descripcion": "Trailer psicologico",
+			"estado": "1",
+			"nombre": "En busca de la felicidá",
 			"precio": "10000"
 		}
 	]

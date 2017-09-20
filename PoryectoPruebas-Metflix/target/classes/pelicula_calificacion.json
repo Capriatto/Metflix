@@ -2,9 +2,37 @@
 	"pelicula_calificacion": [
 		{
 			"id": "1",
+			"calificacion" : "2",
+			"resena": "Buena peli",
+			"CLIENTE_ID_cedula": "1",
+			"PELICULA_ID_id": "1"
+		},
+		{
+			"id": "2",
+			"calificacion" : "4",
+			"resena": "Mala peli",
+			"CLIENTE_ID_cedula": "2",
+			"PELICULA_ID_id": "1"
+		},
+		{
+			"id": "3",
+			"calificacion" : "3",
+			"resena": "Regulimbis",
+			"CLIENTE_ID_cedula": "3",
+			"PELICULA_ID_id": "1"
+		},
+		{
+			"id": "4",
+			"calificacion" : "5",
+			"resena": "Buena peli",
+			"CLIENTE_ID_cedula": "1",
+			"PELICULA_ID_id": "1"
+		},
+		{
+			"id": "5",
 			"calificacion" : "5",
 			"resena": "Valencia",
-			"CLIENTE_ID_cedula": "3",
+			"CLIENTE_ID_cedula": "2",
 			"PELICULA_ID_id": "1"
 		}
 	]

@@ -4,6 +4,26 @@
 			"cedula": "2",
 			"puesto" : "caja",
 			"sueldo": "10000"
+		},
+		{
+			"cedula": "3",
+			"puesto" : "ventas",
+			"sueldo": "10000"
+		},
+		{
+			"cedula": "4",
+			"puesto" : "marketing",
+			"sueldo": "10000"
+		},
+		{
+			"cedula": "5",
+			"puesto" : "relaciones",
+			"sueldo": "10000"
+		},
+		{
+			"cedula": "6",
+			"puesto" : "atencion",
+			"sueldo": "10000"
 		}
 	]
 }
