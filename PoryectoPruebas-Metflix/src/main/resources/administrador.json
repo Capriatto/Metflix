@@ -2,7 +2,12 @@
 	"administrador": [
 		{
 			"cedula": "1",
-			"sueldo" : "1"
+			"sueldo" : "20000"
+						
+		},
+		{
+			"cedula": "6",
+			"sueldo" : "36000"
 						
 		}
 	]

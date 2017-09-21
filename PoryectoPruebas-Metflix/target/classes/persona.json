@@ -42,7 +42,7 @@
     },
     {
       "cedula": "5",
-      "DTYPE": "",
+      "DTYPE": "cliente",
       "apellido": "Maria",
       "contrasena": "12345",
       "correo": "valenci@gmail.com",

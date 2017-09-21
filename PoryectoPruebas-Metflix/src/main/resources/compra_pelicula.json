@@ -2,9 +2,28 @@
 	"compra_pelicula": [
 		{
 			"id": "1",
+			"F_COMPRA" : "2017-04-06",
+			"CLIENTE_ID_cedula": "3",
+			"PELICULA_ID_id": "3"
+		},
+		{
+			"id": "2",
+			"F_COMPRA" : "2017-10-04",
+			"CLIENTE_ID_cedula": "5",
+			"PELICULA_ID_id": "4"
+		},
+		{
+			"id": "3",
+			"F_COMPRA" : "2017-10-04",
+			"CLIENTE_ID_cedula": "5",
+			"PELICULA_ID_id": "2"
+		},
+		{
+			"id": "4",
 			"F_COMPRA" : "2017-10-04",
 			"CLIENTE_ID_cedula": "3",
-			"PELICULA_ID_id": "1"
+			"PELICULA_ID_id": "2"
 		}
+		
 	]
 }

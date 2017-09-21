@@ -25,14 +25,14 @@
 			"id": "4",
 			"calificacion" : "5",
 			"resena": "Buena peli",
-			"CLIENTE_ID_cedula": "1",
+			"CLIENTE_ID_cedula": "2",
 			"PELICULA_ID_id": "1"
 		},
 		{
 			"id": "5",
 			"calificacion" : "5",
-			"resena": "Valencia",
-			"CLIENTE_ID_cedula": "2",
+			"resena": "Me gustó",
+			"CLIENTE_ID_cedula": "3",
 			"PELICULA_ID_id": "1"
 		}
 	]

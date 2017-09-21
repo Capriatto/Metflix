@@ -28,6 +28,7 @@ public class Pelicula implements Serializable {
 	private String nombre;
 	@Column(name = "descripcion") // descripcion de la pelicula de tipo String
 	private String descripcion;
+	@Column(name = "anio_lanzamiento")
 	@Temporal(TemporalType.DATE) // anio lanzamiento de la pelicula de tipo Date
 	private Date anio_lanzamiento;
 	@Column(name = "precio") // precio de la pelicula de tipo double

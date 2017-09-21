@@ -3,6 +3,18 @@
 		{
 			"pelicula_id": "1",
 			"IDIOMA" : "LATIN"
+		},
+		{
+			"pelicula_id": "2",
+			"IDIOMA" : "ESPAÑOL"
+		},
+		{
+			"pelicula_id": "2",
+			"IDIOMA" : "INGLÉS"
+		},
+		{
+			"pelicula_id": "3",
+			"IDIOMA" : "INGLÉS"
 		}
 	]
 }

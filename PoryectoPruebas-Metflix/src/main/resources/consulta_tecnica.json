@@ -2,11 +2,36 @@
 	"consulta_tecnica": [
 		{
 			"id": "1",
-			"consulta": "CONSULTA",
+			"consulta": "no puedo ingresar, mi usuario es joselito",
 			"estado": "1",
 			"F_CONSULTATECNICA": "2017-10-04",
 			"CLIENTE_ID_cedula": "3",
 			"EMPLEADO_ID_cedula": "2"
+		},
+		{
+			"id": "2",
+			"consulta": "las peliculas se ven mal",
+			"estado": "2",
+			"F_CONSULTATECNICA": "2017-09-02",
+			"CLIENTE_ID_cedula": "3",
+			"EMPLEADO_ID_cedula": "4"
+		},
+		{
+			"id": "3",
+			"consulta": "Las peliculas se oyen muy bajito",
+			"estado": "1",
+			"F_CONSULTATECNICA": "2017-10-04",
+			"CLIENTE_ID_cedula": "5",
+			"EMPLEADO_ID_cedula": "2"
+		},
+		{
+			"id": "4",
+			"consulta": "la pelicula no abre en pantalla completa",
+			"estado": "1",
+			"F_CONSULTATECNICA": "2017-04-08",
+			"CLIENTE_ID_cedula": "5",
+			"EMPLEADO_ID_cedula": "4"
 		}
+		
 	]
 }

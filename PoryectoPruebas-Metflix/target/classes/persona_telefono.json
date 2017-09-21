@@ -3,6 +3,30 @@
 		{
 			"Persona_cedula": "1",
 			"TELEFONO" : "5555555555"
+		},
+		{
+			"Persona_cedula": "2",
+			"TELEFONO" : "524987456484"
+		},
+		{
+			"Persona_cedula": "3",
+			"TELEFONO" : "1249845212115"
+		},
+		{
+			"Persona_cedula": "4",
+			"TELEFONO" : "231654332154"
+		},
+		{
+			"Persona_cedula": "5",
+			"TELEFONO" : "2498751534545"
+		},
+		{
+			"Persona_cedula": "5",
+			"TELEFONO" : "65498451"
+		},
+		{
+			"Persona_cedula": "6",
+			"TELEFONO" : "56798465454"
 		}
 	]
 }
