@@ -23,7 +23,10 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM Compra_pelicula compra_pelicula") })
+@NamedQueries(
+		{ @NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM Compra_pelicula compra_pelicula"),
+		  @NamedQuery(name = Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE, query="SELECT CONCAT(p.nombre,'-', cp.f_compra) FROM Pelicula p, Compra_pelicula cp WHERE cp.f_compra BETWEEN '2017-01-01' AND '2017-12-31' AND cp.pelicula_ids=p.id_pelicula")
+		})
 public class Compra_pelicula implements Serializable {
 
 	@Id
@@ -39,7 +42,8 @@ public class Compra_pelicula implements Serializable {
 
 	public static final String GET_ALL = "comprapelicula_GetAll"; //named query
 
-	
+	public static final String COMPRADAS_PRIMERTRIMESTRE = "comprapelicula_primertrimestre"; //named query
+
 	/*
 	 * Metodo constructor de la clase(Entidad) compra_pelicula
 	 */

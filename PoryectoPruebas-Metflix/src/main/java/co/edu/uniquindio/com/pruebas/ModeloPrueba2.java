@@ -1,6 +1,5 @@
 package co.edu.uniquindio.com.pruebas;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,12 +15,11 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.com.Administrador;
-import co.edu.uniquindio.com.Consulta_tecnica;
+import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Persona;
 
@@ -34,7 +32,7 @@ import co.edu.uniquindio.com.Persona;
  * @author Carlos Alberto Lopez Mazo
  *
  */
-public class ModeloPrueba {
+public class ModeloPrueba2 {
 	/*
 	 * Atributo de clase que nos permitira la geston de las entidades.
 	 */
@@ -56,79 +54,6 @@ public class ModeloPrueba {
 	 */
 	@Test
 	public void generacionTest() {
-	}
-
-	/**
-	 * Metodo que permite realizar prueba de busqueda de un registro
-	 */
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "persona.json", "administrador.json" })
-	public void findTest() {
-		Administrador persona = entityManager.find(Administrador.class, "1");
-		Assert.assertEquals("valencia@gmail.com", persona.getCorreo());
-	}
-
-	/**
-	 * Metodo que permite realizar prueba de persistencia de un registro
-	 */
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "persona.json", "empleado.json", "consulta_tecnica.json", "cliente.json" })
-	public void persistTest() {
-		Empleado empleado = new Empleado();
-		empleado.setCedula("4");
-		empleado.setNombre("Sebas ocampo");
-		empleado.setCorreo("ocampo@mail.com");
-		empleado.setContrasena("12345");
-		Consulta_tecnica consulta = entityManager.find(Consulta_tecnica.class, "1");
-		ArrayList<Consulta_tecnica> consultas = new ArrayList<Consulta_tecnica>();
-		consultas.add(consulta);
-		entityManager.persist(empleado);
-	}
-
-	/**
-	 * Metodo que permite realizar prueba de actualizacion de un registro
-	 */
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "persona.json", "empleado.json", "cliente.json" })
-	public void mergeTest() {
-		Empleado miEmpleado = entityManager.find(Empleado.class, "2");
-		miEmpleado.setPuesto("soporte");
-		entityManager.merge(miEmpleado);
-	}
-
-	/**
-	 * Metodo que permite realizar prueba de eliminacion de un registro
-	 */
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "persona.json", "administrador.json" })
-	public void removeTest() {
-
-		Administrador persona = entityManager.find(Administrador.class, "1");
-		entityManager.remove(persona);
-
-		Administrador persona1 = entityManager.find(Administrador.class, "1");
-		Assert.assertNull(persona1);
-
-	}
-
-	/**
-	 * Metodo que permite realizar prueba de consulta de un registro
-	 */
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "persona.json" })
-	public void QueryTest() {
-		String usuario = null;
-		String contrasena = null;
-		Persona persona = entityManager.find(Persona.class, "3");
-		usuario = persona.getUsuario();
-		Assert.assertNotNull(usuario);
-		contrasena = persona.getContrasena();
-		Assert.assertNotNull(contrasena);
 	}
 
 	/**
@@ -162,5 +87,23 @@ public class ModeloPrueba {
 			System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido()+" "+lista.get(i).getSueldo());
 		}
 	}
+	
+	/**
+	 * Metodo que permite consultar las {@link Pelicula} compradas en el año 2017.
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "Pelicula.json","Compra_pelicula.json", "compra_pelicula_pelicula_ids.json"})
+	public void getPeliculasCompradas() {
+		System.out.println("----- Obtener películas compradas en el año 2017 ----");
+		Query query = entityManager.createNamedQuery(Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE);
+		List lista = query.getResultList();
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(i+")."+lista.get(i));
+		}
+	}
+	
+	
+	
 
 }

@@ -1,0 +1,20 @@
+{
+	"compra_pelicula_pelicula_ids": [
+		{
+			"PELICULA_IDS": "3",
+			"Compra_pelicula_id": "1"
+		},
+		{
+			"PELICULA_IDS": "4",
+			"Compra_pelicula_id": "2"
+		},
+		{
+			"PELICULA_IDS": "2",
+			"Compra_pelicula_id": "3"
+		},
+		{
+			"PELICULA_IDS": "2",
+			"Compra_pelicula_id": "4"
+		}
+	]
+}
