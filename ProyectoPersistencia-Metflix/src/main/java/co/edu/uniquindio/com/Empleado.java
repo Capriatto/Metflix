@@ -15,7 +15,7 @@ import javax.persistence.NamedQuery;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM empleado empleado") })
+@NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado") })
 public class Empleado extends Persona implements Serializable {
 
 	@Column(name = "sueldo") // sueldo del Empleado de tipo double

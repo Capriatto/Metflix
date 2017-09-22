@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM pelicula pelicula") })
+@NamedQueries({ @NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula") })
 public class Pelicula implements Serializable {
 
 	@Id

@@ -1,9 +1,11 @@
 package co.edu.uniquindio.com.pruebas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -127,6 +129,38 @@ public class ModeloPrueba {
 		Assert.assertNotNull(usuario);
 		contrasena = persona.getContrasena();
 		Assert.assertNotNull(contrasena);
+	}
+
+	/**
+	 * Metodo que permite consultar todos los {@link Administrador} registrados.
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "Administrador.json","Persona.json"})
+	public void getAdministrador() {
+		Query query = entityManager.createNamedQuery(Administrador.GET_ALL);
+		query = query.setMaxResults(2);
+		List<Administrador> lista = query.getResultList();
+		System.out.println("----- Set Max Results ----");
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido()+" "+lista.get(i).getSueldo());
+		}
+	}
+	
+	/**
+	 * Metodo que permite consultar todos los {@link Empleado} registrados.
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "Empleado.json","Persona.json"})
+	public void getEmpleado() {
+		Query query = entityManager.createNamedQuery(Empleado.GET_ALL);
+		query = query.setFirstResult(0);
+		List<Empleado> lista = query.getResultList();
+		System.out.println("----- Set First Result ----");
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido()+" "+lista.get(i).getSueldo());
+		}
 	}
 
 }

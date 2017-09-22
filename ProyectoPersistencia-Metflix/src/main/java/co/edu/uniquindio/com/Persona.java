@@ -15,7 +15,7 @@ import static javax.persistence.InheritanceType.JOINED;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Persona.GET_ALL, query = "SELECT persona FROM persona persona") })
+@NamedQueries({ @NamedQuery(name = Persona.GET_ALL, query = "SELECT p FROM Persona p") })
 @Inheritance(strategy = JOINED)
 public class Persona implements Serializable {
 

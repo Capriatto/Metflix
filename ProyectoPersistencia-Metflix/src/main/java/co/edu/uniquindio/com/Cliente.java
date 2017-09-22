@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Cliente.GET_ALL, query = "SELECT cliente FROM cliente cliente") })
+@NamedQueries({ @NamedQuery(name = Cliente.GET_ALL, query = "SELECT cliente FROM Cliente cliente") })
 public class Cliente extends Persona implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP) // fecha de registro del ciente de tipo date

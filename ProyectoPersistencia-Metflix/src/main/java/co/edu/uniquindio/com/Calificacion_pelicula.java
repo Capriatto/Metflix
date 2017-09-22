@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
  *
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Calificacion_pelicula.GET_ALL, query = "SELECT calificacion_pelicula FROM calificacion_pelicula calificacion_pelicula") })
+@NamedQueries({ @NamedQuery(name = Calificacion_pelicula.GET_ALL, query = "SELECT calificacion_pelicula FROM Calificacion_pelicula calificacion_pelicula") })
 public class Calificacion_pelicula implements Serializable {
 
 	@Id
