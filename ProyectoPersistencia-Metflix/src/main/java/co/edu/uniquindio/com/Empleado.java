@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Esta entidad representa a la clase (Entidad) Empleado.
@@ -13,6 +15,7 @@ import javax.persistence.Entity;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM empleado empleado") })
 public class Empleado extends Persona implements Serializable {
 
 	@Column(name = "sueldo") // sueldo del Empleado de tipo double
@@ -22,6 +25,9 @@ public class Empleado extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
+
+	public static final String GET_ALL = "empleado_GetAll"; //named query
+
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Empleado

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,6 +19,7 @@ import javax.persistence.TemporalType;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Cliente.GET_ALL, query = "SELECT cliente FROM cliente cliente") })
 public class Cliente extends Persona implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP) // fecha de registro del ciente de tipo date
@@ -28,6 +31,8 @@ public class Cliente extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
+	
+	public static final String GET_ALL = "cliente_GetAll"; //named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Cliente

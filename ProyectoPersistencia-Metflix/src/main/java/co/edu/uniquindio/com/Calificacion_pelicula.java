@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Esta entidad representa a la clase (Entidad) Calificacion_pelicula.
@@ -16,6 +18,7 @@ import javax.persistence.ManyToOne;
  *
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Calificacion_pelicula.GET_ALL, query = "SELECT calificacion_pelicula FROM calificacion_pelicula calificacion_pelicula") })
 public class Calificacion_pelicula implements Serializable {
 
 	@Id
@@ -30,7 +33,8 @@ public class Calificacion_pelicula implements Serializable {
 	@ManyToOne
 	private Cliente cliente_id; // relacion con entidad Cliente
 	private static final long serialVersionUID = 1L;
-
+	
+	public static final String GET_ALL = "calificacionpelicula_GetAll"; //named query
 	/*
 	 * Metodo constructor de la clase(Entidad) calificacion_pelicula
 	 */

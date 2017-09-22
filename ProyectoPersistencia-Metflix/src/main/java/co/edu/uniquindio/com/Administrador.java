@@ -23,7 +23,7 @@ public class Administrador extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
 
-	public static final String GET_ALL = "persona_GetAll";
+	public static final String GET_ALL = "persona_GetAll"; //named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Administrador

@@ -9,6 +9,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,6 +23,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM compra_pelicula compra_pelicula") })
 public class Compra_pelicula implements Serializable {
 
 	@Id
@@ -34,6 +37,9 @@ public class Compra_pelicula implements Serializable {
 	private Cliente cliente_id; // relación muchos a uno con la clase(Entidad) Cliente
 	private static final long serialVersionUID = 1L;
 
+	public static final String GET_ALL = "comprapelicula_GetAll"; //named query
+
+	
 	/*
 	 * Metodo constructor de la clase(Entidad) compra_pelicula
 	 */

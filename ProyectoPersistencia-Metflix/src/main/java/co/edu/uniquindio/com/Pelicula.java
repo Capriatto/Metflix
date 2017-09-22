@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +21,7 @@ import javax.persistence.TemporalType;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM pelicula pelicula") })
 public class Pelicula implements Serializable {
 
 	@Id
@@ -40,6 +43,9 @@ public class Pelicula implements Serializable {
 	@ElementCollection
 	private List<String> categoria; // categoria(s) de la pelicula de tipo lista
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL = "pelicula_GetAll"; //named query
+
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Pelicula
