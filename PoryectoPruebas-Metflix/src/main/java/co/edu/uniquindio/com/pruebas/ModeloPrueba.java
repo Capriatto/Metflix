@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.glassfish.admin.rest.results.GetResultList;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -21,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Consulta_tecnica;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Persona;
@@ -160,6 +162,23 @@ public class ModeloPrueba {
 		System.out.println("----- Probando Set First Result (1) ----");
 		for (int i = 0; i < lista.size(); i++) {
 			System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido()+" "+lista.get(i).getSueldo());
+		}
+	}
+	
+	/**
+	 * Metodo que permite consultar los clientes que han comprado una pelicula{@link Clientes}.
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "compra_pelicula.json","cliente.json","Persona.json"})
+	public void getclinteCompraPelicula() {
+		Query query = entityManager.createNamedQuery(Compra_pelicula.CLIENTE_COMPRA);
+		query.setParameter("idCompra", 1);
+		query = query.setFirstResult(1);		
+		List<Compra_pelicula> lista = query.getResultList();
+		System.out.println("----- Probando cliente que ha comprado pelicula (1) ----");
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getCliente_id());
 		}
 	}
 

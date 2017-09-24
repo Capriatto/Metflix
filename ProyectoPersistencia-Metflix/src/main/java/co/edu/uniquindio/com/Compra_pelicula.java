@@ -23,9 +23,11 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@NamedQueries(
-		{ @NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM Compra_pelicula compra_pelicula"),
-		  @NamedQuery(name = Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE, query="SELECT CONCAT(p.nombre,'-', cp.f_compra) FROM Pelicula p, Compra_pelicula cp WHERE cp.f_compra BETWEEN '2017-01-01' AND '2017-12-31' AND cp.pelicula_ids=p.id_pelicula")
+@NamedQueries({
+		@NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM Compra_pelicula compra_pelicula"),
+		@NamedQuery(name = Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE, query = "SELECT CONCAT(p.nombre,'-', cp.f_compra) FROM Pelicula p, Compra_pelicula cp WHERE cp.f_compra BETWEEN '2017-01-01' AND '2017-12-31' AND cp.pelicula_ids=p.id_pelicula"),
+		//Declare este nameQuery
+		@NamedQuery(name = Compra_pelicula.CLIENTE_COMPRA, query = "SELECT cp.CLIENTE_ID_cedula FROM compra_pelicula cp where cp.id=:idCompra") 
 		})
 public class Compra_pelicula implements Serializable {
 
@@ -40,9 +42,10 @@ public class Compra_pelicula implements Serializable {
 	private Cliente cliente_id; // relación muchos a uno con la clase(Entidad) Cliente
 	private static final long serialVersionUID = 1L;
 
-	public static final String GET_ALL = "comprapelicula_GetAll"; //named query
-
-	public static final String COMPRADAS_PRIMERTRIMESTRE = "comprapelicula_primertrimestre"; //named query
+	public static final String GET_ALL = "comprapelicula_GetAll"; // named query
+	//Declare este nameQuery
+	public static final String CLIENTE_COMPRA = "comprapelicula_clientecompra"; // named query
+	public static final String COMPRADAS_PRIMERTRIMESTRE = "comprapelicula_primertrimestre"; // named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) compra_pelicula
@@ -110,23 +113,22 @@ public class Compra_pelicula implements Serializable {
 	public void setF_compra(Date f_compra) {
 		this.f_compra = f_compra;
 	}
-	
+
 	/*
 	 * Metodo get del atributo Pelicula, devuelve un objeto de tipo Pelicula
 	 */
-	
+
 	public List<String> getPelicula_ids() {
 		return pelicula_ids;
 	}
-	
+
 	/*
 	 * Metodo set del atributo pelicula_id
 	 */
 	public void setPelicula_ids(List<String> pelicula_ids) {
 		this.pelicula_ids = pelicula_ids;
 	}
-	
-	
+
 	/*
 	 * Metodo get del atributo cliente_id, devuelve un objeto de tipo Cliente
 	 */
@@ -140,6 +142,5 @@ public class Compra_pelicula implements Serializable {
 	public void setCliente_id(Cliente cliente_id) {
 		this.cliente_id = cliente_id;
 	}
-	
-	
+
 }
