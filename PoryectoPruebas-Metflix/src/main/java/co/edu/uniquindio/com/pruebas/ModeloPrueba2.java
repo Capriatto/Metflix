@@ -18,7 +18,10 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.sun.jdo.spi.persistence.support.sqlstore.query.jqlc.QueryValueFetcher;
+
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Persona;
@@ -61,49 +64,84 @@ public class ModeloPrueba2 {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "Administrador.json","Persona.json"})
+	@UsingDataSet({ "Administrador.json", "Persona.json" })
 	public void getAdministrador() {
 		Query query = entityManager.createNamedQuery(Administrador.GET_ALL);
 		query = query.setMaxResults(2);
 		List<Administrador> lista = query.getResultList();
 		System.out.println("----- Probando Set Max Results (2) ----");
 		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido()+" "+lista.get(i).getSueldo());
+			System.out.println(
+					lista.get(i).getNombre() + " " + lista.get(i).getApellido() + " " + lista.get(i).getSueldo());
 		}
 	}
-	
+
 	/**
 	 * Metodo que permite consultar todos los {@link Empleado} registrados.
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "Empleado.json","Persona.json"})
+	@UsingDataSet({ "Empleado.json", "Persona.json" })
 	public void getEmpleado() {
 		Query query = entityManager.createNamedQuery(Empleado.GET_ALL);
 		query = query.setFirstResult(1);
 		List<Empleado> lista = query.getResultList();
 		System.out.println("----- Probando Set First Result (1) ----");
 		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i).getNombre()+" "+lista.get(i).getApellido()+" "+lista.get(i).getSueldo());
+			System.out.println(
+					lista.get(i).getNombre() + " " + lista.get(i).getApellido() + " " + lista.get(i).getSueldo());
 		}
 	}
-	
+
 	/**
-	 * Metodo que permite consultar las {@link Pelicula} compradas en el año 2017.
+	 * Metodo que permite consultar el {@link Cliente}. que ha realizado una compra
+	 * guia 9 punto 4
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "Pelicula.json","Compra_pelicula.json", "compra_pelicula_pelicula_ids.json"})
-	public void getPeliculasCompradas() {
-		System.out.println("----- Obtener películas compradas en el año 2017 ----");
-		Query query = entityManager.createNamedQuery(Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE);
-		List lista = query.getResultList();
-		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(i+")."+lista.get(i));
-		}
+	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "Persona.json" })
+	public void getclinteCompraPelicula() {
+		Query query = entityManager.createNamedQuery(Compra_pelicula.CLIENTE_COMPRA);
+		query.setParameter("idCompra",1);
+		String cliente =String.valueOf(query.getSingleResult());
+		System.out.println("----- Probando cliente que ha comprado pelicula (1) ----");
+		System.out.println(cliente);
 	}
-	
-	
-	
+
+//	/**
+//	 * método que dado el ID de una compra permita obtener todas las Películas
+//	 * incluidas en esa compra, guia 9 punto 5
+//	 */
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "Persona.json" })
+//	public void getPeliculasCompra() {
+//		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASENCOMPRA);
+//		query.setParameter("idCompra", 1);
+//		query = query.setFirstResult(1);
+//		List<Compra_pelicula> lista = query.getResultList();
+//		System.out.println("----- Probando peliculas que fueron compradas en la venta(1) ----");
+//		for (int i = 0; i < lista.size(); i++) {
+//			System.out.println(lista.get(i).getPelicula_ids());
+//		}
+//	}
+//
+//	/**
+//	 * método que dado el ID de una pelicula permita obtener todas las compras en
+//	 * las que ha sido incluida, guia 9 punto 6
+//	 */
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "Persona.json" })
+//	public void getComprasPeliculas() {
+//		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_COMPRAPELICULAS);
+//		query.setParameter("idPelicula", 1);
+//		query = query.setFirstResult(1);
+//		List<Compra_pelicula> lista = query.getResultList();
+//		System.out.println("----- Probando compras en las que una pelicula fue incluida----");
+//		for (int i = 0; i < lista.size(); i++) {
+//			System.out.println(lista.get(i).getId());
+//		}
+//	}
 
 }

@@ -27,11 +27,12 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM Compra_pelicula compra_pelicula"),
 		@NamedQuery(name = Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE, query = "SELECT CONCAT(p.nombre,'-', cp.f_compra) FROM Pelicula p, Compra_pelicula cp WHERE cp.f_compra BETWEEN '2017-01-01' AND '2017-12-31' AND cp.pelicula_ids=p.id_pelicula"),
 		// Declare este nameQuery guia 9 punto 4
-		@NamedQuery(name = Compra_pelicula.CLIENTE_COMPRA, query = "SELECT cp.CLIENTE_ID_cedula FROM compra_pelicula cp where cp.id=:idCompra"),
+		@NamedQuery(name = Compra_pelicula.CLIENTE_COMPRA, query = "SELECT cp.cliente_id.nombre FROM Compra_pelicula cp where cp.id=:idCompra"),
 		// named query guia 9 punto 5
-		@NamedQuery(name = Compra_pelicula.GET_PELICULASENCOMPRA, query = "SELECT pelicula FROM  compra_pelicula_pelicula_ids compra, IN(compra.PELICULA_IDS) pelicula  where compra.Compra_pelicula_id=:idCompra"),
+		@NamedQuery(name = Compra_pelicula.GET_PELICULASENCOMPRA, query = "SELECT pelicula FROM  Compra_pelicula compra, IN(compra.pelicula_ids) pelicula  where compra.pelicula_ids=:idCompra"),
 		// named query guia 9 punto 6
-		@NamedQuery(name = Compra_pelicula.GET_COMPRAPELICULAS, query = "SELECT compra FROM  compra_pelicula cp INER JOIN cp.id compra  where cp.PELICULA_ID_id=:idPelicula"), })
+		@NamedQuery(name = Compra_pelicula.GET_COMPRAPELICULAS, query = "SELECT Compra_pelicula  FROM Compra_pelicula Compra_pelicula INNER JOIN Compra_pelicula.pelicula_ids pelis WHERE Compra_pelicula.pelicula_ids=:idpelicula"), 
+		})
 public class Compra_pelicula implements Serializable {
 
 	@Id
@@ -49,11 +50,10 @@ public class Compra_pelicula implements Serializable {
 	public static final String COMPRADAS_PRIMERTRIMESTRE = "comprapelicula_primertrimestre"; // named query
 	// Declare este nameQuery guia 9 punto 4
 	public static final String CLIENTE_COMPRA = "comprapelicula_clientecompra"; // named query
-	// named query guia 9 punto 5
-	public static final String GET_COMPRAPELICULAS = "comprapelicula_comprapeliculas";
 	// named query guia 9 punto 6
 	public static final String GET_PELICULASENCOMPRA = "comprapelicula_peliculasencompra";
-
+	// named query guia 9 punto 5
+	public static final String GET_COMPRAPELICULAS = "comprapelicula_comprapeliculas";
 	/*
 	 * Metodo constructor de la clase(Entidad) compra_pelicula
 	 */
