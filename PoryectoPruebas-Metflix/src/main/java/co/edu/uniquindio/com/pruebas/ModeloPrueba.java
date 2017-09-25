@@ -1,13 +1,10 @@
 package co.edu.uniquindio.com.pruebas;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
-import org.glassfish.admin.rest.results.GetResultList;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -22,7 +19,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.com.Administrador;
-import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Consulta_tecnica;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Persona;

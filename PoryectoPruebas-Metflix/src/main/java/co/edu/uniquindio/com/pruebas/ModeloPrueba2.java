@@ -18,12 +18,12 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.sun.jdo.spi.persistence.support.sqlstore.query.jqlc.QueryValueFetcher;
-
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Calificacion_pelicula;
 import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Pelicula;
 import co.edu.uniquindio.com.Persona;
 
 @RunWith(Arquillian.class)
@@ -60,6 +60,21 @@ public class ModeloPrueba2 {
 	}
 
 	/**
+	 * Metodo que permite consultar todos las credenciales de una {@link Persona} registrada.
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"cliente.json","Persona.json" })
+	public void getUsuario() {
+		Query query = entityManager.createNamedQuery(Cliente.GET_CREDENTIALS);
+		query.setParameter("usuario","capriatto93");
+		query.setParameter("contrasena","12345");
+		Cliente cliente = (Cliente) query.getSingleResult();
+		System.out.println("• ----- Punto 3 guia 8 - usuario  (dados usuario y contraseña)----");
+		System.out.println(cliente.getCedula()+" - "+cliente.getNombre()+" "+cliente.getApellido());
+	}
+	
+	/**
 	 * Metodo que permite consultar todos los {@link Administrador} registrados.
 	 */
 	@Test
@@ -69,13 +84,29 @@ public class ModeloPrueba2 {
 		Query query = entityManager.createNamedQuery(Administrador.GET_ALL);
 		query = query.setMaxResults(2);
 		List<Administrador> lista = query.getResultList();
-		System.out.println("----- Probando Set Max Results (2) ----");
+		System.out.println("• ----- Punto 6 guia 8 Probando Set Max Results (2) ----");
 		for (int i = 0; i < lista.size(); i++) {
 			System.out.println(
 					lista.get(i).getNombre() + " " + lista.get(i).getApellido() + " " + lista.get(i).getSueldo());
 		}
 	}
+	
 
+	/**
+	 * Metodo que permite consultar todas las {@link Pelicula} compradas en 2017.
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "pelicula.json", "compra_pelicula.json", "compra_pelicula_pelicula_ids.json" })
+	public void getPeliculasCompradas2017() {
+		Query query = entityManager.createNamedQuery(Compra_pelicula.COMPRADAS_2017);
+		List lista = query.getResultList();
+		System.out.println("• ----- Punto 8 guia 8 consulta usando WHERE, BETWEEN Y AND  ----");
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i));
+		}
+	}
+	
 	/**
 	 * Metodo que permite consultar todos los {@link Empleado} registrados.
 	 */
@@ -86,12 +117,30 @@ public class ModeloPrueba2 {
 		Query query = entityManager.createNamedQuery(Empleado.GET_ALL);
 		query = query.setFirstResult(1);
 		List<Empleado> lista = query.getResultList();
-		System.out.println("----- Probando Set First Result (1) ----");
+		System.out.println("• ----- Punto 7 guia 8 Probando Set First Result (1) ----");
 		for (int i = 0; i < lista.size(); i++) {
 			System.out.println(
 					lista.get(i).getNombre() + " " + lista.get(i).getApellido() + " " + lista.get(i).getSueldo());
 		}
 	}
+	
+	/**
+	 * Metodo que permite consultar las {@link Pelicula} Peores calificadas (calificaciones menores a 3).
+	 * punto 10 (a) de guia 8
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"cliente.json", "persona.json", "pelicula.json", "pelicula_calificacion.json"})
+	public void getPeoresCalificaciones() {
+		Query query = entityManager.createNamedQuery(Calificacion_pelicula.GET_PEORESCALIFICACIONES);
+		System.out.println("-----Punto 10a guia 8 Peliculas peor calificadas (menor a 3)----");
+		List lista = query.getResultList();
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(i+"). "+lista.get(i));
+		}
+		
+	}
+
 
 	/**
 	 * Metodo que permite consultar el {@link Cliente}. que ha realizado una compra
@@ -99,14 +148,16 @@ public class ModeloPrueba2 {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "Persona.json" })
+	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "persona.json"})
 	public void getclinteCompraPelicula() {
 		Query query = entityManager.createNamedQuery(Compra_pelicula.CLIENTE_COMPRA);
 		query.setParameter("idCompra",1);
 		String cliente =String.valueOf(query.getSingleResult());
-		System.out.println("----- Probando cliente que ha comprado pelicula (1) ----");
+		System.out.println("-----Punto 4 guia 9 Probando cliente que ha comprado pelicula (1) ----");
 		System.out.println(cliente);
 	}
+	
+	
 
 //	/**
 //	 * método que dado el ID de una compra permita obtener todas las Películas

@@ -18,7 +18,9 @@ import javax.persistence.NamedQuery;
  *
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Calificacion_pelicula.GET_ALL, query = "SELECT calificacion_pelicula FROM Calificacion_pelicula calificacion_pelicula") })
+@NamedQueries({ 
+	@NamedQuery(name = Calificacion_pelicula.GET_ALL, query = "SELECT calificacion_pelicula FROM Calificacion_pelicula calificacion_pelicula"),
+	@NamedQuery(name = Calificacion_pelicula.GET_PEORESCALIFICACIONES, query = "SELECT DISTINCT(calificacion_pelicula.pelicula_id.nombre) FROM Calificacion_pelicula calificacion_pelicula WHERE calificacion_pelicula.calificacion < 3")})
 public class Calificacion_pelicula implements Serializable {
 
 	@Id
@@ -35,6 +37,9 @@ public class Calificacion_pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String GET_ALL = "calificacionpelicula_GetAll"; //named query
+	
+	public static final String GET_PEORESCALIFICACIONES = "calificacionpelicula_GetPeores"; //named query
+
 	/*
 	 * Metodo constructor de la clase(Entidad) calificacion_pelicula
 	 */

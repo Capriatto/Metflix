@@ -1,39 +1,32 @@
 {
-	"pelicula_calificacion": [
+	"Calificacion_pelicula": [
 		{
 			"id": "1",
-			"calificacion" : "2",
+			"calificacion" : "3",
 			"resena": "Buena peli",
-			"CLIENTE_ID_cedula": "1",
-			"PELICULA_ID_id": "1"
+			"CLIENTE_ID_cedula": "3",
+			"PELICULA_ID_id": "3"
 		},
 		{
 			"id": "2",
-			"calificacion" : "4",
+			"calificacion" : "1",
 			"resena": "Mala peli",
-			"CLIENTE_ID_cedula": "2",
+			"CLIENTE_ID_cedula": "5",
 			"PELICULA_ID_id": "1"
 		},
 		{
 			"id": "3",
 			"calificacion" : "3",
-			"resena": "Regulimbis",
+			"resena": "Regular",
 			"CLIENTE_ID_cedula": "3",
-			"PELICULA_ID_id": "1"
+			"PELICULA_ID_id": "2"
 		},
 		{
 			"id": "4",
-			"calificacion" : "5",
-			"resena": "Buena peli",
-			"CLIENTE_ID_cedula": "2",
-			"PELICULA_ID_id": "1"
-		},
-		{
-			"id": "5",
-			"calificacion" : "5",
-			"resena": "Me gustó",
+			"calificacion" : "2",
+			"resena": "Malaaaaaaa peli",
 			"CLIENTE_ID_cedula": "3",
-			"PELICULA_ID_id": "1"
+			"PELICULA_ID_id": "4"
 		}
 	]
 }

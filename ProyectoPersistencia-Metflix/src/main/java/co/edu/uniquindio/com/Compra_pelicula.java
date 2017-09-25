@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = Compra_pelicula.GET_ALL, query = "SELECT compra_pelicula FROM Compra_pelicula compra_pelicula"),
-		@NamedQuery(name = Compra_pelicula.COMPRADAS_PRIMERTRIMESTRE, query = "SELECT CONCAT(p.nombre,'-', cp.f_compra) FROM Pelicula p, Compra_pelicula cp WHERE cp.f_compra BETWEEN '2017-01-01' AND '2017-12-31' AND cp.pelicula_ids=p.id_pelicula"),
+		@NamedQuery(name = Compra_pelicula.COMPRADAS_2017, query = "SELECT CONCAT(p.nombre,'-', cp.f_compra) FROM Pelicula p, Compra_pelicula cp WHERE cp.f_compra BETWEEN '2017-01-01' AND '2017-12-31' AND cp.pelicula_ids=p.id_pelicula"),
 		// Declare este nameQuery guia 9 punto 4
 		@NamedQuery(name = Compra_pelicula.CLIENTE_COMPRA, query = "SELECT cp.cliente_id.nombre FROM Compra_pelicula cp where cp.id=:idCompra"),
 		// named query guia 9 punto 5
@@ -47,7 +47,7 @@ public class Compra_pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public static final String GET_ALL = "comprapelicula_GetAll"; // named query
-	public static final String COMPRADAS_PRIMERTRIMESTRE = "comprapelicula_primertrimestre"; // named query
+	public static final String COMPRADAS_2017 = "comprapelicula_2017"; // named query
 	// Declare este nameQuery guia 9 punto 4
 	public static final String CLIENTE_COMPRA = "comprapelicula_clientecompra"; // named query
 	// named query guia 9 punto 6
