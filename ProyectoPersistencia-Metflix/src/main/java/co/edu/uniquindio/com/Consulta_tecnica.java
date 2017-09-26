@@ -21,7 +21,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Consulta_tecnica.GET_ALL, query = "SELECT consulta_tecnica FROM Consulta_tecnica consulta_tecnica"),
-				@NamedQuery(name = Consulta_tecnica.GET_CONSULTAS2, query = "SELECT consulta_tecnica FROM Consulta_tecnica consulta_tecnica WHERE consulta_tecnica.estado=2")})
+				@NamedQuery(name = Consulta_tecnica.GET_CONSULTAS2, query = "SELECT consulta_tecnica FROM Consulta_tecnica consulta_tecnica WHERE consulta_tecnica.estado=2"),
+				@NamedQuery(name = Consulta_tecnica.GET_SINEMPLEADOASIGNADO, query = "SELECT consulta_tecnica.consulta,empleado_asignado FROM Consulta_tecnica consulta_tecnica LEFT JOIN consulta_tecnica.empleado_id empleado_asignado")
+})
 public class Consulta_tecnica implements Serializable {
 
 	@Id
@@ -44,6 +46,8 @@ public class Consulta_tecnica implements Serializable {
 	public static final String GET_ALL = "consultatecnica_GetAll"; //named query
 	
 	public static final String GET_CONSULTAS2 = "consultatecnica_GetEstado2"; //named query
+	
+	public static final String GET_SINEMPLEADOASIGNADO = "consultatecnica_GetSinEmpleado"; //named query
 
 
 	/*

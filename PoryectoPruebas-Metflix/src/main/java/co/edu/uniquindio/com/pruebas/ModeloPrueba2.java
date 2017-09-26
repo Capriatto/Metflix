@@ -210,22 +210,38 @@ public class ModeloPrueba2 {
 			System.out.println(pelicula.get(i));
 		}
 	}
-
+	
 	/**
-	 * método que dado el ID de una pelicula permita obtener todas las compras en
-	 * las que ha sido incluida, guia 9 punto 6
+	 * método que permite obtener todas las consultas técnicas, incluso si no tienen un empleado asignado.
+	 *  guia 9 punto 7   LEFT JOIN
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "compra_pelicula.json", "compra_pelicula_pelicula_ids.json", "cliente.json", "Persona.json" })
-	public void getCompras() {
-		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_COMPRAPELICULAS);
-		query.setParameter("idPelicula", 1);
-		List<Compra_pelicula> lista = query.getResultList();
-		System.out.println("----- Probando compras en las que una pelicula fue incluida----");
+	@UsingDataSet({ "consulta_tecnica.json", "empleado.json", "cliente.json", "persona.json"})
+	public void getPersonasTelefono() {
+		Query query = entityManager.createNamedQuery(Consulta_tecnica.GET_SINEMPLEADOASIGNADO);
+		List lista = query.getResultList();
+		System.out.println("• -----Punto 7 guia 9 usando Left Join para traer consultas técnicas aunque no tengan empleado asignado----");
 		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i).getId());
+			System.out.println(lista.get(i));
 		}
 	}
+
+//	/**
+//	 * método que dado el ID de una pelicula permita obtener todas las compras en
+//	 * las que ha sido incluida, guia 9 punto 6
+//	 */
+//	@Test
+//	@Transactional(value = TransactionMode.ROLLBACK)
+//	@UsingDataSet({ "compra_pelicula.json", "compra_pelicula_pelicula_ids.json", "cliente.json", "Persona.json" })
+//	public void getCompras() {
+//		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_COMPRAPELICULAS);
+//		query.setParameter("idPelicula", 1);
+//		List<Compra_pelicula> lista = query.getResultList();
+//		System.out.println("----- Probando compras en las que una pelicula fue incluida----");
+//		for (int i = 0; i < lista.size(); i++) {
+//			System.out.println(lista.get(i).getId());
+//		}
+//	}
 
 }
