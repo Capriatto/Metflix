@@ -22,6 +22,7 @@ import co.edu.uniquindio.com.Administrador;
 import co.edu.uniquindio.com.Calificacion_pelicula;
 import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Compra_pelicula;
+import co.edu.uniquindio.com.Consulta_tecnica;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import co.edu.uniquindio.com.Persona;
@@ -140,6 +141,40 @@ public class ModeloPrueba2 {
 		}
 		
 	}
+	
+	/**
+	 * Metodo que permite consultar las {@link Empleado} del puesto de ventas.
+	 * punto 10 (b) de guia 8
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"empleado.json", "persona.json"})
+	public void getEmpleadosVentas() {
+		Query query = entityManager.createNamedQuery(Empleado.GET_PUESTOVENTAS);
+		System.out.println("-----Punto 10b guia 8 Empleados del puesto de ventas----");
+		List<Empleado> lista = query.getResultList();
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(i+"). "+lista.get(i).getNombre()+" "+lista.get(i).getApellido());
+		}
+		
+	}
+	
+	/**
+	 * Metodo que permite consultar las {@link Empleado} del puesto de ventas.
+	 * punto 10 (c) de guia 8
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"consulta_tecnica.json"})
+	public void getConsultasEstado2() {
+		Query query = entityManager.createNamedQuery(Consulta_tecnica.GET_CONSULTAS2);
+		System.out.println("•-----Punto 10c guia 8 Consultas Tecnicas estado 2----");
+		List<Consulta_tecnica> lista = query.getResultList();
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(i+"). "+lista.get(i).getConsulta());
+		}
+		
+	}
 
 
 	/**
@@ -165,32 +200,32 @@ public class ModeloPrueba2 {
 	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "compra_pelicula.json", "pelicula.json", "cliente.json", "Persona.json" })
+	@UsingDataSet({ "compra_pelicula.json", "compra_pelicula_pelicula_ids.json", "pelicula.json", "cliente.json", "Persona.json" })
 	public void getPeliculasCompra() {
 		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASENCOMPRA);
 		query.setParameter("idCompra", 1);
 		List<Pelicula> pelicula = query.getResultList();
+		System.out.println("• -----Punto 5 guia 9 Probando obtener peliculas dado un Id de compra----");
 		for (int i = 0; i < pelicula.size(); i++) {
 			System.out.println(pelicula.get(i));
 		}
 	}
 
-//	/**
-//	 * método que dado el ID de una pelicula permita obtener todas las compras en
-//	 * las que ha sido incluida, guia 9 punto 6
-//	 */
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "Persona.json" })
-//	public void getComprasPeliculas() {
-//		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_COMPRAPELICULAS);
-//		query.setParameter("idPelicula", 1);
-//		query = query.setFirstResult(1);
-//		List<Compra_pelicula> lista = query.getResultList();
-//		System.out.println("----- Probando compras en las que una pelicula fue incluida----");
-//		for (int i = 0; i < lista.size(); i++) {
-//			System.out.println(lista.get(i).getId());
-//		}
-//	}
+	/**
+	 * método que dado el ID de una pelicula permita obtener todas las compras en
+	 * las que ha sido incluida, guia 9 punto 6
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "compra_pelicula.json", "compra_pelicula_pelicula_ids.json", "cliente.json", "Persona.json" })
+	public void getCompras() {
+		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_COMPRAPELICULAS);
+		query.setParameter("idPelicula", 1);
+		List<Compra_pelicula> lista = query.getResultList();
+		System.out.println("----- Probando compras en las que una pelicula fue incluida----");
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getId());
+		}
+	}
 
 }

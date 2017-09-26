@@ -19,7 +19,7 @@
 		{
 			"id": "3",
 			"consulta": "Las peliculas se oyen muy bajito",
-			"estado": "1",
+			"estado": "2",
 			"F_CONSULTATECNICA": "2017-10-04",
 			"CLIENTE_ID_cedula": "5",
 			"EMPLEADO_ID_cedula": "2"
@@ -27,7 +27,7 @@
 		{
 			"id": "4",
 			"consulta": "la pelicula no abre en pantalla completa",
-			"estado": "1",
+			"estado": "2",
 			"F_CONSULTATECNICA": "2017-04-08",
 			"CLIENTE_ID_cedula": "5",
 			"EMPLEADO_ID_cedula": "4"

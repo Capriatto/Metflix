@@ -2,7 +2,7 @@
 	"empleado": [
 		{
 			"cedula": "2",
-			"puesto" : "caja",
+			"puesto" : "ventas",
 			"sueldo": "10000"
 		},
 		{

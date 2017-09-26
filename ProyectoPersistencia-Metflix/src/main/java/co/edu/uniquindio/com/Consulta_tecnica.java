@@ -20,7 +20,8 @@ import javax.persistence.TemporalType;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Consulta_tecnica.GET_ALL, query = "SELECT consulta_tecnica FROM Consulta_tecnica consulta_tecnica") })
+@NamedQueries({ @NamedQuery(name = Consulta_tecnica.GET_ALL, query = "SELECT consulta_tecnica FROM Consulta_tecnica consulta_tecnica"),
+				@NamedQuery(name = Consulta_tecnica.GET_CONSULTAS2, query = "SELECT consulta_tecnica FROM Consulta_tecnica consulta_tecnica WHERE consulta_tecnica.estado=2")})
 public class Consulta_tecnica implements Serializable {
 
 	@Id
@@ -41,6 +42,9 @@ public class Consulta_tecnica implements Serializable {
 														// la des-serializacion)
 
 	public static final String GET_ALL = "consultatecnica_GetAll"; //named query
+	
+	public static final String GET_CONSULTAS2 = "consultatecnica_GetEstado2"; //named query
+
 
 	/*
 	 * Metodo constructor de la clase(Entidad) consulta_tecnica
