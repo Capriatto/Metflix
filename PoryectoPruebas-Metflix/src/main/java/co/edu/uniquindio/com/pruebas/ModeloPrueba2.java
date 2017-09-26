@@ -152,31 +152,29 @@ public class ModeloPrueba2 {
 	public void getclinteCompraPelicula() {
 		Query query = entityManager.createNamedQuery(Compra_pelicula.CLIENTE_COMPRA);
 		query.setParameter("idCompra",1);
-		String cliente =String.valueOf(query.getSingleResult());
+		List<Pelicula> lista = query.getResultList();
 		System.out.println("-----Punto 4 guia 9 Probando cliente que ha comprado pelicula (1) ----");
-		System.out.println(cliente);
+		System.out.println(lista);
 	}
 	
 	
 
-//	/**
-//	 * método que dado el ID de una compra permita obtener todas las Películas
-//	 * incluidas en esa compra, guia 9 punto 5
-//	 */
-//	@Test
-//	@Transactional(value = TransactionMode.ROLLBACK)
-//	@UsingDataSet({ "compra_pelicula.json", "cliente.json", "Persona.json" })
-//	public void getPeliculasCompra() {
-//		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASENCOMPRA);
-//		query.setParameter("idCompra", 1);
-//		query = query.setFirstResult(1);
-//		List<Compra_pelicula> lista = query.getResultList();
-//		System.out.println("----- Probando peliculas que fueron compradas en la venta(1) ----");
-//		for (int i = 0; i < lista.size(); i++) {
-//			System.out.println(lista.get(i).getPelicula_ids());
-//		}
-//	}
-//
+	/**
+	 * método que dado el ID de una compra permita obtener todas las Películas
+	 * incluidas en esa compra, guia 9 punto 5
+	 */
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "compra_pelicula.json", "pelicula.json", "cliente.json", "Persona.json" })
+	public void getPeliculasCompra() {
+		Query query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASENCOMPRA);
+		query.setParameter("idCompra", 1);
+		List<Pelicula> pelicula = query.getResultList();
+		for (int i = 0; i < pelicula.size(); i++) {
+			System.out.println(pelicula.get(i));
+		}
+	}
+
 //	/**
 //	 * método que dado el ID de una pelicula permita obtener todas las compras en
 //	 * las que ha sido incluida, guia 9 punto 6

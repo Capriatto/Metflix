@@ -29,7 +29,7 @@ import javax.persistence.TemporalType;
 		// Declare este nameQuery guia 9 punto 4
 		@NamedQuery(name = Compra_pelicula.CLIENTE_COMPRA, query = "SELECT cp.cliente_id.nombre FROM Compra_pelicula cp where cp.id=:idCompra"),
 		// named query guia 9 punto 5
-		@NamedQuery(name = Compra_pelicula.GET_PELICULASENCOMPRA, query = "SELECT pelicula FROM  Compra_pelicula compra, IN(compra.pelicula_ids) pelicula  where compra.pelicula_ids=:idCompra"),
+		@NamedQuery(name = Compra_pelicula.GET_PELICULASENCOMPRA, query = "SELECT pelicula  FROM  Compra_pelicula compra, IN(compra.pelicula_ids) pelicula WHERE compra.id=:idCompra"),
 		// named query guia 9 punto 6
 		@NamedQuery(name = Compra_pelicula.GET_COMPRAPELICULAS, query = "SELECT Compra_pelicula  FROM Compra_pelicula Compra_pelicula INNER JOIN Compra_pelicula.pelicula_ids pelis WHERE Compra_pelicula.pelicula_ids=:idpelicula"), 
 		})
