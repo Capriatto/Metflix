@@ -64,5 +64,6 @@
 		<module>ProyectoEAR-Metflix</module>
 		<module>ProyectoPersistencia-Metflix</module>
 		<module>PoryectoPruebas-Metflix</module>
+		<module>ProyectoEJB</module>
 	</modules>
 </project>

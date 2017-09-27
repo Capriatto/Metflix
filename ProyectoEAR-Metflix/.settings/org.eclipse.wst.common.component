@@ -2,6 +2,9 @@
     <wb-module deploy-name="ProyectoEAR-Metflix-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="ProyectoEJB.jar" deploy-path="/" handle="module:/resource/ProyectoEJB/ProyectoEJB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="ProyectoPersistencia-Metflix.jar" deploy-path="/lib" handle="module:/resource/ProyectoPersistencia-Metflix/ProyectoPersistencia-Metflix">
             <dependency-type>uses</dependency-type>
         </dependent-module>
