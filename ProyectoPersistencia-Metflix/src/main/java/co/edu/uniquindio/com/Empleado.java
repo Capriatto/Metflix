@@ -16,8 +16,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado"),
-				@NamedQuery(name = Empleado.GET_PUESTOVENTAS, query = "SELECT empleado FROM Empleado empleado where empleado.puesto='ventas'")	
-})
+		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado where empleado.nombreUsuario=:nombreUsuario"),
+		@NamedQuery(name = Empleado.GET_PUESTOVENTAS, query = "SELECT empleado FROM Empleado empleado where empleado.puesto='ventas'") })
 public class Empleado extends Persona implements Serializable {
 
 	@Column(name = "sueldo") // sueldo del Empleado de tipo double
@@ -28,10 +28,11 @@ public class Empleado extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
 
-	public static final String GET_ALL = "empleado_GetAll"; //named query
-	
-	public static final String GET_PUESTOVENTAS = "empleado_GetEmpleadosVentas"; //named query
+	public static final String GET_ALL = "empleado_GetAll"; // named query
 
+	public static final String GET_PUESTOVENTAS = "empleado_GetEmpleadosVentas"; // named query
+
+	public static final String CREDENCIALES = "empleado_Credenciales"; // named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Empleado
