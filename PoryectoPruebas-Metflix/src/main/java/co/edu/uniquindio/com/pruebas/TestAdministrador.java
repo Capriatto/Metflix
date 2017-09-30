@@ -38,14 +38,15 @@ public class TestAdministrador {
 	@UsingDataSet({ "persona.json" })
 	public void registrarEmpleadoTest() {
 		String cedula="12234";
+		String apellido="Valencia";
+		String contrasena="0000";
+		String correo="aaa@algo.com";
+		int estado=1;
 		String nombre="carlos";
-		String clave="xxx";
-		String email="";
-		String nombreUsuario="";
-		int edad=29;
+		String usuario="cavh1100";
 		
 		try {
-			Assert.assertTrue(administrador.registroEmpleado(cedula, nombre, email, clave, edad, nombreUsuario));
+			Assert.assertTrue(administrador.registroEmpleado(cedula, apellido, contrasena, correo, estado, nombre, usuario));
 		} catch (ElementoRegistradorException e) {
 			System.out.println("error, empleado ya registrado");
 			Assert.fail("empleado repetido");
