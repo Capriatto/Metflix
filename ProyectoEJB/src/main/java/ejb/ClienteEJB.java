@@ -1,14 +1,20 @@
 package ejb;
 
+
+import java.sql.Date;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import co.edu.uniquindio.com.Cliente;
+<<<<<<< HEAD
 import excepciones.InformacionRepetidaException;
+=======
+import co.edu.uniquindio.com.Consulta_tecnica;
+import co.edu.uniquindio.com.Empleado;
+>>>>>>> 129d4c275910c575d6acfaa177b6b2016a87588e
 
 /**
  * Session Bean implementation class administradorEJB
@@ -28,6 +34,7 @@ public class ClienteEJB {
 	private EntityManager entityManager;
 
 	/**
+<<<<<<< HEAD
 	 * Permite buscar un cliente por su nombre de usuario
 	 * 
 	 * @param usuario
@@ -42,6 +49,29 @@ public class ClienteEJB {
 		} catch (NoResultException e) {
 			return null;
 		}
+=======
+	 * Metodo que permite registrar una consulta técnica en la base de datos
+	 * @param id
+	 * @param consulta
+	 * @param estado
+	 * @param f_consulta_tecnica
+	 * @param cliente
+	 * @param empleado
+	 * @return
+	 */
+	public boolean registroConsultaTecnica(String id, String consulta, int estado, Date f_consulta_tecnica, Cliente cliente,
+		    Empleado empleado) {
+			Consulta_tecnica consulta_tec = new Consulta_tecnica();
+			consulta_tec.setId(id);
+			consulta_tec.setConsulta(consulta);
+			consulta_tec.setEstado(estado);
+			consulta_tec.setF_consultatecnica(f_consulta_tecnica);
+			consulta_tec.setCliente_id(cliente);
+			consulta_tec.setEmpleado_id(empleado);;
+			entityManager.persist(consulta_tec);
+			return true;
+		
+>>>>>>> 129d4c275910c575d6acfaa177b6b2016a87588e
 	}
 	
 	/**
