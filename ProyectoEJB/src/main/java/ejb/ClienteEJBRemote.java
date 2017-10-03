@@ -36,7 +36,16 @@ public interface ClienteEJBRemote {
 	public boolean registroConsultaTecnica(String id, String consulta, int estado, Date f_consulta_tecnica, Cliente cliente,
 		    Empleado empleado);
 	
-	
+	/**
+	 * Permite registrar una compra de  película en una base de datos
+	 * @param id
+	 * @param F_COMPRA
+	 * @param CLIENTE_ID_cedula
+	 * @return
+	 * @throws InformacionRepetidaException
+	 */
+	public boolean registroCompraPelicula(int id, Date F_COMPRA, Cliente CLIENTE_ID_cedula)
+			throws InformacionRepetidaException;
 }
 
 
