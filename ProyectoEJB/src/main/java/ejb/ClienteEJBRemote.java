@@ -6,7 +6,7 @@ import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
 /**
- * Interfaz que determina los metodos de acceso del EJB de administrador.
+ * Interfaz que determina los metodos de acceso del EJB del cliente.
  * 
  * @author German
  *
@@ -14,15 +14,10 @@ import excepciones.InformacionRepetidaException;
 @Remote
 public interface ClienteEJBRemote {
 	/**
-	 * Permite registrar un empleado en la base de datos
-	 * 
-	 * @param Empleado
-	 *            Empleado a ser agregado.
-	 * @throws ElementoRegistradorException
-	 *             Al momento de intentar agregar un elemento ya existe
+	 * Permite hacer el cambio de contraseña a los clientes
+	 * @param usuario
+	 * @param contraseñaNueva
 	 * @throws InformacionRepetidaException
-	 *             Al momento de agregar informacion que ya pertenece a un empleado
 	 */
-	public boolean registroEmpleado(String cedula, String nombre, String email, String clave, int edad,
-			String nombreUsuario) throws ElementoRegistradorException, InformacionRepetidaException;
+	public boolean cambioContrasena(String usuario, String contraseñaNueva) throws InformacionRepetidaException;
 }

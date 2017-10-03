@@ -16,7 +16,6 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado"),
-		// Error
 		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado,Persona persona where persona.usuario=:usuario"),
 		@NamedQuery(name = Empleado.GET_PUESTOVENTAS, query = "SELECT empleado FROM Empleado empleado where empleado.puesto='ventas'") })
 public class Empleado extends Persona implements Serializable {
