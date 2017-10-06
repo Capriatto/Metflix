@@ -13,7 +13,7 @@ import excepciones.InformacionRepetidaException;
  **/
 @Remote
 public interface ClienteEJBRemote {
-	
+String JNDI="java:global/ProyectoEAR-Metflix/ProyectoEJB/ClienteEJB!ejb.ClienteEJB";	
 	/**
 	 * Permite hacer el cambio de contraseña a los clientes
 	 * @param usuario
