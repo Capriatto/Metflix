@@ -15,7 +15,9 @@ import javax.persistence.NamedQuery;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Administrador.GET_ALL, query = "SELECT administrador FROM Administrador administrador"),@NamedQuery(name = Administrador.GET_CONTAR_ADMINISTRADORES, query = "SELECT count(a) FROM Administrador a"), })
+@NamedQueries({
+		@NamedQuery(name = Administrador.GET_ALL, query = "SELECT administrador FROM Administrador administrador"),
+		@NamedQuery(name = Administrador.GET_CONTAR_ADMINISTRADORES, query = "SELECT count(a) FROM Administrador a"), })
 public class Administrador extends Persona implements Serializable {
 	@Column(name = "sueldo") // sueldo del administrador de tipo double
 	private double sueldo;
@@ -23,8 +25,8 @@ public class Administrador extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
 
-	public static final String GET_ALL = "administrador_GetAll"; //named query
-	public static final String GET_CONTAR_ADMINISTRADORES = "administrador_ContarAdministradores"; //named query
+	public static final String GET_ALL = "administrador_GetAll"; // named query
+	public static final String GET_CONTAR_ADMINISTRADORES = "administrador_ContarAdministradores"; // named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Administrador

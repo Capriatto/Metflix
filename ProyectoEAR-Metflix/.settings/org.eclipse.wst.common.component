@@ -8,5 +8,8 @@
         <dependent-module archiveName="ProyectoPersistencia-Metflix.jar" deploy-path="/lib" handle="module:/resource/ProyectoPersistencia-Metflix/ProyectoPersistencia-Metflix">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="ProyectoWeb.war" deploy-path="/" handle="module:/resource/ProyectoWeb/ProyectoWeb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

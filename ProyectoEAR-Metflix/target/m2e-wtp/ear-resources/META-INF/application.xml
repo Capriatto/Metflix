@@ -5,5 +5,11 @@
   <module id="EJB_co.edu.iniquindio.com.ProyectoEJB">
     <ejb>ProyectoEJB.jar</ejb>
   </module>
+  <module id="WAR_co.edu.iniquindio.com.ProyectoWeb">
+    <web>
+      <web-uri>ProyectoWeb.war</web-uri>
+      <context-root>/ProyectoWeb</context-root>
+    </web>
+  </module>
   <library-directory>lib</library-directory>
 </application>
