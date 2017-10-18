@@ -1,15 +1,17 @@
 package bean;
 
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
+
 /**
  * permite mejorar la informacion del archivo xhtml de saludo
+ * 
  * @author German
  * @version 1.0
  *
  */
 @ManagedBean
 public class HolaMundoBean {
-	 private String mensaje = "Hola Mundo 2";
+	private static final String mensaje = "Hola Mundo 2";
 
 	public String getMensaje() {
 		return mensaje;
