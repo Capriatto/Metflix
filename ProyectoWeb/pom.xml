@@ -34,11 +34,13 @@
 			<artifactId>ProyectoEJB</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>co.edu.iniquindio.com</groupId>
 			<artifactId>ProyectoPersistencia-Metflix</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
