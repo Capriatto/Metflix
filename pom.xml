@@ -66,5 +66,6 @@
 		<module>PoryectoPruebas-Metflix</module>
 		<module>ProyectoEJB</module>
 		<module>ProyectoWeb</module>
+		<module>ProyectoEscritorio-Metflix</module>
 	</modules>
 </project>

@@ -25,6 +25,6 @@ public interface AdministradorEJBRemote {
 	 * @throws InformacionRepetidaException
 	 *             Al momento de agregar informacion que ya pertenece a un empleado
 	 */	
-	public boolean registroEmpleado(String cedula, String nombre, String email, String clave, int edad,
-			String nombreUsuario) throws ElementoRegistradorException, InformacionRepetidaException;
+	public boolean registroEmpleado(String cedula, String apellido, String contrasena, String correo, int estado,
+			String nombre, String usuario) throws ElementoRegistradorException, InformacionRepetidaException;
 }
