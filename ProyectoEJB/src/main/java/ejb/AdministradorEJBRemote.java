@@ -13,8 +13,8 @@ import excepciones.InformacionRepetidaException;
  */
 @Remote
 public interface AdministradorEJBRemote {
-	String JNDI="global/ProyectoEAR-Metflix/ProyectoEJB/AdministradorEJB!co.edu.uniquindio.AdministradorEJBRemote";
-	
+	String JNDI = "java:global/ProyectoEAR-Metflix/ProyectoEJB/AdministradorEJB!ejb.AdministradorEJBRemote";
+
 	/**
 	 * Permite registrar un empleado en la base de datos
 	 * 
@@ -24,7 +24,7 @@ public interface AdministradorEJBRemote {
 	 *             Al momento de intentar agregar un elemento ya existe
 	 * @throws InformacionRepetidaException
 	 *             Al momento de agregar informacion que ya pertenece a un empleado
-	 */	
+	 */
 	public boolean registroEmpleado(String cedula, String apellido, String contrasena, String correo, int estado,
 			String nombre, String usuario) throws ElementoRegistradorException, InformacionRepetidaException;
 }

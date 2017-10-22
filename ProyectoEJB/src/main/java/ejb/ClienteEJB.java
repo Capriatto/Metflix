@@ -21,7 +21,7 @@ import excepciones.InformacionRepetidaException;
  */
 @Stateless
 @LocalBean
-public class ClienteEJB {
+public class ClienteEJB implements ClienteEJBRemote{
 
 	/**
 	 * Default constructor.
@@ -80,7 +80,7 @@ public class ClienteEJB {
 	 * @throws InformacionRepetidaException
 	 */
 
-	private boolean cambioContrasena(String usuario, String contrasenaNueva)throws InformacionRepetidaException{
+	public boolean cambioContrasena(String usuario, String contrasenaNueva)throws InformacionRepetidaException{
 		
 		Cliente cliente = buscarEmpleadoPorNombreUsuario(usuario);
 		

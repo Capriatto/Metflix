@@ -31,7 +31,7 @@ public class RegistroEmpleado extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 *//*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,13 +43,14 @@ public class RegistroEmpleado extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public RegistroEmpleado() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public RegistroEmpleado(Administrador admin) {
+		admin.setVisible(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 424, 346);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -134,7 +135,17 @@ public class RegistroEmpleado extends JFrame {
 				System.out.println(cedula);
 			}
 		});
-		btnGuardar.setBounds(315, 244, 79, 25);
+		btnGuardar.setBounds(282, 244, 112, 25);
 		contentPane.add(btnGuardar);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				admin.setVisible(true);				
+			}
+		});
+		btnSalir.setBounds(173, 244, 97, 25);
+		contentPane.add(btnSalir);
 	}
 }

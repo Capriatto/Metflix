@@ -16,7 +16,7 @@ import excepciones.InformacionRepetidaException;
  */
 @Stateless
 @LocalBean
-public class AdministradorEJB {
+public class AdministradorEJB implements AdministradorEJBRemote {
 
 	/**
 	 * Default constructor.
