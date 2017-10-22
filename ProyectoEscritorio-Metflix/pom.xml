@@ -15,12 +15,6 @@
   	</dependency>
   	<dependency>
   		<groupId>co.edu.iniquindio.com</groupId>
-  		<artifactId>ProyectoEJB</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<type>ejb</type>
-  	</dependency>
-  	<dependency>
-  		<groupId>co.edu.iniquindio.com</groupId>
   		<artifactId>ProyectoPersistencia-Metflix</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
@@ -29,6 +23,12 @@
   		<artifactId>ProyectoEAR-Metflix</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   		<type>ear</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>co.edu.iniquindio.com</groupId>
+  		<artifactId>ProyectoEJB</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  		<type>ejb</type>
   	</dependency>
   </dependencies>
 </project>
