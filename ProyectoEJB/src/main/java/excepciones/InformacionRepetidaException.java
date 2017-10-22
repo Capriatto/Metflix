@@ -1,7 +1,7 @@
 package excepciones;
 
 public class InformacionRepetidaException extends Exception{
-		 private static final long serialVersionUID=1;
+	private static final long serialVersionUID = 1;
     /**
      * Default constructor. 
      */

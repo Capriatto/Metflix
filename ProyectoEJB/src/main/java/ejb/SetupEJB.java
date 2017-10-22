@@ -45,5 +45,7 @@ public class SetupEJB {
 			entityManager.persist(admin);
 		}
 	}
+	
+	
 
 }

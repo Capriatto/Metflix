@@ -2,6 +2,7 @@ package ejb;
 
 import javax.ejb.Remote;
 
+import co.edu.uniquindio.com.Empleado;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
@@ -27,4 +28,33 @@ public interface AdministradorEJBRemote {
 	 */
 	public boolean registroEmpleado(String cedula, String apellido, String contrasena, String correo, int estado,
 			String nombre, String usuario) throws ElementoRegistradorException, InformacionRepetidaException;
+
+	/**
+	 * Buscar un empleado por cedula
+	 * 
+	 * @param usuario
+	 * @return
+	 */
+	public Empleado buscarEmpleadoPorNombreUsuario(String cedula)
+			throws ElementoRegistradorException, InformacionRepetidaException;
+
+	/**
+	 * Metodo que elimina un empleado
+	 * 
+	 * @param cedula
+	 * @return
+	 */
+	public boolean elimiarEmpleado(String cedula) throws ElementoRegistradorException, InformacionRepetidaException;
+
+	/**
+	 * Metodo que permite actualizar la informacion de un empleado
+	 * 
+	 * @param cedula
+	 * @param puesto
+	 * @param salario
+	 * @return
+	 */
+	public boolean modificarEmpleado(String cedula, String puesto, double salario)
+			throws ElementoRegistradorException, InformacionRepetidaException;
+
 }

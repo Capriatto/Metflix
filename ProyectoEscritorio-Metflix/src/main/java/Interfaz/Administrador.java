@@ -15,6 +15,9 @@ import java.awt.Color;
 
 public class Administrador extends JFrame {
 	RegistroEmpleado regEmpleado = new RegistroEmpleado(this);
+	EliminarEmpleado eliminarEmpleado= new EliminarEmpleado(this);
+	BuscarEmpleado buscarEmpleado = new BuscarEmpleado(this);
+	ModificarEmpleado modificarEmpleado= new ModificarEmpleado(this);
 	private JPanel contentPane;
 
 	/**
@@ -73,16 +76,30 @@ public class Administrador extends JFrame {
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				eliminarEmpleado.setVisible(true);
 			}
 		});
 		btnEliminar.setBounds(12, 80, 97, 25);
 		panel.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				modificarEmpleado.setVisible(true);
+			}
+		});
 		btnModificar.setBounds(12, 118, 97, 25);
 		panel.add(btnModificar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				buscarEmpleado.setVisible(true);
+			}
+		});
 		btnBuscar.setBounds(12, 156, 97, 25);
 		panel.add(btnBuscar);
 		

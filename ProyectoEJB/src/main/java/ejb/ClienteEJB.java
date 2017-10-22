@@ -1,6 +1,5 @@
 package ejb;
 
-
 import java.sql.Date;
 
 import javax.ejb.LocalBean;
@@ -15,13 +14,14 @@ import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Consulta_tecnica;
 import co.edu.uniquindio.com.Empleado;
 import excepciones.InformacionRepetidaException;
+import excepciones.PersonaNoEncontradaException;
 
 /**
  * Session Bean implementation class administradorEJB
  */
 @Stateless
 @LocalBean
-public class ClienteEJB implements ClienteEJBRemote{
+public class ClienteEJB implements ClienteEJBRemote {
 
 	/**
 	 * Default constructor.
@@ -48,9 +48,11 @@ public class ClienteEJB implements ClienteEJBRemote{
 		} catch (NoResultException e) {
 			return null;
 		}
-	}	
-		
-	 /** Metodo que permite registrar una consulta técnica en la base de datos
+	}
+
+	/**
+	 * Metodo que permite registrar una consulta técnica en la base de datos
+	 * 
 	 * @param id
 	 * @param consulta
 	 * @param estado
@@ -59,40 +61,42 @@ public class ClienteEJB implements ClienteEJBRemote{
 	 * @param empleado
 	 * @return
 	 */
-	public boolean registroConsultaTecnica(String id, String consulta, int estado, Date f_consulta_tecnica, Cliente cliente,
-		    Empleado empleado) {
-			Consulta_tecnica consulta_tec = new Consulta_tecnica();
-			consulta_tec.setId(id);
-			consulta_tec.setConsulta(consulta);
-			consulta_tec.setEstado(estado);
-			consulta_tec.setF_consultatecnica(f_consulta_tecnica);
-			consulta_tec.setCliente_id(cliente);
-			consulta_tec.setEmpleado_id(empleado);;
-			entityManager.persist(consulta_tec);
-			return true;
-		
+	public boolean registroConsultaTecnica(String id, String consulta, int estado, Date f_consulta_tecnica,
+			Cliente cliente, Empleado empleado) {
+		Consulta_tecnica consulta_tec = new Consulta_tecnica();
+		consulta_tec.setId(id);
+		consulta_tec.setConsulta(consulta);
+		consulta_tec.setEstado(estado);
+		consulta_tec.setF_consultatecnica(f_consulta_tecnica);
+		consulta_tec.setCliente_id(cliente);
+		consulta_tec.setEmpleado_id(empleado);
+		;
+		entityManager.persist(consulta_tec);
+		return true;
+
 	}
-	
+
 	/**
 	 * Permite hacer el cambio de contraseña a los clientes
+	 * 
 	 * @param usuario
 	 * @param contraseñaNueva
 	 * @throws InformacionRepetidaException
 	 */
 
-	public boolean cambioContrasena(String usuario, String contrasenaNueva)throws InformacionRepetidaException{
-		
+	public boolean cambioContrasena(String usuario, String contrasenaNueva) throws InformacionRepetidaException {
+
 		Cliente cliente = buscarEmpleadoPorNombreUsuario(usuario);
-		
+
 		if (cliente.getContrasena().equals(contrasenaNueva)) {
 			throw new InformacionRepetidaException("Ah colocado la contraseña actual");
-		}else {
-		cliente.setContrasena(contrasenaNueva);
-		entityManager.persist(cliente);
-		return true;
+		} else {
+			cliente.setContrasena(contrasenaNueva);
+			entityManager.persist(cliente);
+			return true;
 		}
 	}
-	
+
 	/**
 	 * Metodo que permite registrar una compra de una pelicula
 	 * 
@@ -132,5 +136,26 @@ public class ClienteEJB implements ClienteEJBRemote{
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+
+	/**
+	 * Metodo para recuperar la contrasenia de un empleado
+	 * 
+	 * @param cedula
+	 * @return
+	 * @throws PersonaNoEncontradaException
+	 */
+
+	public String recuperarContrasenia(String cedula) throws PersonaNoEncontradaException {
+		Empleado empleado = new Empleado();
+
+		if (entityManager.find(Empleado.class, cedula) != null) {
+			System.out.println("Persona no encontrada");
+		}
+
+		empleado = entityManager.find(Empleado.class, cedula);
+
+		return empleado.getContrasena();
+
 	}
 }

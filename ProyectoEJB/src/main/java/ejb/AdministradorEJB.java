@@ -47,7 +47,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		if (entityManager.find(Empleado.class, cedula) != null) {
 			throw new ElementoRegistradorException("Empleado ya fue registrado");
 		}
-		if (buscarEmpleadoPorNombreUsuario(usuario) != null) {
+		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			throw new InformacionRepetidaException("Usuario ya existe");
 		} else {
 			Empleado empleado = new Empleado();
@@ -64,20 +64,60 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	}
 
 	/**
-	 * Permite buscar un empleado por su nombre de usuario
+	 * Permite buscar un empleado por su id
 	 * 
-	 * @param usuario
-	 *            Nombre del usuario
+	 * @param cedula
+	 *            cedula empleado
 	 * @return el usuario encontrado
 	 */
-	private Empleado buscarEmpleadoPorNombreUsuario(String usuario) {
+	public Empleado buscarEmpleadoPorNombreUsuario(String cedula) {
 		try {
 			TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.CREDENCIALES, Empleado.class);
-			query.setParameter("usuario", usuario);
+			query.setParameter("cedula", cedula);
 			return query.getSingleResult();
 		} catch (NoResultException e) {
+			System.out.println("Empleado no econtrado");
 			return null;
 		}
 	}
 
+	/**
+	 * Metodo que permite eliminar un empleado.
+	 * 
+	 * @param cedula
+	 * @return
+	 */
+	public boolean elimiarEmpleado(String cedula) {
+		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
+			try {
+				TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.REMOVER, Empleado.class);
+				query.setParameter("cedula", cedula);
+				return true;
+			} catch (NoResultException e) {
+				System.out.println("Empleado no econtrado");
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Metodo que permite modificar la informacion de un empleado
+	 */
+	public boolean modificarEmpleado(String cedula, String puesto, double salario) {
+		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
+			try {
+				TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.MODIFICAR, Empleado.class);
+				query.setParameter("cedula", cedula);
+				query.setParameter("puesto", puesto);
+				query.setParameter("salario", salario);
+				return true;
+			} catch (NoResultException e) {
+				System.out.println("Empleado no econtrado");
+				return false;
+			}
+		}
+		return false;
+	}
 }

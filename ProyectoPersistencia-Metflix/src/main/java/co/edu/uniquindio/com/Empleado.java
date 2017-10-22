@@ -16,7 +16,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado"),
-		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado,Persona persona where persona.usuario=:usuario"),
+		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado,Persona persona where persona.cedula=:cedula"),
+		@NamedQuery(name = Empleado.REMOVER, query = "DELETE empleado FROM Empleado empleado,Persona persona where empleado.cedula=:cedula"),
+		@NamedQuery(name = Empleado.MODIFICAR, query = "UPDATE empleado set puesto=:puesto,sueldo=:salario where cedula=:cedula"),
 		@NamedQuery(name = Empleado.GET_PUESTOVENTAS, query = "SELECT empleado FROM Empleado empleado where empleado.puesto='ventas'") })
 public class Empleado extends Persona implements Serializable {
 
@@ -33,6 +35,11 @@ public class Empleado extends Persona implements Serializable {
 	public static final String GET_PUESTOVENTAS = "empleado_GetEmpleadosVentas"; // named query
 
 	public static final String CREDENCIALES = "empleado_Credenciales"; // named query
+	
+	public static final String REMOVER = "empleado_Remover";//named query
+	
+	public static final String MODIFICAR = "empleado_Modificar";//named query
+	
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Empleado
