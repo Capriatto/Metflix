@@ -120,4 +120,5 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		}
 		return false;
 	}
+	
 }

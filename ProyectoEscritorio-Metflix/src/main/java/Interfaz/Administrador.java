@@ -59,7 +59,7 @@ public class Administrador extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblAdministrarEmpleados = new JLabel("Administrar empleados");
-		lblAdministrarEmpleados.setBounds(12, 13, 132, 16);
+		lblAdministrarEmpleados.setBounds(12, 13, 170, 16);
 		panel.add(lblAdministrarEmpleados);
 		
 		JButton btnRegistrar = new JButton("Registrar");

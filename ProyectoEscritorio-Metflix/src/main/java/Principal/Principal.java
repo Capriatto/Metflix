@@ -7,6 +7,7 @@ import excepciones.InformacionRepetidaException;
 
 /**
  * Clase que permite controlar los metodos de la capa de negocio
+ * 
  * @author German
  *
  */
@@ -20,6 +21,7 @@ public class Principal {
 
 	/**
 	 * Metodo para registar empleado
+	 * 
 	 * @param cedula
 	 * @param apellido
 	 * @param contrasena
@@ -35,9 +37,10 @@ public class Principal {
 			String nombre, String usuario) throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.registroEmpleado(cedula, apellido, contrasena, correo, estado, nombre, usuario);
 	}
-	
+
 	/**
 	 * Metodo para buscar empleado
+	 * 
 	 * @param cedula
 	 * @return
 	 * @throws ElementoRegistradorException
@@ -47,6 +50,7 @@ public class Principal {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.buscarEmpleadoPorNombreUsuario(cedula);
 	}
+
 	/**
 	 * Metodo para eliminar un empleado
 	 */

@@ -17,8 +17,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado"),
 		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado,Persona persona where persona.cedula=:cedula"),
-		@NamedQuery(name = Empleado.REMOVER, query = "DELETE empleado FROM Empleado empleado,Persona persona where empleado.cedula=:cedula"),
-		@NamedQuery(name = Empleado.MODIFICAR, query = "UPDATE empleado set puesto=:puesto,sueldo=:salario where cedula=:cedula"),
+		@NamedQuery(name = Empleado.REMOVER, query = "DELETE FROM Empleado empleado where empleado.cedula=:cedula"),
+		@NamedQuery(name = Empleado.MODIFICAR, query = "UPDATE Empleado empleado SET empleado.puesto=:puesto,empleado.sueldo=:salario where empleado.cedula=:cedula"),
 		@NamedQuery(name = Empleado.GET_PUESTOVENTAS, query = "SELECT empleado FROM Empleado empleado where empleado.puesto='ventas'") })
 public class Empleado extends Persona implements Serializable {
 

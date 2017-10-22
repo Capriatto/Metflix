@@ -56,5 +56,6 @@ public interface AdministradorEJBRemote {
 	 */
 	public boolean modificarEmpleado(String cedula, String puesto, double salario)
 			throws ElementoRegistradorException, InformacionRepetidaException;
+		
 
 }
