@@ -51,9 +51,9 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	/**
 	 * Metodo delegado para eliminar un empleado
 	 */
-	public boolean elimiarEmpleado(String cedula, int estado)
+	public boolean eliminarEmpleado(String cedula, int estado)
 			throws ElementoRegistradorException, InformacionRepetidaException {
-		return adminEJB.elimiarEmpleado(cedula, estado);
+		return adminEJB.eliminarEmpleado(cedula, estado);
 	}
 
 	/**
@@ -71,8 +71,4 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.recuperarContrasenia(cedula);
 	}
-
-
-	
-
 }

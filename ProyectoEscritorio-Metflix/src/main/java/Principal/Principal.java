@@ -55,8 +55,9 @@ public class Principal {
 	/**
 	 * Metodo para eliminar un empleado
 	 */
-	public boolean elimiarEmpleado(String cedula, int estado) throws ElementoRegistradorException, InformacionRepetidaException {
-		return administradorDelegado.elimiarEmpleado(cedula, estado);
+	public boolean eliminarEmpleado(String cedula, int estado)
+			throws ElementoRegistradorException, InformacionRepetidaException {
+		return administradorDelegado.eliminarEmpleado(cedula, estado);
 	}
 
 	/**
@@ -66,16 +67,18 @@ public class Principal {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.modificarEmpleado(cedula, puesto, salario);
 	}
-	
+
 	/**
 	 * Metodo para recuperar contraseña empleado
+	 * 
 	 * @param cedula
 	 * @return
 	 * @throws PersonaNoEncontradaException
-	 * @throws InformacionRepetidaException 
-	 * @throws ElementoRegistradorException 
+	 * @throws InformacionRepetidaException
+	 * @throws ElementoRegistradorException
 	 */
-	public String recuperarContrasenia(String cedula) throws ElementoRegistradorException, InformacionRepetidaException{
+	public String recuperarContrasenia(String cedula)
+			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.recuperarContrasenia(cedula);
 	}
 

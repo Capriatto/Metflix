@@ -89,9 +89,10 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @param cedula
 	 * @return
 	 */
-	public boolean elimiarEmpleado(String cedula, int estado) {
+	public boolean eliminarEmpleado(String cedula, int estado) {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			try {
+
 				Empleado empleado = entityManager.find(Empleado.class, cedula);
 				empleado.setEstado(estado);
 				entityManager.merge(empleado);
@@ -100,10 +101,10 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 				System.out.println("Empleado no econtrado");
 				return false;
 			}
-		} else {
-			return false;
 		}
+		return false;
 	}
+
 
 	/**
 	 * Metodo que permite modificar la informacion de un empleado
