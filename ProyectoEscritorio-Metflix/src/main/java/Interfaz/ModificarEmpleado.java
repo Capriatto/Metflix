@@ -87,13 +87,15 @@ public class ModificarEmpleado extends JFrame {
 				String puesto = txtPuesto.getText();
 				double salario = Double.parseDouble(txtSalario.getText());
 				try {
-					Principal.getInstancia().modificarEmpleado(cedula, puesto, salario);
-					lblConfirmacion.setText("Empleado modificado");
+					boolean confirmacion=Principal.getInstancia().modificarEmpleado(cedula, puesto, salario);
+					if(confirmacion) {
+						lblConfirmacion.setText("Empleado modificado");
+					}else {
+						lblConfirmacion.setText("Proceso no completado.");
+					}
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
-					lblConfirmacion.setText("Proceso no completado.");
 					e1.printStackTrace();
 				}
-				System.out.println(cedula);
 			}
 		});
 		btnModificar.setBounds(95, 138, 97, 25);

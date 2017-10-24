@@ -44,7 +44,7 @@ public interface AdministradorEJBRemote {
 	 * @param cedula
 	 * @return
 	 */
-	public boolean elimiarEmpleado(String cedula) throws ElementoRegistradorException, InformacionRepetidaException;
+	public boolean elimiarEmpleado(String cedula, int estado) throws ElementoRegistradorException, InformacionRepetidaException;
 
 	/**
 	 * Metodo que permite actualizar la informacion de un empleado

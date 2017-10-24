@@ -54,8 +54,8 @@ public class Principal {
 	/**
 	 * Metodo para eliminar un empleado
 	 */
-	public boolean elimiarEmpleado(String cedula) throws ElementoRegistradorException, InformacionRepetidaException {
-		return administradorDelegado.elimiarEmpleado(cedula);
+	public boolean elimiarEmpleado(String cedula, int estado) throws ElementoRegistradorException, InformacionRepetidaException {
+		return administradorDelegado.elimiarEmpleado(cedula, estado);
 	}
 
 	/**

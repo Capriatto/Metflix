@@ -65,13 +65,16 @@ public class EliminarEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cedula = txtCedula.getText();
 				try {
-					Principal.getInstancia().elimiarEmpleado(cedula);
-					lblConfirmacion.setText("Empleado Eliminado");					
+					int estado = 0;
+					boolean confirmacion=Principal.getInstancia().elimiarEmpleado(cedula, estado);
+					if(confirmacion) {
+						lblConfirmacion.setText("Empleado modificado");
+					}else {
+						lblConfirmacion.setText("Proceso no completado.");
+					}
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
-					lblConfirmacion.setText("Proceso no completado.");
 					e1.printStackTrace();
 				}
-				System.out.println(cedula);
 			}
 		});
 		btnEliminar.setBounds(113, 74, 97, 25);

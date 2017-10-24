@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Persona;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
@@ -72,7 +73,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 */
 	public Empleado buscarEmpleadoPorNombreUsuario(String cedula) {
 		try {
-			TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.CREDENCIALES, Empleado.class);
+			TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.GET_ALL, Empleado.class);
 			query.setParameter("cedula", cedula);
 			return query.getSingleResult();
 		} catch (NoResultException e) {
@@ -87,11 +88,12 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @param cedula
 	 * @return
 	 */
-	public boolean elimiarEmpleado(String cedula) {
+	public boolean elimiarEmpleado(String cedula, int estado) {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			try {
-				TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.REMOVER, Empleado.class);
-				query.setParameter("cedula", cedula);
+				Persona empleado = entityManager.find(Persona.class, cedula);
+				empleado.setEstado(estado);
+				entityManager.merge(empleado);				
 				return true;
 			} catch (NoResultException e) {
 				System.out.println("Empleado no econtrado");
@@ -108,10 +110,17 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	public boolean modificarEmpleado(String cedula, String puesto, double salario) {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			try {
-				TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.MODIFICAR, Empleado.class);
+
+				Empleado empleado = entityManager.find(Empleado.class, cedula);
+				empleado.setPuesto(puesto);
+				empleado.setSueldo(salario);
+				entityManager.merge(empleado);
+
+/*				TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.MODIFICAR, Empleado.class);
 				query.setParameter("cedula", cedula);
 				query.setParameter("puesto", puesto);
-				query.setParameter("salario", salario);
+				query.setParameter("salario", salario);*/
+
 				return true;
 			} catch (NoResultException e) {
 				System.out.println("Empleado no econtrado");
@@ -120,5 +129,5 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		}
 		return false;
 	}
-	
+
 }

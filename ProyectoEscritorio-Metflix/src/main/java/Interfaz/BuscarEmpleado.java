@@ -89,8 +89,7 @@ public class BuscarEmpleado extends JFrame {
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 					lblnombre.setText("No se ha encontrado ningun empleado");
 					e1.printStackTrace();
-				}
-				System.out.println(cedula);
+				}				
 			}
 		});
 		btnBuscar.setBounds(116, 90, 97, 25);
