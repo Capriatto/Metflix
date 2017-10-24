@@ -6,6 +6,7 @@ import co.edu.uniquindio.com.Empleado;
 import ejb.AdministradorEJBRemote;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
+import excepciones.PersonaNoEncontradaException;
 
 public class AdministradorDelegado implements AdministradorEJBRemote {
 	private AdministradorEJBRemote adminEJB;
@@ -50,7 +51,8 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	/**
 	 * Metodo delegado para eliminar un empleado
 	 */
-	public boolean elimiarEmpleado(String cedula, int estado) throws ElementoRegistradorException, InformacionRepetidaException {
+	public boolean elimiarEmpleado(String cedula, int estado)
+			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.elimiarEmpleado(cedula, estado);
 	}
 
@@ -61,5 +63,16 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.modificarEmpleado(cedula, puesto, salario);
 	}
+
+	/**
+	 * Metodo delegado para recuperar constraseña
+	 */
+	public String recuperarContrasenia(String cedula)
+			throws ElementoRegistradorException, InformacionRepetidaException {
+		return adminEJB.recuperarContrasenia(cedula);
+	}
+
+
+	
 
 }

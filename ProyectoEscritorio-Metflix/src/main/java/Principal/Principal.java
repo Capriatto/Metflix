@@ -4,6 +4,7 @@ import Delegados.AdministradorDelegado;
 import co.edu.uniquindio.com.Empleado;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
+import excepciones.PersonaNoEncontradaException;
 
 /**
  * Clase que permite controlar los metodos de la capa de negocio
@@ -64,6 +65,18 @@ public class Principal {
 	public boolean modificarEmpleado(String cedula, String puesto, double salario)
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.modificarEmpleado(cedula, puesto, salario);
+	}
+	
+	/**
+	 * Metodo para recuperar contraseña empleado
+	 * @param cedula
+	 * @return
+	 * @throws PersonaNoEncontradaException
+	 * @throws InformacionRepetidaException 
+	 * @throws ElementoRegistradorException 
+	 */
+	public String recuperarContrasenia(String cedula) throws ElementoRegistradorException, InformacionRepetidaException{
+		return administradorDelegado.recuperarContrasenia(cedula);
 	}
 
 	public Principal() {

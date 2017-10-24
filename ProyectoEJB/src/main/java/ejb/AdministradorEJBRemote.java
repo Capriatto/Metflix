@@ -5,6 +5,7 @@ import javax.ejb.Remote;
 import co.edu.uniquindio.com.Empleado;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
+import excepciones.PersonaNoEncontradaException;
 
 /**
  * Interfaz que determina los metodos de acceso del EJB de administrador.
@@ -56,6 +57,13 @@ public interface AdministradorEJBRemote {
 	 */
 	public boolean modificarEmpleado(String cedula, String puesto, double salario)
 			throws ElementoRegistradorException, InformacionRepetidaException;
+	
+	/**
+	 * Metodo que permite recuperar constraseña de un empleado
+	 * @param cedula
+	 * @return
+	 */
+	public String recuperarContrasenia(String cedula)throws ElementoRegistradorException,InformacionRepetidaException;
 		
 
 }

@@ -11,6 +11,7 @@ import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Persona;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
+import excepciones.PersonaNoEncontradaException;
 
 /**
  * Session Bean implementation class administradorEJB
@@ -91,9 +92,9 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	public boolean elimiarEmpleado(String cedula, int estado) {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			try {
-				Persona empleado = entityManager.find(Persona.class, cedula);
+				Empleado empleado = entityManager.find(Empleado.class, cedula);
 				empleado.setEstado(estado);
-				entityManager.merge(empleado);				
+				entityManager.merge(empleado);
 				return true;
 			} catch (NoResultException e) {
 				System.out.println("Empleado no econtrado");
@@ -116,10 +117,12 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 				empleado.setSueldo(salario);
 				entityManager.merge(empleado);
 
-/*				TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.MODIFICAR, Empleado.class);
-				query.setParameter("cedula", cedula);
-				query.setParameter("puesto", puesto);
-				query.setParameter("salario", salario);*/
+				/*
+				 * TypedQuery<Empleado> query =
+				 * entityManager.createNamedQuery(Empleado.MODIFICAR, Empleado.class);
+				 * query.setParameter("cedula", cedula); query.setParameter("puesto", puesto);
+				 * query.setParameter("salario", salario);
+				 */
 
 				return true;
 			} catch (NoResultException e) {
@@ -128,6 +131,23 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Metodo para recuperar la contrasenia de un empleado
+	 * 
+	 * @param cedula
+	 * @return
+	 * @throws PersonaNoEncontradaException
+	 */
+
+	public String recuperarContrasenia(String cedula) {
+		Empleado empleado = new Empleado();
+		if (entityManager.find(Empleado.class, cedula) != null) {
+			System.out.println("Empleado no encontrado");
+		}
+		empleado = entityManager.find(Empleado.class, cedula);
+		return empleado.getContrasena();
 	}
 
 }
