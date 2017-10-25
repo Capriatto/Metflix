@@ -21,7 +21,8 @@ import javax.persistence.TemporalType;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula") })
+@NamedQueries({
+		@NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula WHERE pelicula.id_pelicula=:id") })
 public class Pelicula implements Serializable {
 
 	@Id
@@ -43,9 +44,8 @@ public class Pelicula implements Serializable {
 	@ElementCollection
 	private List<String> categoria; // categoria(s) de la pelicula de tipo lista
 	private static final long serialVersionUID = 1L;
-	
-	public static final String GET_ALL = "pelicula_GetAll"; //named query
 
+	public static final String GET_ALL = "pelicula_GetAll"; // named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Pelicula
