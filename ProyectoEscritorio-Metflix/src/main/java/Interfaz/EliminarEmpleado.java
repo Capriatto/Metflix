@@ -75,10 +75,10 @@ public class EliminarEmpleado extends JFrame {
 				String cedula = txtCedula.getText();
 				try {
 					int estado = 0;
-					boolean confirmacion=Principal.getInstancia().eliminarEmpleado(cedula, estado);
-					if(confirmacion) {
+					boolean confirmacion = Principal.getInstancia().eliminarEmpleado(cedula, estado);
+					if (confirmacion) {
 						lblConfirmacion.setText("Empleado modificado");
-					}else {
+					} else {
 						lblConfirmacion.setText("Proceso no completado.");
 					}
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
