@@ -1,5 +1,6 @@
 package Principal;
 
+import java.sql.Date;
 import java.text.ParseException;
 
 import Delegados.AdministradorDelegado;
@@ -91,7 +92,7 @@ public class Principal {
 	/**
 	 * Metodo delegado para registrar pelicula
 	 */
-	public boolean registroPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(int id, Date  añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		return administradorDelegado.registroPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
 	}

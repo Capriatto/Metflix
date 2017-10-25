@@ -17,6 +17,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
@@ -113,7 +114,7 @@ public class RegistrarPelicula extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int id = Integer.parseInt(txtId.getText());
-				String fecha = txtLanzamiento.getText();
+				Date fecha = Date.valueOf(txtLanzamiento.getText());
 				String desc = txtDescripcion.getText();
 				int estado = 1;
 				String nombre = txtNombre.getText();

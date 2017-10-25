@@ -168,7 +168,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @throws InformacionRepetidaException
 	 * @throws ParseException
 	 */
-	public boolean registroPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(int id, Date añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		if (entityManager.find(Pelicula.class, id) != null) {
 			throw new ElementoRegistradorException("Pelicula ya fue registrada");
@@ -178,10 +178,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		} else {
 			Pelicula pelicula = new Pelicula();
 			pelicula.setId(id);
-			Date año;
-			DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			año = (Date) formato.parse(añoLanzamiento);
-			pelicula.setAnio_lanzamiento(año);
+			pelicula.setAnio_lanzamiento(añoLanzamiento);
 			pelicula.setDescripcion(descripcion);
 			pelicula.setEstado(estado);
 			pelicula.setNombre(nombre);

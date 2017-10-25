@@ -1,5 +1,6 @@
 package Delegados;
 
+import java.sql.Date;
 import java.text.ParseException;
 
 import javax.naming.InitialContext;
@@ -81,7 +82,7 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	/**
 	 * Metodo delegado para registrar pelicula
 	 */
-	public boolean registroPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(int id, Date añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		return adminEJB.registroPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
 	}
