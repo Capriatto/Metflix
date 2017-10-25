@@ -33,7 +33,7 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 	public RecuperarContraseñaEmpleado(Administrador admin) {
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 371, 241);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("RECUPERAR CONTRASEÑA DE EMPLEADO");
@@ -64,7 +64,7 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 				String cedula = txtCedula.getText();
 				try {
 					lblInformacion.setText(Principal.getInstancia().recuperarContrasenia(cedula));
-				} catch (ElementoRegistradorException|InformacionRepetidaException e1) {
+				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 					lblInformacion.setText("Proceso no completado");
 					e1.printStackTrace();
 				}
@@ -81,7 +81,7 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
 				admin.setVisible(true);
 			}
 		});

@@ -28,7 +28,7 @@ public class EliminarEmpleado extends JFrame {
 	 * Create the frame.
 	 */
 	public EliminarEmpleado(Administrador admin) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 262, 241);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -40,7 +40,7 @@ public class EliminarEmpleado extends JFrame {
 		btnSalir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
 				admin.setVisible(true);
 			}
 		});

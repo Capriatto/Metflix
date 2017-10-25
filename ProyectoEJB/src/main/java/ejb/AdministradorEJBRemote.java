@@ -1,8 +1,11 @@
 package ejb;
 
+import java.text.ParseException;
+
 import javax.ejb.Remote;
 
 import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 import excepciones.PersonaNoEncontradaException;
@@ -16,6 +19,8 @@ import excepciones.PersonaNoEncontradaException;
 @Remote
 public interface AdministradorEJBRemote {
 	String JNDI = "java:global/ProyectoEAR-Metflix/ProyectoEJB/AdministradorEJB!ejb.AdministradorEJBRemote";
+
+	///////////////////// CRUD EMPLEADO//////////////////////////////
 
 	/**
 	 * Permite registrar un empleado en la base de datos
@@ -45,7 +50,8 @@ public interface AdministradorEJBRemote {
 	 * @param cedula
 	 * @return
 	 */
-	public boolean eliminarEmpleado(String cedula, int estado) throws ElementoRegistradorException, InformacionRepetidaException;
+	public boolean eliminarEmpleado(String cedula, int estado)
+			throws ElementoRegistradorException, InformacionRepetidaException;
 
 	/**
 	 * Metodo que permite actualizar la informacion de un empleado
@@ -57,13 +63,61 @@ public interface AdministradorEJBRemote {
 	 */
 	public boolean modificarEmpleado(String cedula, String puesto, double salario)
 			throws ElementoRegistradorException, InformacionRepetidaException;
-	
+
 	/**
 	 * Metodo que permite recuperar constraseña de un empleado
+	 * 
 	 * @param cedula
 	 * @return
 	 */
-	public String recuperarContrasenia(String cedula)throws ElementoRegistradorException,InformacionRepetidaException;
-		
+	public String recuperarContrasenia(String cedula) throws ElementoRegistradorException, InformacionRepetidaException;
+
+	///////////////////////// CRUD PELICULA///////////////////////////
+
+	/**
+	 * Metodo que permite registrar una pelicula
+	 * @param id
+	 * @param añoLanzamiento
+	 * @param descripcion
+	 * @param estado
+	 * @param nombre
+	 * @param precio
+	 * @return
+	 * @throws ElementoRegistradorException
+	 * @throws InformacionRepetidaException
+	 * @throws ParseException
+	 */
+	public boolean registroPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException;
+	
+	/**
+	 * Metodo que permite buscar una pelicula
+	 * @param id
+	 * @return
+	 */
+	public Pelicula buscarPeliculaPorId(int id);
+	
+	/**
+	 * Metodo que permite actualizar una pelicula
+	 * @param id
+	 * @param añoLanzamiento
+	 * @param descripcion
+	 * @param estado
+	 * @param nombre
+	 * @param precio
+	 * @return
+	 * @throws ParseException
+	 */
+	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ParseException;
+	
+	/**
+	 * Metodo que permite eliminar una pelicula
+	 * @param id
+	 * @param estado
+	 * @return
+	 */
+	public boolean eliminarPelicula(int id, int estado);
+	
 
 }

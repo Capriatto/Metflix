@@ -1,8 +1,11 @@
 package Delegados;
 
+import java.text.ParseException;
+
 import javax.naming.InitialContext;
 
 import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Pelicula;
 import ejb.AdministradorEJBRemote;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
@@ -32,6 +35,7 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 		return instancia;
 	}
 
+	/////////////////// CRUD EMPLEADO/////////////////////////////
 	/**
 	 * Metodo delegado para el registro de empleado
 	 */
@@ -70,5 +74,37 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	public String recuperarContrasenia(String cedula)
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.recuperarContrasenia(cedula);
+	}
+
+	///////////////////////// CRUD PELICULA//////////////////////////////
+
+	/**
+	 * Metodo delegado para registrar pelicula
+	 */
+	public boolean registroPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
+		return adminEJB.registroPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+	}
+
+	/**
+	 * Metodo delegado para buscar pelicula
+	 */
+	public Pelicula buscarPeliculaPorId(int id) {
+		return adminEJB.buscarPeliculaPorId(id);
+	}
+
+	/**
+	 * Metodo delegado para modificar pelicula
+	 */
+	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ParseException {
+		return adminEJB.modificarPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+	}
+
+	/**
+	 * Metodo delegado para eliminar pelicula
+	 */
+	public boolean eliminarPelicula(int id, int estado) {
+		return adminEJB.eliminarPelicula(id, estado);
 	}
 }

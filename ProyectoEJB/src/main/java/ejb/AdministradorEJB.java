@@ -39,8 +39,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	//////////////////////////////////////////// CRUD
-	//////////////////////////////////////////// EMPLEADO///////////////////////////////////////
+	/////////////////// CRUD EMPLEADO///////////////////////////////////////
 
 	/**
 	 * Metodo que permite registrar un empleado en la base de datos
@@ -153,8 +152,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		return empleado.getContrasena();
 	}
 
-	/////////////////////////////////////////// CRUD
-	/////////////////////////////////////////// PELICULA////////////////////////////////////////////////
+	////////////////////// CRUD PELICULA/////////////////////////////////////
 
 	/**
 	 * Metodo para registrar una pelicula
@@ -246,7 +244,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @return
 	 */
 	public boolean eliminarPelicula(int id, int estado) {
-		if (buscarPeliculaPorId(id)!= null) {
+		if (buscarPeliculaPorId(id) != null) {
 			try {
 
 				Pelicula pelicula = entityManager.find(Pelicula.class, id);

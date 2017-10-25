@@ -18,13 +18,13 @@ public class ConsultarDatosCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ConsultarDatosCliente() {
+	public ConsultarDatosCliente(Administrador admin) {
 		getContentPane().setBackground(Color.WHITE);
 		setBackground(Color.WHITE);
 		getContentPane().setForeground(Color.RED);
 		getContentPane().setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		setBounds(100, 100, 332, 305);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 351, 339);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
 		JLabel lblConsultarDatosCliente = new JLabel("CONSULTAR DATOS CLIENTE");
@@ -91,6 +91,22 @@ public class ConsultarDatosCliente extends JFrame {
 		lblNewLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblNewLabel.setBounds(149, 216, 144, 16);
 		getContentPane().add(lblNewLabel);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				admin.setVisible(true);
+			}
+		});
+		btnSalir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		btnSalir.setBounds(224, 254, 97, 25);
+		getContentPane().add(btnSalir);
+		
+		JButton btnRecuperarPass = new JButton("Recuperar pass");
+		btnRecuperarPass.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		btnRecuperarPass.setBounds(81, 254, 131, 25);
+		getContentPane().add(btnRecuperarPass);
 
 	}
 }

@@ -150,7 +150,7 @@ public class RegistroEmpleado extends JFrame {
 		btnSalir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
 				admin.setVisible(true);
 			}
 		});

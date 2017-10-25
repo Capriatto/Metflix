@@ -1,7 +1,10 @@
 package Principal;
 
+import java.text.ParseException;
+
 import Delegados.AdministradorDelegado;
 import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 import excepciones.PersonaNoEncontradaException;
@@ -19,6 +22,8 @@ public class Principal {
 	public static Principal getInstancia() {
 		return instancia;
 	}
+
+	/////////////////////// CRUD EMPLEADO////////////////
 
 	/**
 	 * Metodo para registar empleado
@@ -82,12 +87,42 @@ public class Principal {
 		return administradorDelegado.recuperarContrasenia(cedula);
 	}
 
-	public Principal() {
+	///////////////////// CRUD PELICULA////////////////////////////
+	/**
+	 * Metodo delegado para registrar pelicula
+	 */
+	public boolean registroPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
+		return administradorDelegado.registroPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+	}
 
+	/**
+	 * Metodo delegado para buscar pelicula
+	 */
+	public Pelicula buscarPeliculaPorId(int id) {
+		return administradorDelegado.buscarPeliculaPorId(id);
+	}
+
+	/**
+	 * Metodo delegado para modificar pelicula
+	 */
+	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ParseException {
+		return administradorDelegado.modificarPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+	}
+
+	/**
+	 * Metodo delegado para eliminar pelicula
+	 */
+	public boolean eliminarPelicula(int id, int estado) {
+		return administradorDelegado.eliminarPelicula(id, estado);
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////
+	public Principal() {
 	}
 
 	public static void main(String[] args) {
-
 	}
 
 }

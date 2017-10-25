@@ -20,6 +20,7 @@ public class Administrador extends JFrame {
 	BuscarEmpleado buscarEmpleado = new BuscarEmpleado(this);
 	ModificarEmpleado modificarEmpleado = new ModificarEmpleado(this);
 	RecuperarContraseñaEmpleado recuperarConstraseña = new RecuperarContraseñaEmpleado(this);
+	RegistrarPelicula registrarPelicula= new RegistrarPelicula(this);
 	private JPanel contentPane;
 
 	/**
@@ -138,6 +139,12 @@ public class Administrador extends JFrame {
 		panelPelicula.add(lblAdministrarPelicula);
 		
 		JButton btnRegP = new JButton("Registrar");
+		btnRegP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				registrarPelicula.setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnRegP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnRegP.setBounds(12, 33, 158, 25);
 		panelPelicula.add(btnRegP);
