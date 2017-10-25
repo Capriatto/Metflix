@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import Principal.Principal;
 import co.edu.uniquindio.com.Empleado;
+import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
@@ -20,7 +21,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
 
-public class BuscarEmpleado extends JFrame {
+public class BuscarPelicula extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCedula;
@@ -28,7 +29,7 @@ public class BuscarEmpleado extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BuscarEmpleado(Administrador admin) {
+	public BuscarPelicula(Administrador admin) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 401, 356);
 		contentPane = new JPanel();
@@ -48,48 +49,48 @@ public class BuscarEmpleado extends JFrame {
 		btnSalir.setBounds(257, 271, 97, 25);
 		contentPane.add(btnSalir);
 
-		JLabel lblBuscarEmpleado = new JLabel("Buscar Empleado");
+		JLabel lblBuscarEmpleado = new JLabel("Buscar Pelicula");
 		lblBuscarEmpleado.setForeground(Color.RED);
 		lblBuscarEmpleado.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblBuscarEmpleado.setBounds(12, 13, 170, 16);
 		contentPane.add(lblBuscarEmpleado);
 
-		JLabel lblCedula = new JLabel("Cedula");
+		JLabel lblCedula = new JLabel("Id Pelicula");
 		lblCedula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblCedula.setBounds(12, 58, 56, 16);
+		lblCedula.setBounds(12, 58, 97, 16);
 		contentPane.add(lblCedula);
-		JLabel lblNombre = new JLabel("Nombre:");
+		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblNombre.setBounds(12, 149, 56, 16);
+		lblNombre.setBounds(12, 149, 85, 16);
 		contentPane.add(lblNombre);
 
-		JLabel lblPuesto = new JLabel("Puesto:");
+		JLabel lblPuesto = new JLabel("Descripcion");
 		lblPuesto.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblPuesto.setBounds(12, 178, 56, 16);
+		lblPuesto.setBounds(12, 178, 97, 16);
 		contentPane.add(lblPuesto);
 
 		JLabel lblnombre = new JLabel("informacion");
 		lblnombre.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblnombre.setBounds(97, 149, 257, 16);
+		lblnombre.setBounds(144, 149, 210, 16);
 		contentPane.add(lblnombre);
 
-		JLabel lblsalario = new JLabel("informacion");
-		lblsalario.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblsalario.setBounds(97, 201, 116, 16);
-		contentPane.add(lblsalario);
+		JLabel lblfecha = new JLabel("informacion");
+		lblfecha.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		lblfecha.setBounds(144, 201, 210, 16);
+		contentPane.add(lblfecha);
 
-		JLabel lblSalario = new JLabel("Salario:");
+		JLabel lblSalario = new JLabel("Fecha lanzamiento");
 		lblSalario.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblSalario.setBounds(12, 201, 56, 16);
+		lblSalario.setBounds(12, 201, 120, 16);
 		contentPane.add(lblSalario);
 
-		JLabel lblpuesto = new JLabel("informacion");
-		lblpuesto.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblpuesto.setBounds(97, 178, 116, 16);
-		contentPane.add(lblpuesto);
+		JLabel lbldesc = new JLabel("informacion");
+		lbldesc.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		lbldesc.setBounds(144, 178, 210, 16);
+		contentPane.add(lbldesc);
 
 		txtCedula = new JTextField();
-		txtCedula.setBounds(97, 55, 257, 22);
+		txtCedula.setBounds(144, 55, 210, 22);
 		contentPane.add(txtCedula);
 		txtCedula.setColumns(10);
 
@@ -97,17 +98,19 @@ public class BuscarEmpleado extends JFrame {
 		btnBuscar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cedula = txtCedula.getText();
+				int id = Integer.parseInt(txtCedula.getText());
 				try {
-					Empleado empleado = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula);
-					lblnombre.setText(empleado.getNombre());
-					lblpuesto.setText(empleado.getPuesto());
-					lblsalario.setText(String.valueOf(empleado.getSueldo()));
+					// Cargar los datos del empleado, cuando se haga una busqueda, traer la el
+					// nombre del empleado, el puesto y el salario desde la BD.
+					Pelicula pelicula = Principal.getInstancia().buscarPeliculaPorId(id);
+					lblnombre.setText(pelicula.getNombre());
+					lbldesc.setText(pelicula.getDescripcion());
+					lblfecha.setText(String.valueOf(pelicula.getAnio_lanzamiento()));
 
 				} catch (Exception e1) {
-					lblnombre.setText("No se ha encontrado ningun empleado");
-					lblpuesto.setText("");
-					lblsalario.setText("");
+					lblnombre.setText("No se ha encontrado ninguna Pelicula");
+					lbldesc.setText("");
+					lblfecha.setText("");
 					e1.printStackTrace();
 				}
 			}

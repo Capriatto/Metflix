@@ -21,6 +21,8 @@ public class Administrador extends JFrame {
 	ModificarEmpleado modificarEmpleado = new ModificarEmpleado(this);
 	RecuperarContraseñaEmpleado recuperarConstraseña = new RecuperarContraseñaEmpleado(this);
 	RegistrarPelicula registrarPelicula= new RegistrarPelicula(this);
+	EliminarPelicula eliminarPelicula= new EliminarPelicula(this);
+	BuscarPelicula buscarPelicula = new BuscarPelicula(this);
 	private JPanel contentPane;
 
 	/**
@@ -150,6 +152,12 @@ public class Administrador extends JFrame {
 		panelPelicula.add(btnRegP);
 		
 		JButton btnBuscarP = new JButton("Buscar");
+		btnBuscarP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				buscarPelicula.setVisible(true);
+			}
+		});
 		btnBuscarP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnBuscarP.setBounds(182, 33, 158, 25);
 		panelPelicula.add(btnBuscarP);
@@ -164,6 +172,12 @@ public class Administrador extends JFrame {
 		panelPelicula.add(btnModP);
 		
 		JButton btnEliminarP = new JButton("Eliminar");
+		btnEliminarP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				eliminarPelicula.setVisible(true);
+			}
+		});
 		btnEliminarP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnEliminarP.setBounds(182, 71, 158, 25);
 		panelPelicula.add(btnEliminarP);
