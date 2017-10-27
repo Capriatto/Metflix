@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.ParseException;
 
 import Delegados.AdministradorDelegado;
+import co.edu.uniquindio.com.Administrador;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
@@ -57,6 +58,12 @@ public class Principal {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.buscarEmpleadoPorNombreUsuario(cedula);
 	}
+	
+	public Administrador buscarAdministrador(String cedula)
+			throws ElementoRegistradorException, InformacionRepetidaException {
+		return administradorDelegado.buscarAdministrador(cedula);
+	}
+	
 
 	/**
 	 * Metodo para eliminar un empleado
