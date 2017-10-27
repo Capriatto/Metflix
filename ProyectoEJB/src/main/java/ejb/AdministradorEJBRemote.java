@@ -5,6 +5,7 @@ import java.text.ParseException;
 
 import javax.ejb.Remote;
 
+import co.edu.uniquindio.com.Administrador;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
@@ -44,6 +45,9 @@ public interface AdministradorEJBRemote {
 	 */
 	public Empleado buscarEmpleadoPorNombreUsuario(String cedula)
 			throws ElementoRegistradorException, InformacionRepetidaException;
+	
+	public Administrador buscarAdministrador(String cedula)throws ElementoRegistradorException, InformacionRepetidaException;
+	
 
 	/**
 	 * Metodo que elimina un empleado

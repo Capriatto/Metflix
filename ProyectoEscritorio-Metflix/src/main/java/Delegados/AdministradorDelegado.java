@@ -5,6 +5,7 @@ import java.text.ParseException;
 
 import javax.naming.InitialContext;
 
+import co.edu.uniquindio.com.Administrador;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import ejb.AdministradorEJBRemote;
@@ -111,5 +112,11 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	 */
 	public boolean eliminarPelicula(String nombre, int estado) {
 		return adminEJB.eliminarPelicula(nombre, estado);
+	}
+
+	
+	public Administrador buscarAdministrador(String cedula)
+			throws ElementoRegistradorException, InformacionRepetidaException {
+		return adminEJB.buscarAdministrador(cedula);
 	}
 }

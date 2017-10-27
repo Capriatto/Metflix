@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-		@NamedQuery(name = Administrador.GET_ALL, query = "SELECT administrador FROM Administrador administrador"),
+		@NamedQuery(name = Administrador.GET_ALL, query = "SELECT administrador FROM Administrador administrador where administrador.cedula=:cedula"),
 		@NamedQuery(name = Administrador.GET_CONTAR_ADMINISTRADORES, query = "SELECT count(a) FROM Administrador a"), })
 public class Administrador extends Persona implements Serializable {
 	@Column(name = "sueldo") // sueldo del administrador de tipo double

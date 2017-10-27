@@ -15,6 +15,7 @@ import javax.persistence.TypedQuery;
 
 import org.omg.CORBA.DATA_CONVERSION;
 
+import co.edu.uniquindio.com.Administrador;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import co.edu.uniquindio.com.Persona;
@@ -90,6 +91,25 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			return query.getSingleResult();
 		} catch (NoResultException e) {
 			System.out.println("Empleado no econtrado");
+			return null;
+		}
+	}
+	
+	
+	/**
+	 * Permite buscar un administrador por su id
+	 * 
+	 * @param cedula
+	 *            cedula admin
+	 * @return el usuario encontrado
+	 */
+	public Administrador buscarAdministrador(String cedula) {
+		try {
+			TypedQuery<Administrador> query = entityManager.createNamedQuery(Administrador.GET_ALL, Administrador.class);
+			query.setParameter("cedula", cedula);
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println("Adminstrador no encontrado");
 			return null;
 		}
 	}
