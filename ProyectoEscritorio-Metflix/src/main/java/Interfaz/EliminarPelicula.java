@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
@@ -23,14 +24,13 @@ public class EliminarPelicula extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JLabel lblConfirmacion;
 
 	/**
 	 * Create the frame.
 	 */
 	public EliminarPelicula(Administrador admin) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 289, 237);
+		setBounds(100, 100, 291, 172);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -45,7 +45,7 @@ public class EliminarPelicula extends JFrame {
 				admin.setVisible(true);
 			}
 		});
-		btnSalir.setBounds(174, 144, 97, 25);
+		btnSalir.setBounds(174, 109, 97, 25);
 		contentPane.add(btnSalir);
 
 		JLabel lblEliminarPelicula = new JLabel("Eliminar Pelicula");
@@ -58,11 +58,6 @@ public class EliminarPelicula extends JFrame {
 		lblCedula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblCedula.setBounds(12, 42, 109, 16);
 		contentPane.add(lblCedula);
-
-	    lblConfirmacion = new JLabel("Confirmacion");
-		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblConfirmacion.setBounds(12, 117, 198, 16);
-		contentPane.add(lblConfirmacion);
 
 		txtNombre = new JTextField();
 		txtNombre.setBounds(119, 40, 152, 22);
@@ -77,9 +72,9 @@ public class EliminarPelicula extends JFrame {
 				int estado = 0;
 				boolean confirmacion = Principal.getInstancia().eliminarPelicula(nombre, estado);
 				if (confirmacion) {
-					lblConfirmacion.setText("Pelicula Eliminada");
+					JOptionPane.showMessageDialog(null, "La película ha sido eliminada.", "Aviso Importante!", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					lblConfirmacion.setText("Proceso no completado.");
+					JOptionPane.showMessageDialog(null, "la película no se ha podido eliminar.", "Error!", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -90,7 +85,6 @@ public class EliminarPelicula extends JFrame {
 
 	public void resetear() {
 		txtNombre.setText("");
-		lblConfirmacion.setText("");
 	}
 
 }

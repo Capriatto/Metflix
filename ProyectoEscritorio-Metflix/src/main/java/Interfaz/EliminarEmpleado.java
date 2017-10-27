@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
@@ -23,14 +24,13 @@ public class EliminarEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCedula;
-	private JLabel lblConfirmacion;
 	
 	/**
 	 * Create the frame.
 	 */
 	public EliminarEmpleado(Administrador admin) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 262, 241);
+		setBounds(100, 100, 264, 169);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -45,7 +45,7 @@ public class EliminarEmpleado extends JFrame {
 				admin.setVisible(true);
 			}
 		});
-		btnSalir.setBounds(135, 144, 97, 25);
+		btnSalir.setBounds(135, 108, 97, 25);
 		contentPane.add(btnSalir);
 
 		JLabel lblEliminarEmpleado = new JLabel("Eliminar Empleado");
@@ -58,11 +58,6 @@ public class EliminarEmpleado extends JFrame {
 		lblCedula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblCedula.setBounds(12, 42, 56, 16);
 		contentPane.add(lblCedula);
-
-		lblConfirmacion = new JLabel("Confirmacion");
-		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblConfirmacion.setBounds(12, 117, 198, 16);
-		contentPane.add(lblConfirmacion);
 
 		txtCedula = new JTextField();
 		txtCedula.setBounds(80, 37, 152, 22);
@@ -78,9 +73,9 @@ public class EliminarEmpleado extends JFrame {
 					int estado = 0;
 					boolean confirmacion = Principal.getInstancia().eliminarEmpleado(cedula, estado);
 					if (confirmacion) {
-						lblConfirmacion.setText("Empleado eliminado");
+						JOptionPane.showMessageDialog(null, "El empleado ha sido eliminado.", "Aviso Importante!", JOptionPane.INFORMATION_MESSAGE);
 					} else {
-						lblConfirmacion.setText("Proceso no completado.");
+						JOptionPane.showMessageDialog(null, "El empleado no se ha podido eliminar.", "Error!", JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 					e1.printStackTrace();
@@ -95,7 +90,6 @@ public class EliminarEmpleado extends JFrame {
 
 	public void resetear() {
 		txtCedula.setText("");
-		lblConfirmacion.setText("");
 	}
 
 }

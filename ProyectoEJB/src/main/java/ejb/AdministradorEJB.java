@@ -143,12 +143,13 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			try {
 				Empleado empleado = entityManager.find(Empleado.class, cedula);
-				empleado.setPuesto(puesto);
-				empleado.setSueldo(salario);
+				if(!puesto.equals(""))
+					empleado.setPuesto(puesto);
+				if(salario!=0.0)
+					empleado.setSueldo(salario);
 				entityManager.merge(empleado);
 				return true;
 			} catch (NoResultException e) {
-				System.out.println("Empleado no econtrado");
 				return false;
 			}
 		}

@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
@@ -26,7 +27,6 @@ public class BuscarEmpleado extends JFrame {
 	private JTextField txtCedula;
 	private JLabel lblNombre;
 	private JLabel lblPuesto;
-	private JLabel lblSalario;
 	private JLabel lblSueldo;
 
 	/**
@@ -82,7 +82,7 @@ public class BuscarEmpleado extends JFrame {
 		lblSueldo.setBounds(97, 201, 116, 16);
 		contentPane.add(lblSueldo);
 
-		lblSalario = new JLabel("Salario:");
+		JLabel lblSalario = new JLabel("Salario:");
 		lblSalario.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblSalario.setBounds(12, 201, 56, 16);
 		contentPane.add(lblSalario);
@@ -110,10 +110,10 @@ public class BuscarEmpleado extends JFrame {
 						lblSueldo.setText(String.valueOf(empleado.getSueldo()));
 
 					} catch (Exception e1) {
-						lblNombre.setText("No se ha encontrado ningun empleado");
+						JOptionPane.showMessageDialog(null,"No se encontró el empleado que busca.");
+						lblNombre.setText("");
 						lblPuesto.setText("");
-						lblSalario.setText("");
-						e1.printStackTrace();
+						lblSueldo.setText("");
 					}
 				}
 			}
