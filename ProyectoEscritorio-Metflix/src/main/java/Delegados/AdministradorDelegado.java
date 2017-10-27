@@ -6,6 +6,7 @@ import java.text.ParseException;
 import javax.naming.InitialContext;
 
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import ejb.AdministradorEJBRemote;
@@ -119,4 +120,6 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.buscarAdministrador(cedula);
 	}
+
+	
 }

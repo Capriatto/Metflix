@@ -17,10 +17,11 @@ import javax.persistence.TemporalType;
  * @author Juan Sebastian Ocampo Ospina
  * @author German Felipe Valencia Hurtado
  * @author Carlos Alberto Lopez Mazo
- */
+ */ 
 @Entity
-@NamedQueries({ @NamedQuery(name = Cliente.GET_ALL, query = "SELECT cliente FROM Cliente cliente"),
+@NamedQueries({ @NamedQuery(name = Cliente.GET_ALL, query = "SELECT cliente FROM Cliente cliente where cliente.cedula=:cedula and cliente.estado=1"),
 	@NamedQuery(name = Cliente.CREDENCIALES, query = "SELECT cliente FROM Cliente cliente,Persona persona where persona.usuario=:usuario"),
+	
 
 @NamedQuery(name = Cliente.GET_CREDENTIALS, query = "SELECT c FROM Cliente c, Persona p WHERE c.usuario=:usuario AND c.contrasena=:contrasena AND c.cedula=p.cedula")
 		 })

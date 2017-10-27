@@ -220,7 +220,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			query.setParameter("nombre", nombre);
 			return query.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println("Empleado no econtrado");
+			System.out.println("Pelicula no econtrado");
 			return null;
 		}
 	}
@@ -274,5 +274,9 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		}
 		return false;
 	}
+	
+	
+	
+	
 
 }

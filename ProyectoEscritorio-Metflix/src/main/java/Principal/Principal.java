@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.text.ParseException;
 
 import Delegados.AdministradorDelegado;
+import Delegados.ClienteDelegado;
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
@@ -20,6 +22,7 @@ import excepciones.PersonaNoEncontradaException;
 public class Principal {
 	private static final Principal instancia = new Principal();
 	private AdministradorDelegado administradorDelegado = new AdministradorDelegado().getInstancia();
+	private ClienteDelegado clienteDelegado = new ClienteDelegado().getInstancia();
 
 	public static Principal getInstancia() {
 		return instancia;
@@ -58,12 +61,11 @@ public class Principal {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.buscarEmpleadoPorNombreUsuario(cedula);
 	}
-	
+
 	public Administrador buscarAdministrador(String cedula)
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.buscarAdministrador(cedula);
 	}
-	
 
 	/**
 	 * Metodo para eliminar un empleado
@@ -99,9 +101,9 @@ public class Principal {
 	/**
 	 * Metodo delegado para registrar pelicula
 	 */
-	public boolean registroPelicula(Date  añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
-		return administradorDelegado.registroPelicula( añoLanzamiento, descripcion, estado, nombre, precio);
+	public boolean registroPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre, double precio)
+			throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
+		return administradorDelegado.registroPelicula(añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 
 	/**
@@ -127,6 +129,22 @@ public class Principal {
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
+
+	//////////////////////////////// CRUD CLIENTE//////////////////////////////
+
+	public Cliente buscarCliente(String user) throws ElementoRegistradorException, InformacionRepetidaException {
+		return clienteDelegado.buscarCliente(user);
+	}
+
+	public boolean registroCliente(String cedula, String apellido, String contrasena, String correo, int estado,
+			String nombre, String usuario) throws ElementoRegistradorException, InformacionRepetidaException {
+		return clienteDelegado.registroCliente(cedula, apellido, contrasena, correo, estado, nombre, usuario);
+	}
+	
+	public Cliente buscarClienteId(String id) {
+		return clienteDelegado.buscarClienteId(id);
+	}
+
 	public Principal() {
 	}
 

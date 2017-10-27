@@ -96,6 +96,8 @@ public class Cliente extends JFrame {
 		btnSalir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Login login = new Login();
+				login.setVisible(true);
 				dispose();
 			}
 		});

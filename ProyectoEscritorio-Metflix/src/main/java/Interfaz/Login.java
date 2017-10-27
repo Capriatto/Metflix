@@ -32,6 +32,7 @@ public class Login extends JFrame {
 	String tipo;
 	Interfaz.Administrador administrador = new Interfaz.Administrador();
 	Interfaz.Empleado empleadoI = new Interfaz.Empleado();
+	Cliente clienteI = new Cliente();
 
 	/**
 	 * Launch the application.
@@ -83,6 +84,20 @@ public class Login extends JFrame {
 				lblTipo.setText(tipo);
 			}
 		});
+
+		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroCliente registroCliente = new RegistroCliente();
+				registroCliente.setVisible(true);
+				dispose();
+			}
+		});
+		btnRegistro.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		btnRegistro.setBounds(243, 38, 82, 25);
+		panelLog.add(btnRegistro);
+		btnRegistro.setVisible(false);
+
 		btnAdministrador.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnAdministrador.setBounds(12, 75, 117, 25);
 		contentPane.add(btnAdministrador);
@@ -100,6 +115,14 @@ public class Login extends JFrame {
 		contentPane.add(btnEmpleado);
 
 		JButton btnCliente = new JButton("Cliente");
+		btnCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelLog.setVisible(true);
+				tipo = "Cliente";
+				lblTipo.setText(tipo);
+				btnRegistro.setVisible(true);
+			}
+		});
 		btnCliente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnCliente.setBounds(252, 75, 97, 25);
 		contentPane.add(btnCliente);
@@ -172,13 +195,12 @@ public class Login extends JFrame {
 				} else if (tipo == "Cliente") {
 					lblTipo.setText(tipo);
 					try {
-						Empleado empleado = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(user);
-						if (empleado != null) {
-							String pass = empleado.getContrasena();
+						co.edu.uniquindio.com.Cliente cliente = Principal.getInstancia().buscarCliente(user);
+						if (cliente != null) {
+							String pass = cliente.getContrasena();
 							if (pass.equals(txtPws.getText())) {
-								empleadoI.setVisible(true);
+								clienteI.setVisible(true);
 								dispose();
-
 							} else {
 								System.out.println("no entra");
 							}
