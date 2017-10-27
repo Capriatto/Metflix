@@ -28,6 +28,7 @@ public class RegistrarPelicula extends JFrame {
 	private JTextField txtLanzamiento;
 	private JTextField txtPrecio;
 	private JTextField txtDescripcion;
+	private JLabel lblConfirmacion;
 
 	/**
 	 * Create the frame.
@@ -84,7 +85,7 @@ public class RegistrarPelicula extends JFrame {
 		lblDescripcion.setBounds(12, 123, 132, 16);
 		panel.add(lblDescripcion);
 
-		JLabel lblConfirmacion = new JLabel("Confirmacion");
+		lblConfirmacion = new JLabel("Confirmacion");
 		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblConfirmacion.setBounds(12, 215, 354, 16);
 		panel.add(lblConfirmacion);
@@ -133,5 +134,11 @@ public class RegistrarPelicula extends JFrame {
 		btnSalir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnSalir.setBounds(410, 157, 112, 25);
 		panel.add(btnSalir);
+	}
+	
+	public void resetear() {
+		txtNombre.setText("");
+		txtPrecio.setText("");
+		txtDescripcion.setText("");
 	}
 }

@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
@@ -24,7 +25,10 @@ import java.awt.Color;
 public class BuscarPelicula extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtCedula;
+	private JTextField txtNombrePelicula;
+	private JLabel lblnombre;
+	private JLabel lbldesc;
+	private JLabel lblfecha;
 
 	/**
 	 * Create the frame.
@@ -69,12 +73,12 @@ public class BuscarPelicula extends JFrame {
 		lblPuesto.setBounds(12, 178, 97, 16);
 		contentPane.add(lblPuesto);
 
-		JLabel lblnombre = new JLabel("informacion");
+	    lblnombre = new JLabel("informacion");
 		lblnombre.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblnombre.setBounds(144, 149, 210, 16);
+		lblnombre.setBounds(144, 149, 249, 16);
 		contentPane.add(lblnombre);
 
-		JLabel lblfecha = new JLabel("informacion");
+		lblfecha = new JLabel("informacion");
 		lblfecha.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblfecha.setBounds(144, 201, 210, 16);
 		contentPane.add(lblfecha);
@@ -84,31 +88,36 @@ public class BuscarPelicula extends JFrame {
 		lblSalario.setBounds(12, 201, 120, 16);
 		contentPane.add(lblSalario);
 
-		JLabel lbldesc = new JLabel("informacion");
+	    lbldesc = new JLabel("informacion");
 		lbldesc.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lbldesc.setBounds(144, 178, 210, 16);
 		contentPane.add(lbldesc);
 
-		txtCedula = new JTextField();
-		txtCedula.setBounds(144, 55, 210, 22);
-		contentPane.add(txtCedula);
-		txtCedula.setColumns(10);
+		txtNombrePelicula = new JTextField();
+		txtNombrePelicula.setBounds(144, 55, 210, 22);
+		contentPane.add(txtNombrePelicula);
+		txtNombrePelicula.setColumns(10);
 
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre= txtCedula.getText();
+				String nombre= txtNombrePelicula.getText();
 				try {
 					Pelicula pelicula = Principal.getInstancia().buscarPeliculaPorNombre(nombre);
 					if(pelicula != null) {
 						lblnombre.setText(pelicula.getNombre());
 						lbldesc.setText(pelicula.getDescripcion());
 						lblfecha.setText(String.valueOf(pelicula.getAnio_lanzamiento()));
+					}else {
+						lbldesc.setText("");
+						lblfecha.setText("");
+						lblnombre.setText("");
+						JOptionPane.showMessageDialog(null, "No se ha encontrado la película");
 					}
 
 				} catch (Exception e1) {
-					lblnombre.setText("No se ha encontrado ninguna Pelicula");
+					JOptionPane.showMessageDialog(null, "No se ha encontrado la película");
 					lbldesc.setText("");
 					lblfecha.setText("");
 					e1.printStackTrace();
@@ -118,4 +127,12 @@ public class BuscarPelicula extends JFrame {
 		btnBuscar.setBounds(257, 96, 97, 25);
 		contentPane.add(btnBuscar);
 	}
+	
+	public void resetear() {
+		lblnombre.setText("");
+		lbldesc.setText("");
+		lblfecha.setText("");
+		txtNombrePelicula.setText("");
+	}
+
 }

@@ -144,7 +144,8 @@ public class Administrador extends JFrame {
 		
 		JButton btnRegP = new JButton("Registrar");
 		btnRegP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e){
+			    registrarPelicula.resetear();
 				registrarPelicula.setVisible(true);
 				setVisible(false);
 			}
@@ -157,6 +158,7 @@ public class Administrador extends JFrame {
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				buscarPelicula.resetear();
 				buscarPelicula.setVisible(true);
 			}
 		});
