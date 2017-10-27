@@ -19,26 +19,10 @@ public class Administrador extends JFrame {
 	BuscarEmpleado buscarEmpleado = new BuscarEmpleado(this);
 	ModificarEmpleado modificarEmpleado = new ModificarEmpleado(this);
 	RecuperarContraseñaEmpleado recuperarConstraseña = new RecuperarContraseñaEmpleado(this);
-	RegistrarPelicula registrarPelicula= new RegistrarPelicula(this);
-	EliminarPelicula eliminarPelicula= new EliminarPelicula(this);
+	RegistrarPelicula registrarPelicula = new RegistrarPelicula(this);
+	EliminarPelicula eliminarPelicula = new EliminarPelicula(this);
 	BuscarPelicula buscarPelicula = new BuscarPelicula(this);
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Administrador frame = new Administrador();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -79,7 +63,7 @@ public class Administrador extends JFrame {
 				setVisible(false);
 				regEmpleado.resetear();
 				regEmpleado.setVisible(true);
-				
+
 			}
 		});
 		btnRegistrar.setBounds(12, 42, 158, 25);
@@ -129,23 +113,23 @@ public class Administrador extends JFrame {
 		});
 		btnSalir.setBounds(325, 430, 97, 25);
 		contentPane.add(btnSalir);
-		
+
 		JPanel panelPelicula = new JPanel();
 		panelPelicula.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		panelPelicula.setBounds(12, 205, 352, 109);
 		contentPane.add(panelPelicula);
 		panelPelicula.setLayout(null);
-		
+
 		JLabel lblAdministrarPelicula = new JLabel("Administrar Pelicula");
 		lblAdministrarPelicula.setBounds(12, 13, 130, 16);
 		lblAdministrarPelicula.setForeground(Color.RED);
 		lblAdministrarPelicula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		panelPelicula.add(lblAdministrarPelicula);
-		
+
 		JButton btnRegP = new JButton("Registrar");
 		btnRegP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-			    registrarPelicula.resetear();
+			public void actionPerformed(ActionEvent e) {
+				registrarPelicula.resetear();
 				registrarPelicula.setVisible(true);
 				setVisible(false);
 			}
@@ -153,7 +137,7 @@ public class Administrador extends JFrame {
 		btnRegP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnRegP.setBounds(12, 33, 158, 25);
 		panelPelicula.add(btnRegP);
-		
+
 		JButton btnBuscarP = new JButton("Buscar");
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,7 +149,7 @@ public class Administrador extends JFrame {
 		btnBuscarP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnBuscarP.setBounds(182, 33, 158, 25);
 		panelPelicula.add(btnBuscarP);
-		
+
 		JButton btnModP = new JButton("Modificar");
 		btnModP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -174,7 +158,7 @@ public class Administrador extends JFrame {
 		btnModP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnModP.setBounds(12, 71, 158, 25);
 		panelPelicula.add(btnModP);
-		
+
 		JButton btnEliminarP = new JButton("Eliminar");
 		btnEliminarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -186,19 +170,19 @@ public class Administrador extends JFrame {
 		btnEliminarP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnEliminarP.setBounds(182, 71, 158, 25);
 		panelPelicula.add(btnEliminarP);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
 		panel.setBounds(12, 324, 352, 75);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		JLabel lblOtrasOpciones = new JLabel("Otras Opciones");
 		lblOtrasOpciones.setForeground(Color.RED);
 		lblOtrasOpciones.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblOtrasOpciones.setBounds(12, 13, 130, 16);
 		panel.add(lblOtrasOpciones);
-		
+
 		JButton btnCambiarContrasea = new JButton("Recuperar Contrase\u00F1a");
 		btnCambiarContrasea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

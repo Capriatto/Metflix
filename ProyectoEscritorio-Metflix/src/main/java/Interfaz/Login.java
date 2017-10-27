@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import Principal.Principal;
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Empleado;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
@@ -29,6 +30,8 @@ public class Login extends JFrame {
 	private JTextField txtUser;
 	private JPasswordField txtPws;
 	String tipo;
+	Interfaz.Administrador administrador = new Interfaz.Administrador();
+	Interfaz.Empleado empleadoI = new Interfaz.Empleado();
 
 	/**
 	 * Launch the application.
@@ -137,8 +140,8 @@ public class Login extends JFrame {
 						if (admin != null) {
 							String pass = admin.getContrasena();
 							if (pass.equals(txtPws.getText())) {
-								Interfaz.Administrador administrador = new Interfaz.Administrador();
 								administrador.setVisible(true);
+								dispose();
 
 							} else {
 								System.out.println("no entra");
@@ -149,9 +152,41 @@ public class Login extends JFrame {
 						e1.printStackTrace();
 					}
 				} else if (tipo == "Empleado") {
+					lblTipo.setText(tipo);
+					try {
+						Empleado empleado = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(user);
+						if (empleado != null) {
+							String pass = empleado.getContrasena();
+							if (pass.equals(txtPws.getText())) {
+								empleadoI.setVisible(true);
+								dispose();
 
+							} else {
+								System.out.println("no entra");
+							}
+						}
+					} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				} else if (tipo == "Cliente") {
+					lblTipo.setText(tipo);
+					try {
+						Empleado empleado = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(user);
+						if (empleado != null) {
+							String pass = empleado.getContrasena();
+							if (pass.equals(txtPws.getText())) {
+								empleadoI.setVisible(true);
+								dispose();
 
+							} else {
+								System.out.println("no entra");
+							}
+						}
+					} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});

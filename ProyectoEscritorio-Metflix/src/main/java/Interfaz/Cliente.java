@@ -20,28 +20,12 @@ public class Cliente extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Cliente frame = new Cliente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Cliente() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 419, 351);
+		setBounds(100, 100, 419, 370);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -115,7 +99,7 @@ public class Cliente extends JFrame {
 				dispose();
 			}
 		});
-		btnSalir.setBounds(267, 289, 97, 25);
+		btnSalir.setBounds(306, 291, 97, 25);
 		contentPane.add(btnSalir);
 
 		JPanel panel = new JPanel();
