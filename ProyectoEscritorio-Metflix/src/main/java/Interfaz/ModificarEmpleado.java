@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
@@ -25,14 +26,13 @@ public class ModificarEmpleado extends JFrame {
 	private JTextField txtCedula;
 	private JTextField txtPuesto;
 	private JTextField txtSalario;
-	private JLabel lblConfirmacion;
 
 	/**
 	 * Create the frame.
 	 */
 	public ModificarEmpleado(Administrador admin) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 333, 282);
+		setBounds(100, 100, 333, 241);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,11 +81,6 @@ public class ModificarEmpleado extends JFrame {
 		lblSalario.setBounds(12, 106, 56, 16);
 		contentPane.add(lblSalario);
 
-	    lblConfirmacion = new JLabel("Confirmacion");
-		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblConfirmacion.setBounds(12, 142, 180, 16);
-		contentPane.add(lblConfirmacion);
-
 		txtSalario = new JTextField();
 		txtSalario.setBounds(76, 103, 227, 22);
 		contentPane.add(txtSalario);
@@ -97,29 +92,37 @@ public class ModificarEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cedula = txtCedula.getText();
 				String puesto = txtPuesto.getText();
-				double salario = Double.parseDouble(txtSalario.getText());
+				double salario;
+				if (!txtSalario.getText().trim().isEmpty()) {
+					salario= Double.parseDouble(txtSalario.getText());
+				}else {
+					salario = 0.0;
+				}
+				
+				if(txtSalario.getText().trim().isEmpty() && txtPuesto.getText().trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null,"No hemos modificado la información del empleado.\nPor favor rellene los campos que desea modificar","Aviso Importante!",JOptionPane.INFORMATION_MESSAGE);
+				}else {
 				try {
 					boolean confirmacion=Principal.getInstancia().modificarEmpleado(cedula, puesto, salario);
 					if(confirmacion) {
-						lblConfirmacion.setText("Empleado modificado");
+						JOptionPane.showMessageDialog(null,"Empleado modificado.","Excelente!",JOptionPane.INFORMATION_MESSAGE);
 					}else {
-						lblConfirmacion.setText("Proceso no completado.");
+						JOptionPane.showMessageDialog(null,"No se ha podido modificar el empleado.","Error!",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 					e1.printStackTrace();
-				}
+				}}
 			}
 		});
-		btnModificar.setBounds(206, 138, 97, 25);
+		btnModificar.setBounds(206, 140, 97, 25);
 		contentPane.add(btnModificar);
 
 	}
-	
+
 	public void resetear() {
 		txtCedula.setText("");
 		txtPuesto.setText("");
 		txtSalario.setText("");
-		lblConfirmacion.setText("");
 	}
 
 }

@@ -7,15 +7,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Principal;
+import co.edu.uniquindio.com.Empleado;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class RegistroEmpleado extends JFrame {
 
@@ -27,6 +31,8 @@ public class RegistroEmpleado extends JFrame {
 	private JTextField txtCorreo;
 	private JTextField txtUsuario;
 	private JLabel	lblConfirmacion;
+	private JLabel lblValidador;
+	
 	/**
 	 * Launch the application.
 	 *//*
@@ -61,6 +67,22 @@ public class RegistroEmpleado extends JFrame {
 		contentPane.add(lblCedula);
 
 		txtCedula = new JTextField();
+		txtCedula.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				try {
+					Empleado empleado=Principal.getInstancia().buscarEmpleadoPorNombreUsuario(txtCedula.getText().toString());
+					if(empleado != null) {
+						lblValidador.setText("¡Esta cédula ya fue registrada!"); 	    
+					}else {
+						lblValidador.setText("");
+					}
+				} catch (ElementoRegistradorException | InformacionRepetidaException  e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		txtCedula.setBounds(142, 52, 177, 22);
 		contentPane.add(txtCedula);
 		txtCedula.setColumns(10);
@@ -135,12 +157,12 @@ public class RegistroEmpleado extends JFrame {
 				try {
 					Principal.getInstancia().registroEmpleado(cedula, apellido, contrasena, correo, estado, nombre,
 							usuario);
-					lblConfirmacion.setText("Proceso completado.");
-				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
-					lblConfirmacion.setText("Proceso no completado.");
+					JOptionPane.showMessageDialog(null,"Empleado Registrado.");
+					resetear();
+					} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
+					JOptionPane.showMessageDialog(null,"Empleado No Registrado.");
 					e1.printStackTrace();
 				}
-				System.out.println(cedula);
 			}
 		});
 		btnGuardar.setBounds(466, 215, 112, 25);
@@ -156,6 +178,12 @@ public class RegistroEmpleado extends JFrame {
 		});
 		btnSalir.setBounds(466, 253, 112, 25);
 		contentPane.add(btnSalir);
+		
+	    lblValidador = new JLabel("Aviso");
+		lblValidador.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		lblValidador.setForeground(Color.red);
+		lblValidador.setBounds(331, 57, 247, 16);
+		contentPane.add(lblValidador);
 
 	}
 	
@@ -167,5 +195,6 @@ public void resetear() {
 		txtUsuario.setText("");
 		txtContraseña.setText("");
 		lblConfirmacion.setText("");
+		lblValidador.setText("");
 	}
 }

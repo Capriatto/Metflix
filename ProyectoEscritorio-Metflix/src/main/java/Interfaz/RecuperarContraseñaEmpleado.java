@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Principal.EmailSenderService;
@@ -33,7 +34,7 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 	 */
 	public RecuperarContraseñaEmpleado(Administrador admin) {
 		getContentPane().setBackground(Color.WHITE);
-		setBounds(100, 100, 371, 241);
+		setBounds(100, 100, 367, 191);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 
@@ -48,13 +49,8 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 		lblCdulaEmpleado.setBounds(28, 64, 114, 14);
 		getContentPane().add(lblCdulaEmpleado);
 
-		JLabel lblInformacion = new JLabel("Informacion");
-		lblInformacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblInformacion.setBounds(132, 126, 192, 16);
-		getContentPane().add(lblInformacion);
-
 		txtCedula = new JTextField();
-		txtCedula.setBounds(132, 61, 192, 20);
+		txtCedula.setBounds(79, 62, 245, 20);
 		getContentPane().add(txtCedula);
 		txtCedula.setColumns(10);
 
@@ -64,28 +60,31 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cedula = txtCedula.getText();
 				try {
-					lblInformacion.setText(Principal.getInstancia().recuperarContrasenia(cedula));
-					String de = "admonmetflix1@gmail.com";
-					String clave = "administrador1";
-					String para = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula).getCorreo();
-					String mensaje = "Saludos\nSegun solicitud realizada, "
-							+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
-							+ Principal.getInstancia().recuperarContrasenia(cedula);
-					String asunto = "Constraseña Plataforma METFLIX";
-					EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
-				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
-					lblInformacion.setText("Proceso no completado");
-					e1.printStackTrace();
+					if (Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula) != null) {
+						try {
+							String de = "admonmetflix1@gmail.com";
+							String clave = "administrador1";
+							String para = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula).getCorreo();
+							String mensaje = "Saludos\nSegun solicitud realizada, "
+									+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
+									+ Principal.getInstancia().recuperarContrasenia(cedula);
+							String asunto = "Constraseña Plataforma METFLIX";
+							EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
+							JOptionPane.showMessageDialog(null,"Un correo electrónico le ha sido enviado con su contraseña.","Contraseña enviada!", JOptionPane.INFORMATION_MESSAGE);
+						} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
+							JOptionPane.showMessageDialog(null,"No hemos podido recuperar su contraseña.\nPor favor registre una cuenta nueva o comuníquese con soporte","Error!", JOptionPane.ERROR_MESSAGE);
+						}
+					}else {
+						JOptionPane.showMessageDialog(null,"No hemos podido recuperar su contraseña.\nNo se encontró el usuario con cédula: "+cedula,"Error!", JOptionPane.ERROR_MESSAGE);
+					}
+				} catch (ElementoRegistradorException | InformacionRepetidaException e2) {
+					e2.printStackTrace();
 				}
+				
 			}
 		});
 		btnNewButton.setBounds(227, 94, 97, 23);
 		getContentPane().add(btnNewButton);
-
-		JLabel lblConstrasea = new JLabel("Constrase\u00F1a");
-		lblConstrasea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblConstrasea.setBounds(28, 126, 114, 16);
-		getContentPane().add(lblConstrasea);
 
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
@@ -95,7 +94,7 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 			}
 		});
 		btnSalir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		btnSalir.setBounds(227, 156, 97, 25);
+		btnSalir.setBounds(227, 128, 97, 25);
 		getContentPane().add(btnSalir);
 
 	}

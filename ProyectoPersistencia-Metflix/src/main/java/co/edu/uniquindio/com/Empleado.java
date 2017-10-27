@@ -15,7 +15,7 @@ import javax.persistence.NamedQuery;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado where empleado.cedula=:cedula"),
+@NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado where empleado.cedula=:cedula and empleado.estado=1"),
 		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado,Persona persona where persona.cedula=:cedula"),
 		@NamedQuery(name = Empleado.REMOVER, query = "DELETE FROM Empleado empleado where empleado.cedula=:cedula"),
 		@NamedQuery(name = Empleado.MODIFICAR, query = "UPDATE Empleado empleado SET empleado.puesto= :puesto,empleado.sueldo= :salario where empleado.cedula= :cedula"),

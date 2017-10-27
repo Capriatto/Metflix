@@ -102,6 +102,7 @@ public class Administrador extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				modificarEmpleado.resetear();
 				modificarEmpleado.setVisible(true);
 			}
 		});
