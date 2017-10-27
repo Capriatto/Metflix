@@ -55,7 +55,7 @@ public class BuscarPelicula extends JFrame {
 		lblBuscarEmpleado.setBounds(12, 13, 170, 16);
 		contentPane.add(lblBuscarEmpleado);
 
-		JLabel lblCedula = new JLabel("Id Pelicula");
+		JLabel lblCedula = new JLabel("Nombre Pelicula");
 		lblCedula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblCedula.setBounds(12, 58, 97, 16);
 		contentPane.add(lblCedula);
@@ -98,14 +98,14 @@ public class BuscarPelicula extends JFrame {
 		btnBuscar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = Integer.parseInt(txtCedula.getText());
+				String nombre= txtCedula.getText();
 				try {
-					// Cargar los datos del empleado, cuando se haga una busqueda, traer la el
-					// nombre del empleado, el puesto y el salario desde la BD.
-					Pelicula pelicula = Principal.getInstancia().buscarPeliculaPorId(id);
-					lblnombre.setText(pelicula.getNombre());
-					lbldesc.setText(pelicula.getDescripcion());
-					lblfecha.setText(String.valueOf(pelicula.getAnio_lanzamiento()));
+					Pelicula pelicula = Principal.getInstancia().buscarPeliculaPorNombre(nombre);
+					if(pelicula != null) {
+						lblnombre.setText(pelicula.getNombre());
+						lbldesc.setText(pelicula.getDescripcion());
+						lblfecha.setText(String.valueOf(pelicula.getAnio_lanzamiento()));
+					}
 
 				} catch (Exception e1) {
 					lblnombre.setText("No se ha encontrado ninguna Pelicula");

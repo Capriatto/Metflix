@@ -1,8 +1,10 @@
 package Interfaz;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,7 +41,6 @@ public class Cliente extends JFrame {
 	public Cliente() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
 		setBounds(100, 100, 419, 351);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -70,7 +71,7 @@ public class Cliente extends JFrame {
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-
+				
 			}
 		});
 		btnRegistrar.setBounds(12, 42, 195, 25);

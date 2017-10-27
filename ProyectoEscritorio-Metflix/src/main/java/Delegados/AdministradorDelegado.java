@@ -11,7 +11,11 @@ import ejb.AdministradorEJBRemote;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 import excepciones.PersonaNoEncontradaException;
-
+/**
+ * @author Juan Sebastian Ocampo Ospina
+ * @author German Felipe Valencia Hurtado
+ * @author Carlos Alberto Lopez Mazo
+ */
 public class AdministradorDelegado implements AdministradorEJBRemote {
 	private AdministradorEJBRemote adminEJB;
 	private static final AdministradorDelegado instancia = new AdministradorDelegado();
@@ -82,30 +86,30 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	/**
 	 * Metodo delegado para registrar pelicula
 	 */
-	public boolean registroPelicula(int id, Date añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
-		return adminEJB.registroPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+		return adminEJB.registroPelicula(añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 
 	/**
 	 * Metodo delegado para buscar pelicula
 	 */
-	public Pelicula buscarPeliculaPorId(int id) {
-		return adminEJB.buscarPeliculaPorId(id);
+	public Pelicula buscarPeliculaPorNombre(String nombre) {
+		return adminEJB.buscarPeliculaPorNombre(nombre);
 	}
 
 	/**
 	 * Metodo delegado para modificar pelicula
 	 */
-	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ParseException {
-		return adminEJB.modificarPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+		return adminEJB.modificarPelicula(añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 
 	/**
 	 * Metodo delegado para eliminar pelicula
 	 */
-	public boolean eliminarPelicula(int id, int estado) {
-		return adminEJB.eliminarPelicula(id, estado);
+	public boolean eliminarPelicula(String nombre, int estado) {
+		return adminEJB.eliminarPelicula(nombre, estado);
 	}
 }

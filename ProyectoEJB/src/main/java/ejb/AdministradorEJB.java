@@ -168,16 +168,15 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @throws InformacionRepetidaException
 	 * @throws ParseException
 	 */
-	public boolean registroPelicula(int id, Date añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
-		if (entityManager.find(Pelicula.class, id) != null) {
+		if (buscarPeliculaPorNombre(nombre) != null) {
 			throw new ElementoRegistradorException("Pelicula ya fue registrada");
 		}
-		if (buscarPeliculaPorId(id) != null) {
+		if (buscarPeliculaPorNombre(nombre) != null) {
 			throw new InformacionRepetidaException("Pelicula ya existe");
 		} else {
 			Pelicula pelicula = new Pelicula();
-			pelicula.setId(id);
 			pelicula.setAnio_lanzamiento(añoLanzamiento);
 			pelicula.setDescripcion(descripcion);
 			pelicula.setEstado(estado);
@@ -194,10 +193,10 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @param id
 	 * @return
 	 */
-	public Pelicula buscarPeliculaPorId(int id) {
+	public Pelicula buscarPeliculaPorNombre(String nombre) {
 		try {
 			TypedQuery<Pelicula> query = entityManager.createNamedQuery(Pelicula.GET_ALL, Pelicula.class);
-			query.setParameter("id", id);
+			query.setParameter("nombre", nombre);
 			return query.getSingleResult();
 		} catch (NoResultException e) {
 			System.out.println("Empleado no econtrado");
@@ -210,12 +209,11 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * 
 	 * @throws ParseException
 	 */
-	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ParseException {
-		if (buscarPeliculaPorId(id) != null) {
+		if (buscarPeliculaPorNombre(nombre) != null) {
 			try {
-
-				Pelicula pelicula = entityManager.find(Pelicula.class, id);
+				Pelicula pelicula = buscarPeliculaPorNombre(nombre);
 				Date año;
 				DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 				año = (Date) formato.parse(añoLanzamiento);
@@ -240,11 +238,11 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @param cedula
 	 * @return
 	 */
-	public boolean eliminarPelicula(int id, int estado) {
-		if (buscarPeliculaPorId(id) != null) {
+	public boolean eliminarPelicula(String nombre, int estado) {
+		if (buscarPeliculaPorNombre(nombre) != null) {
 			try {
 
-				Pelicula pelicula = entityManager.find(Pelicula.class, id);
+				Pelicula pelicula = buscarPeliculaPorNombre(nombre);
 				pelicula.setEstado(estado);
 				entityManager.merge(pelicula);
 				return true;

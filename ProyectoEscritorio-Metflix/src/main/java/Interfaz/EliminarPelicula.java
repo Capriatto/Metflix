@@ -22,7 +22,8 @@ import java.awt.Color;
 public class EliminarPelicula extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtId;
+	private JTextField txtNombre;
+	private JLabel lblConfirmacion;
 
 	/**
 	 * Create the frame.
@@ -44,7 +45,7 @@ public class EliminarPelicula extends JFrame {
 				admin.setVisible(true);
 			}
 		});
-		btnSalir.setBounds(161, 146, 97, 25);
+		btnSalir.setBounds(174, 144, 97, 25);
 		contentPane.add(btnSalir);
 
 		JLabel lblEliminarPelicula = new JLabel("Eliminar Pelicula");
@@ -53,28 +54,28 @@ public class EliminarPelicula extends JFrame {
 		lblEliminarPelicula.setBounds(12, 13, 147, 16);
 		contentPane.add(lblEliminarPelicula);
 
-		JLabel lblCedula = new JLabel("Id Pelicula");
+		JLabel lblCedula = new JLabel("Nombre Pelicula");
 		lblCedula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblCedula.setBounds(12, 42, 109, 16);
 		contentPane.add(lblCedula);
 
-		JLabel lblConfirmacion = new JLabel("Confirmacion");
+	    lblConfirmacion = new JLabel("Confirmacion");
 		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblConfirmacion.setBounds(12, 117, 198, 16);
 		contentPane.add(lblConfirmacion);
 
-		txtId = new JTextField();
-		txtId.setBounds(106, 39, 152, 22);
-		contentPane.add(txtId);
-		txtId.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setBounds(119, 40, 152, 22);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
 
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = Integer.parseInt(txtId.getText());
+				String nombre = txtNombre.getText();
 				int estado = 0;
-				boolean confirmacion = Principal.getInstancia().eliminarPelicula(id, estado);
+				boolean confirmacion = Principal.getInstancia().eliminarPelicula(nombre, estado);
 				if (confirmacion) {
 					lblConfirmacion.setText("Pelicula Eliminada");
 				} else {
@@ -82,9 +83,14 @@ public class EliminarPelicula extends JFrame {
 				}
 			}
 		});
-		btnEliminar.setBounds(161, 74, 97, 25);
+		btnEliminar.setBounds(174, 73, 97, 25);
 		contentPane.add(btnEliminar);
 
+	}
+
+	public void resetear() {
+		txtNombre.setText("");
+		lblConfirmacion.setText("");
 	}
 
 }

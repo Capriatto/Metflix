@@ -24,6 +24,10 @@ public class BuscarEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCedula;
+	private JLabel lblNombre;
+	private JLabel lblPuesto;
+	private JLabel lblSalario;
+	private JLabel lblSueldo;
 
 	/**
 	 * Create the frame.
@@ -58,35 +62,35 @@ public class BuscarEmpleado extends JFrame {
 		lblCedula.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblCedula.setBounds(12, 58, 56, 16);
 		contentPane.add(lblCedula);
-		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblNombre.setBounds(12, 149, 56, 16);
 		contentPane.add(lblNombre);
 
-		JLabel lblPuesto = new JLabel("Puesto:");
+		lblPuesto = new JLabel("Puesto:");
 		lblPuesto.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblPuesto.setBounds(12, 178, 56, 16);
 		contentPane.add(lblPuesto);
 
-		JLabel lblnombre = new JLabel("informacion");
-		lblnombre.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblnombre.setBounds(97, 149, 257, 16);
-		contentPane.add(lblnombre);
+		lblNombre = new JLabel("informacion");
+		lblNombre.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		lblNombre.setBounds(97, 149, 257, 16);
+		contentPane.add(lblNombre);
 
-		JLabel lblsalario = new JLabel("informacion");
-		lblsalario.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblsalario.setBounds(97, 201, 116, 16);
-		contentPane.add(lblsalario);
+		lblSueldo = new JLabel("informacion");
+		lblSueldo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		lblSueldo.setBounds(97, 201, 116, 16);
+		contentPane.add(lblSueldo);
 
-		JLabel lblSalario = new JLabel("Salario:");
+		lblSalario = new JLabel("Salario:");
 		lblSalario.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblSalario.setBounds(12, 201, 56, 16);
 		contentPane.add(lblSalario);
 
-		JLabel lblpuesto = new JLabel("informacion");
-		lblpuesto.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblpuesto.setBounds(97, 178, 116, 16);
-		contentPane.add(lblpuesto);
+		lblPuesto = new JLabel("informacion");
+		lblPuesto.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		lblPuesto.setBounds(97, 178, 116, 16);
+		contentPane.add(lblPuesto);
 
 		txtCedula = new JTextField();
 		txtCedula.setBounds(97, 55, 257, 22);
@@ -98,21 +102,30 @@ public class BuscarEmpleado extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cedula = txtCedula.getText();
-				try {
-					Empleado empleado = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula);
-					lblnombre.setText(empleado.getNombre());
-					lblpuesto.setText(empleado.getPuesto());
-					lblsalario.setText(String.valueOf(empleado.getSueldo()));
+				if (cedula != "") {
+					try {
+						Empleado empleado = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula);
+						lblNombre.setText(empleado.getNombre());
+						lblPuesto.setText(empleado.getPuesto());
+						lblSueldo.setText(String.valueOf(empleado.getSueldo()));
 
-				} catch (Exception e1) {
-					lblnombre.setText("No se ha encontrado ningun empleado");
-					lblpuesto.setText("");
-					lblsalario.setText("");
-					e1.printStackTrace();
+					} catch (Exception e1) {
+						lblNombre.setText("No se ha encontrado ningun empleado");
+						lblPuesto.setText("");
+						lblSalario.setText("");
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
 		btnBuscar.setBounds(257, 96, 97, 25);
 		contentPane.add(btnBuscar);
+	}
+
+	public void resetear() {
+		txtCedula.setText("");
+		lblNombre.setText("informacion");
+		lblPuesto.setText("informacion");
+		lblSueldo.setText("informacion");
 	}
 }

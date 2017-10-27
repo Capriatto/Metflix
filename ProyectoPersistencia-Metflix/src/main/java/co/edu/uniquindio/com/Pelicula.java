@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({
-		@NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula WHERE pelicula.id_pelicula=:id") })
+		@NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula WHERE pelicula.nombre=:nombre") })
 public class Pelicula implements Serializable {
 
 	@Id

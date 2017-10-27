@@ -25,6 +25,7 @@ public class ModificarEmpleado extends JFrame {
 	private JTextField txtCedula;
 	private JTextField txtPuesto;
 	private JTextField txtSalario;
+	private JLabel lblConfirmacion;
 
 	/**
 	 * Create the frame.
@@ -80,7 +81,7 @@ public class ModificarEmpleado extends JFrame {
 		lblSalario.setBounds(12, 106, 56, 16);
 		contentPane.add(lblSalario);
 
-		JLabel lblConfirmacion = new JLabel("Confirmacion");
+	    lblConfirmacion = new JLabel("Confirmacion");
 		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblConfirmacion.setBounds(12, 142, 180, 16);
 		contentPane.add(lblConfirmacion);
@@ -112,6 +113,13 @@ public class ModificarEmpleado extends JFrame {
 		btnModificar.setBounds(206, 138, 97, 25);
 		contentPane.add(btnModificar);
 
+	}
+	
+	public void resetear() {
+		txtCedula.setText("");
+		txtPuesto.setText("");
+		txtSalario.setText("");
+		lblConfirmacion.setText("");
 	}
 
 }

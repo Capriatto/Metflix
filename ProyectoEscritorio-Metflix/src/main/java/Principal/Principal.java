@@ -92,31 +92,31 @@ public class Principal {
 	/**
 	 * Metodo delegado para registrar pelicula
 	 */
-	public boolean registroPelicula(int id, Date  añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(Date  añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
-		return administradorDelegado.registroPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+		return administradorDelegado.registroPelicula( añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 
 	/**
 	 * Metodo delegado para buscar pelicula
 	 */
-	public Pelicula buscarPeliculaPorId(int id) {
-		return administradorDelegado.buscarPeliculaPorId(id);
+	public Pelicula buscarPeliculaPorNombre(String nombre) {
+		return administradorDelegado.buscarPeliculaPorNombre(nombre);
 	}
 
 	/**
 	 * Metodo delegado para modificar pelicula
 	 */
-	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ParseException {
-		return administradorDelegado.modificarPelicula(id, añoLanzamiento, descripcion, estado, nombre, precio);
+		return administradorDelegado.modificarPelicula(añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 
 	/**
 	 * Metodo delegado para eliminar pelicula
 	 */
-	public boolean eliminarPelicula(int id, int estado) {
-		return administradorDelegado.eliminarPelicula(id, estado);
+	public boolean eliminarPelicula(String nombre, int estado) {
+		return administradorDelegado.eliminarPelicula(nombre, estado);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

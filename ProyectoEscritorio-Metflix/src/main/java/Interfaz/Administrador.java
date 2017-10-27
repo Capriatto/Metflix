@@ -1,17 +1,16 @@
 package Interfaz;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 public class Administrador extends JFrame {
@@ -78,8 +77,9 @@ public class Administrador extends JFrame {
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				regEmpleado.resetear();
 				regEmpleado.setVisible(true);
-
+				
 			}
 		});
 		btnRegistrar.setBounds(12, 42, 158, 25);
@@ -90,6 +90,7 @@ public class Administrador extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				eliminarEmpleado.resetear();
 				eliminarEmpleado.setVisible(true);
 			}
 		});
@@ -112,6 +113,7 @@ public class Administrador extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				buscarEmpleado.resetear();
 				buscarEmpleado.setVisible(true);
 			}
 		});
@@ -175,6 +177,7 @@ public class Administrador extends JFrame {
 		btnEliminarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				eliminarPelicula.resetear();
 				eliminarPelicula.setVisible(true);
 			}
 		});
@@ -205,4 +208,5 @@ public class Administrador extends JFrame {
 		btnCambiarContrasea.setBounds(12, 37, 175, 25);
 		panel.add(btnCambiarContrasea);
 	}
+
 }

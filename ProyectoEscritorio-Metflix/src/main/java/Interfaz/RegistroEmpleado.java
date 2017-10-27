@@ -26,7 +26,7 @@ public class RegistroEmpleado extends JFrame {
 	private JTextField txtContraseña;
 	private JTextField txtCorreo;
 	private JTextField txtUsuario;
-
+	private JLabel	lblConfirmacion;
 	/**
 	 * Launch the application.
 	 *//*
@@ -99,8 +99,8 @@ public class RegistroEmpleado extends JFrame {
 		lblUsuario.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblUsuario.setBounds(12, 183, 132, 16);
 		contentPane.add(lblUsuario);
-
-		JLabel lblConfirmacion = new JLabel("Confirmacion");
+		
+		lblConfirmacion = new JLabel("Confirmación");
 		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblConfirmacion.setBounds(12, 219, 354, 16);
 		contentPane.add(lblConfirmacion);
@@ -157,5 +157,15 @@ public class RegistroEmpleado extends JFrame {
 		btnSalir.setBounds(466, 253, 112, 25);
 		contentPane.add(btnSalir);
 
+	}
+	
+public void resetear() {
+		txtCedula.setText("");
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtCorreo.setText("");
+		txtUsuario.setText("");
+		txtContraseña.setText("");
+		lblConfirmacion.setText("");
 	}
 }

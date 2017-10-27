@@ -88,7 +88,7 @@ public interface AdministradorEJBRemote {
 	 * @throws InformacionRepetidaException
 	 * @throws ParseException
 	 */
-	public boolean registroPelicula(int id, Date añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean registroPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException;
 	
 	/**
@@ -96,7 +96,7 @@ public interface AdministradorEJBRemote {
 	 * @param id
 	 * @return
 	 */
-	public Pelicula buscarPeliculaPorId(int id);
+	public Pelicula buscarPeliculaPorNombre(String nombre);
 	
 	/**
 	 * Metodo que permite actualizar una pelicula
@@ -109,7 +109,7 @@ public interface AdministradorEJBRemote {
 	 * @return
 	 * @throws ParseException
 	 */
-	public boolean modificarPelicula(int id, String añoLanzamiento, String descripcion, int estado, String nombre,
+	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
 			double precio) throws ParseException;
 	
 	/**
@@ -118,7 +118,7 @@ public interface AdministradorEJBRemote {
 	 * @param estado
 	 * @return
 	 */
-	public boolean eliminarPelicula(int id, int estado);
+	public boolean eliminarPelicula(String nombre, int estado);
 	
 
 }

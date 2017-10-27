@@ -23,7 +23,8 @@ public class EliminarEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCedula;
-
+	private JLabel lblConfirmacion;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -58,7 +59,7 @@ public class EliminarEmpleado extends JFrame {
 		lblCedula.setBounds(12, 42, 56, 16);
 		contentPane.add(lblCedula);
 
-		JLabel lblConfirmacion = new JLabel("Confirmacion");
+		lblConfirmacion = new JLabel("Confirmacion");
 		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblConfirmacion.setBounds(12, 117, 198, 16);
 		contentPane.add(lblConfirmacion);
@@ -77,7 +78,7 @@ public class EliminarEmpleado extends JFrame {
 					int estado = 0;
 					boolean confirmacion = Principal.getInstancia().eliminarEmpleado(cedula, estado);
 					if (confirmacion) {
-						lblConfirmacion.setText("Empleado modificado");
+						lblConfirmacion.setText("Empleado eliminado");
 					} else {
 						lblConfirmacion.setText("Proceso no completado.");
 					}
@@ -89,6 +90,12 @@ public class EliminarEmpleado extends JFrame {
 		btnEliminar.setBounds(135, 72, 97, 25);
 		contentPane.add(btnEliminar);
 
+	}
+	
+
+	public void resetear() {
+		txtCedula.setText("");
+		lblConfirmacion.setText("");
 	}
 
 }

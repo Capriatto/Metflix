@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLayeredPane;
 import javax.swing.JTextField;
 
+import Principal.EmailSenderService;
 import Principal.Principal;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
@@ -64,6 +65,14 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 				String cedula = txtCedula.getText();
 				try {
 					lblInformacion.setText(Principal.getInstancia().recuperarContrasenia(cedula));
+					String de = "admonmetflix1@gmail.com";
+					String clave = "administrador1";
+					String para = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula).getCorreo();
+					String mensaje = "Saludos\nSegun solicitud realizada, "
+							+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
+							+ Principal.getInstancia().recuperarContrasenia(cedula);
+					String asunto = "Constraseña Plataforma METFLIX";
+					EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
 				} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 					lblInformacion.setText("Proceso no completado");
 					e1.printStackTrace();
