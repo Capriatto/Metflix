@@ -32,6 +32,7 @@ public class RegistroCliente extends JFrame {
 	private JTextField txtUsuario;
 	private JLabel lblConfirmacion;
 	private JLabel lblValidador;
+	private JButton btnRecuperarContrasea;
 
 	/**
 	 * Launch the application.
@@ -180,6 +181,18 @@ public class RegistroCliente extends JFrame {
 		lblValidador.setForeground(Color.red);
 		lblValidador.setBounds(331, 57, 247, 16);
 		contentPane.add(lblValidador);
+		
+		btnRecuperarContrasea = new JButton("Recuperar contrase\u00F1a");
+		btnRecuperarContrasea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cliente="Cliente";
+				ConsultarDatosCliente consulta = new ConsultarDatosCliente(cliente);
+				consulta.setVisible(true);
+			}
+		});
+		btnRecuperarContrasea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		btnRecuperarContrasea.setBounds(263, 215, 190, 25);
+		contentPane.add(btnRecuperarContrasea);
 
 	}
 

@@ -57,11 +57,12 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 386, 333);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		JPanel panelLog = new JPanel();
-		panelLog.setBounds(12, 128, 337, 114);
+		panelLog.setBounds(12, 128, 344, 114);
 		contentPane.add(panelLog);
 		panelLog.setLayout(null);
 		panelLog.setVisible(false);
@@ -85,7 +86,8 @@ public class Login extends JFrame {
 			}
 		});
 
-		JButton btnRegistro = new JButton("Registro");
+		JButton btnRegistro = new JButton("Opciones");
+		btnRegistro.setForeground(Color.RED);
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegistroCliente registroCliente = new RegistroCliente();
@@ -94,7 +96,7 @@ public class Login extends JFrame {
 			}
 		});
 		btnRegistro.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		btnRegistro.setBounds(243, 38, 82, 25);
+		btnRegistro.setBounds(243, 38, 94, 25);
 		panelLog.add(btnRegistro);
 		btnRegistro.setVisible(false);
 
@@ -213,7 +215,7 @@ public class Login extends JFrame {
 			}
 		});
 		btnIngresar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		btnIngresar.setBounds(243, 67, 82, 25);
+		btnIngresar.setBounds(243, 67, 94, 25);
 		panelLog.add(btnIngresar);
 
 		JButton btnSalir = new JButton("Salir");

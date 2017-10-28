@@ -55,7 +55,7 @@ public class Cliente extends JFrame {
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				
+
 			}
 		});
 		btnRegistrar.setBounds(12, 42, 195, 25);
@@ -116,10 +116,12 @@ public class Cliente extends JFrame {
 		lblOtrasOpciones.setBounds(12, 13, 130, 16);
 		panel.add(lblOtrasOpciones);
 
-		JButton btnCambiarContrasea = new JButton("Recuperar Contrase\u00F1a");
+		JButton btnCambiarContrasea = new JButton("Consultar Datos");
 		btnCambiarContrasea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				String cliente="Cliente";
+				ConsultarDatosCliente consulta = new ConsultarDatosCliente(cliente);
+				consulta.setVisible(true);
 			}
 		});
 		btnCambiarContrasea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
