@@ -22,6 +22,8 @@ import excepciones.PersonaNoEncontradaException;
 public interface AdministradorEJBRemote {
 	String JNDI = "java:global/ProyectoEAR-Metflix/ProyectoEJB/AdministradorEJB!ejb.AdministradorEJBRemote";
 
+	
+	
 	///////////////////// CRUD EMPLEADO//////////////////////////////
 
 	/**
@@ -46,6 +48,14 @@ public interface AdministradorEJBRemote {
 	public Empleado buscarEmpleadoPorNombreUsuario(String cedula)
 			throws ElementoRegistradorException, InformacionRepetidaException;
 	
+	
+	/**
+	 * Buscar administrador
+	 * @param cedula
+	 * @return
+	 * @throws ElementoRegistradorException
+	 * @throws InformacionRepetidaException
+	 */
 	public Administrador buscarAdministrador(String cedula)throws ElementoRegistradorException, InformacionRepetidaException;
 	
 
@@ -76,6 +86,8 @@ public interface AdministradorEJBRemote {
 	 * @return
 	 */
 	public String recuperarContrasenia(String cedula) throws ElementoRegistradorException, InformacionRepetidaException;
+	
+	public String recuperarContraseniaAdmin(String cedula);
 
 	///////////////////////// CRUD PELICULA///////////////////////////
 
@@ -113,8 +125,8 @@ public interface AdministradorEJBRemote {
 	 * @return
 	 * @throws ParseException
 	 */
-	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio) throws ParseException;
+	public boolean modificarPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException;
 	
 	/**
 	 * Metodo que permite eliminar una pelicula

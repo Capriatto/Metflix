@@ -172,6 +172,20 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		empleado = entityManager.find(Empleado.class, cedula);
 		return empleado.getContrasena();
 	}
+	
+	/**
+	 * Metodo para recuperar constraseña administrador
+	 * @param cedula
+	 * @return
+	 */
+	public String recuperarContraseniaAdmin(String cedula) {
+		Administrador admin= new Administrador();
+		if (entityManager.find(Administrador.class, cedula) != null) {
+			System.out.println("Empleado no encontrado");
+		}
+		admin = entityManager.find(Administrador.class, cedula);
+		return admin.getContrasena();
+	}
 
 	////////////////////// CRUD PELICULA/////////////////////////////////////
 
@@ -197,8 +211,12 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		if (buscarPeliculaPorNombre(nombre) != null) {
 			throw new InformacionRepetidaException("Pelicula ya existe");
 		} else {
+			String fecha = String.valueOf(añoLanzamiento);
+			Date año;
+			DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			año = (Date) formato.parse(fecha);
 			Pelicula pelicula = new Pelicula();
-			pelicula.setAnio_lanzamiento(añoLanzamiento);
+			pelicula.setAnio_lanzamiento(año);
 			pelicula.setDescripcion(descripcion);
 			pelicula.setEstado(estado);
 			pelicula.setNombre(nombre);
@@ -230,20 +248,21 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * 
 	 * @throws ParseException
 	 */
-	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio) throws ParseException {
+	public boolean modificarPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio)throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		if (buscarPeliculaPorNombre(nombre) != null) {
 			try {
-				Pelicula pelicula = buscarPeliculaPorNombre(nombre);
+				String fecha = String.valueOf(añoLanzamiento);
 				Date año;
 				DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-				año = (Date) formato.parse(añoLanzamiento);
+				año = (Date) formato.parse(fecha);
+				System.out.println(añoLanzamiento);
+				System.out.println(año);
+				Pelicula pelicula = buscarPeliculaPorNombre(nombre);				
 				pelicula.setAnio_lanzamiento(año);
-				pelicula.setDescripcion(descripcion);
-				pelicula.setEstado(estado);
-				pelicula.setNombre(nombre);
+				pelicula.setDescripcion(descripcion);				
 				pelicula.setPrecio(precio);
-				entityManager.persist(pelicula);
+				entityManager.merge(pelicula);
 				return true;
 			} catch (NoResultException e) {
 				System.out.println("Proceso no compleatado");

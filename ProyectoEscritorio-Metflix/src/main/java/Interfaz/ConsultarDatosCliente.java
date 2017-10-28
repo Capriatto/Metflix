@@ -95,7 +95,7 @@ public class ConsultarDatosCliente extends JFrame {
 							lblnombre.setText("");
 							lblapellido.setText("");
 							lblcorreo.setText("");
-							lblContrasea.setText("");
+							lblpass.setText("");
 						}
 					}else if(tipo.equals("Empleado")) {
 						try {
@@ -103,13 +103,11 @@ public class ConsultarDatosCliente extends JFrame {
 							lblnombre.setText(cliente.getNombre());
 							lblapellido.setText(cliente.getApellido());
 							lblcorreo.setText(cliente.getCorreo());
-							lblContrasea.setText(cliente.getContrasena());
 						} catch (Exception e1) {
 							JOptionPane.showMessageDialog(null, "No se encontró el cliente que busca.");
 							lblnombre.setText("");
 							lblapellido.setText("");
 							lblcorreo.setText("");
-							lblContrasea.setText("");
 						}
 					}
 					

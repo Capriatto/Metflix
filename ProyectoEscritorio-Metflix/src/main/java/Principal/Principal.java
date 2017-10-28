@@ -62,11 +62,6 @@ public class Principal {
 		return administradorDelegado.buscarEmpleadoPorNombreUsuario(cedula);
 	}
 
-	public Administrador buscarAdministrador(String cedula)
-			throws ElementoRegistradorException, InformacionRepetidaException {
-		return administradorDelegado.buscarAdministrador(cedula);
-	}
-
 	/**
 	 * Metodo para eliminar un empleado
 	 */
@@ -96,6 +91,28 @@ public class Principal {
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return administradorDelegado.recuperarContrasenia(cedula);
 	}
+	
+	
+	/**
+	 *Metodo para buscar un administrador
+	 * @param cedula
+	 * @return
+	 * @throws ElementoRegistradorException
+	 * @throws InformacionRepetidaException
+	 */
+	public Administrador buscarAdministrador(String cedula)
+			throws ElementoRegistradorException, InformacionRepetidaException {
+		return administradorDelegado.buscarAdministrador(cedula);
+	}
+	
+	/**
+	 * Metodo para recuperar constraseña de un admin
+	 * @param cedula
+	 * @return
+	 */
+	public String recuperarContraseniaAdmin(String cedula) {
+		return administradorDelegado.recuperarContraseniaAdmin(cedula);
+	}
 
 	///////////////////// CRUD PELICULA////////////////////////////
 	/**
@@ -116,8 +133,8 @@ public class Principal {
 	/**
 	 * Metodo delegado para modificar pelicula
 	 */
-	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio) throws ParseException {
+	public boolean modificarPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		return administradorDelegado.modificarPelicula(añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 

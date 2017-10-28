@@ -22,6 +22,7 @@ public class Administrador extends JFrame {
 	RegistrarPelicula registrarPelicula = new RegistrarPelicula(this);
 	EliminarPelicula eliminarPelicula = new EliminarPelicula(this);
 	BuscarPelicula buscarPelicula = new BuscarPelicula(this);
+	ModificarPelicula modificar = new ModificarPelicula(this);
 	private JPanel contentPane;
 
 	/**
@@ -156,6 +157,9 @@ public class Administrador extends JFrame {
 		JButton btnModP = new JButton("Modificar");
 		btnModP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				modificar.setVisible(true);
+				modificar.resetear();
+				setVisible(false);				
 			}
 		});
 		btnModP.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));

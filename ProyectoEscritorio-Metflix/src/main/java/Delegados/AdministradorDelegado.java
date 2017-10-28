@@ -76,12 +76,15 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	}
 
 	/**
-	 * Metodo delegado para recuperar constraseña
+	 * Metodo delegado para recuperar constraseña de empleado
 	 */
 	public String recuperarContrasenia(String cedula)
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.recuperarContrasenia(cedula);
 	}
+	
+	
+	
 
 	///////////////////////// CRUD PELICULA//////////////////////////////
 
@@ -103,8 +106,8 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 	/**
 	 * Metodo delegado para modificar pelicula
 	 */
-	public boolean modificarPelicula(String añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio) throws ParseException {
+	public boolean modificarPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
+			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		return adminEJB.modificarPelicula(añoLanzamiento, descripcion, estado, nombre, precio);
 	}
 
@@ -121,5 +124,7 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 		return adminEJB.buscarAdministrador(cedula);
 	}
 
-	
+	public String recuperarContraseniaAdmin(String cedula) {
+		return adminEJB.recuperarContraseniaAdmin(cedula);
+	}
 }

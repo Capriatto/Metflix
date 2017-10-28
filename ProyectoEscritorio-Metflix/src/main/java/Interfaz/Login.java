@@ -14,6 +14,7 @@ import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -77,28 +78,36 @@ public class Login extends JFrame {
 		lblBienvenidoMetflix.setBounds(12, 13, 117, 16);
 		contentPane.add(lblBienvenidoMetflix);
 
-		JButton btnAdministrador = new JButton("Administrador");
-		btnAdministrador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelLog.setVisible(true);
-				tipo = "Administrador";
-				lblTipo.setText(tipo);
-			}
-		});
-
 		JButton btnRegistro = new JButton("Opciones");
 		btnRegistro.setForeground(Color.RED);
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroCliente registroCliente = new RegistroCliente();
-				registroCliente.setVisible(true);
-				dispose();
+				if (tipo.equals("Administrador")) {
+					RecuperarContraseñaAdmin admin = new RecuperarContraseñaAdmin();
+					admin.setVisible(true);
+					dispose();
+				} else {
+					RegistroCliente registroCliente = new RegistroCliente();
+					registroCliente.setVisible(true);
+					dispose();
+				}
+
 			}
 		});
 		btnRegistro.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnRegistro.setBounds(243, 38, 94, 25);
 		panelLog.add(btnRegistro);
 		btnRegistro.setVisible(false);
+
+		JButton btnAdministrador = new JButton("Administrador");
+		btnAdministrador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelLog.setVisible(true);
+				tipo = "Administrador";
+				lblTipo.setText(tipo);
+				btnRegistro.setVisible(true);
+			}
+		});
 
 		btnAdministrador.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnAdministrador.setBounds(12, 75, 117, 25);
@@ -110,6 +119,7 @@ public class Login extends JFrame {
 				panelLog.setVisible(true);
 				tipo = "Empleado";
 				lblTipo.setText(tipo);
+				btnRegistro.setVisible(false);
 			}
 		});
 		btnEmpleado.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
@@ -169,8 +179,14 @@ public class Login extends JFrame {
 								dispose();
 
 							} else {
-								System.out.println("no entra");
+								JOptionPane.showMessageDialog(null,
+										"Administrador, No hemos podido  validar sus datos de ingreso.\nPor favor verifique nuevamente o de clic en Opciones",
+										"Error!", JOptionPane.ERROR_MESSAGE);
 							}
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Administrador, No hemos podido  validar sus datos de ingreso.\nPor favor verifique nuevamente o de clic en Opciones",
+									"Error!", JOptionPane.ERROR_MESSAGE);
 						}
 					} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 						// TODO Auto-generated catch block
@@ -187,9 +203,16 @@ public class Login extends JFrame {
 								dispose();
 
 							} else {
-								System.out.println("no entra");
+								JOptionPane.showMessageDialog(null,
+										"Empleado, No hemos podido  validar sus datos de ingreso.\nPor favor verifique nuevamente o comuníquese con soporte",
+										"Error!", JOptionPane.ERROR_MESSAGE);
 							}
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Empleado, No hemos podido  validar sus datos de ingreso.\nPor favor verifique nuevamente o comuníquese con soporte",
+									"Error!", JOptionPane.ERROR_MESSAGE);
 						}
+
 					} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -204,8 +227,14 @@ public class Login extends JFrame {
 								clienteI.setVisible(true);
 								dispose();
 							} else {
-								System.out.println("no entra");
+								JOptionPane.showMessageDialog(null,
+										"Cliente, No hemos podido  validar sus datos de ingreso.\nPor favor verifique nuevamente o de clic en Opciones",
+										"Error!", JOptionPane.ERROR_MESSAGE);
 							}
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Cliente, No hemos podido  validar sus datos de ingreso.\nPor favor verifique nuevamente o de clic en Opciones",
+									"Error!", JOptionPane.ERROR_MESSAGE);
 						}
 					} catch (ElementoRegistradorException | InformacionRepetidaException e1) {
 						// TODO Auto-generated catch block

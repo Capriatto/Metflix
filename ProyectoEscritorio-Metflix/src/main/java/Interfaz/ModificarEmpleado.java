@@ -32,7 +32,7 @@ public class ModificarEmpleado extends JFrame {
 	 */
 	public ModificarEmpleado(Administrador admin) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 333, 241);
+		setBounds(100, 100, 346, 265);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
