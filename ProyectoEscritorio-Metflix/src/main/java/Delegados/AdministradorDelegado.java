@@ -2,6 +2,7 @@ package Delegados;
 
 import java.sql.Date;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.naming.InitialContext;
 
@@ -118,13 +119,33 @@ public class AdministradorDelegado implements AdministradorEJBRemote {
 		return adminEJB.eliminarPelicula(nombre, estado);
 	}
 
-	
+	/**
+	 * Metodo delegado para buscar administrador
+	 */
 	public Administrador buscarAdministrador(String cedula)
 			throws ElementoRegistradorException, InformacionRepetidaException {
 		return adminEJB.buscarAdministrador(cedula);
 	}
-
+	
+	/**
+	 * Metodo delegado para recuperar la contrasena de administrador
+	 */
 	public String recuperarContraseniaAdmin(String cedula) {
 		return adminEJB.recuperarContraseniaAdmin(cedula);
 	}
+	
+	/**
+	 * Metodo delegado para obtener compras en un rango de fechas dadas
+	 */
+	public long peliculasCompradasEntreFechas(Date desde, Date hasta) {
+		return adminEJB.peliculasCompradasEntreFechas(desde, hasta);
+	}
+	
+	/**
+	 * Metodo delegado para obtener peliculas por calificacion
+	 */
+	public List<Pelicula> peliculasPorCalificacion(int calificacion) {
+		return adminEJB.peliculasPorCalificacion(calificacion);
+	}
+	
 }

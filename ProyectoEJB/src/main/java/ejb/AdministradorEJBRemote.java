@@ -2,6 +2,8 @@ package ejb;
 
 import java.sql.Date;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Remote;
 
@@ -10,7 +12,6 @@ import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
-import excepciones.PersonaNoEncontradaException;
 
 /**
  * Interfaz que determina los metodos de acceso del EJB de administrador.
@@ -136,5 +137,23 @@ public interface AdministradorEJBRemote {
 	 */
 	public boolean eliminarPelicula(String nombre, int estado);
 	
-
+	
+	/**
+	 * Metodo que retorna las compras realizadas en un periodo dado
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public long peliculasCompradasEntreFechas(Date desde, Date hasta);
+	
+	/**
+	 * Metodo que retorna las peliculas por calificacion
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public List<Pelicula> peliculasPorCalificacion(int calificacion);
+	
+	
+	
 }

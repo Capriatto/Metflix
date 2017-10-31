@@ -2,6 +2,7 @@ package Principal;
 
 import java.sql.Date;
 import java.text.ParseException;
+import java.util.List;
 
 import Delegados.AdministradorDelegado;
 import Delegados.ClienteDelegado;
@@ -143,6 +144,20 @@ public class Principal {
 	 */
 	public boolean eliminarPelicula(String nombre, int estado) {
 		return administradorDelegado.eliminarPelicula(nombre, estado);
+	}
+	
+	/**
+	 * Metodo delegado para obtener películas compradas en un rango de fechas.
+	 */
+	public long peliculasCompradasEntreFechas(Date desde, Date hasta) {
+		return administradorDelegado.peliculasCompradasEntreFechas(desde, hasta);
+	}
+
+	/**
+	 * Metodo delegado para obtener películas por su calificación
+	 */
+	public List<Pelicula> peliculasPorCalificacion(int calificacion) {
+		return administradorDelegado.peliculasPorCalificacion(calificacion);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

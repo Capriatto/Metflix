@@ -13,6 +13,8 @@ import excepciones.InformacionRepetidaException;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -28,14 +30,13 @@ public class RegistrarPelicula extends JFrame {
 	private JTextField txtLanzamiento;
 	private JTextField txtPrecio;
 	private JTextField txtDescripcion;
-	private JLabel lblConfirmacion;
 
 	/**
 	 * Create the frame.
 	 */
 	public RegistrarPelicula(Administrador admin) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 561, 282);
+		setBounds(100, 100, 559, 223);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -85,11 +86,6 @@ public class RegistrarPelicula extends JFrame {
 		lblDescripcion.setBounds(12, 123, 132, 16);
 		panel.add(lblDescripcion);
 
-		lblConfirmacion = new JLabel("Confirmacion");
-		lblConfirmacion.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		lblConfirmacion.setBounds(12, 215, 354, 16);
-		panel.add(lblConfirmacion);
-
 		txtPrecio = new JTextField();
 		txtPrecio.setColumns(10);
 		txtPrecio.setBounds(112, 84, 177, 22);
@@ -102,20 +98,28 @@ public class RegistrarPelicula extends JFrame {
 
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Date fecha = Date.valueOf(txtLanzamiento.getText());
+			@SuppressWarnings("unused")
+			public void actionPerformed(ActionEvent e) {		
 				String desc = txtDescripcion.getText();
 				int estado = 1;
+				Date fecha=null;
+				Double precio = -1.0;
 				String nombre = txtNombre.getText();
-				double precio = Double.parseDouble(txtPrecio.getText());
-
+				if(!txtPrecio.getText().trim().isEmpty())
+					precio = Double.parseDouble(txtPrecio.getText().trim());
+				if(!txtLanzamiento.getText().trim().equals("YYYY-MM-DD")) 
+					fecha = Date.valueOf(txtLanzamiento.getText().trim());
+				
 				try {
-					Principal.getInstancia().registroPelicula(fecha, desc, estado, nombre, precio);
-					lblConfirmacion.setText("Película Registrada.");
+					if(fecha == null || desc.equals("") || nombre.equals("") || precio == -1.0){
+						JOptionPane.showMessageDialog(null,
+								"Todos los campos son obligatorios.\nPor favor rellene los campos faltantes para finalizar el registro.",
+								"Error al registrar!", JOptionPane.ERROR_MESSAGE);
+					}else {
+						Principal.getInstancia().registroPelicula(fecha, desc, estado, nombre, precio);
+					}
 				} catch (ElementoRegistradorException | InformacionRepetidaException | ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
-					lblConfirmacion.setText("Proceso no completado.");
 				}
 
 			}

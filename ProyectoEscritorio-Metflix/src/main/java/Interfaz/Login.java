@@ -114,6 +114,7 @@ public class Login extends JFrame {
 		contentPane.add(btnAdministrador);
 
 		JButton btnEmpleado = new JButton("Empleado");
+		btnEmpleado.setEnabled(true); // no se está usando
 		btnEmpleado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelLog.setVisible(true);
@@ -127,6 +128,7 @@ public class Login extends JFrame {
 		contentPane.add(btnEmpleado);
 
 		JButton btnCliente = new JButton("Cliente");
+		btnCliente.setEnabled(true); // no se está usando
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelLog.setVisible(true);
@@ -257,4 +259,5 @@ public class Login extends JFrame {
 		btnSalir.setBounds(252, 248, 97, 25);
 		contentPane.add(btnSalir);
 	}
+	
 }

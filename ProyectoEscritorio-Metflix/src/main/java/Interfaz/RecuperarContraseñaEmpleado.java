@@ -38,7 +38,7 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("RECUPERAR CONTRASEÑA DE EMPLEADO");
+		JLabel lblNewLabel = new JLabel("RECUPERAR CONTRASEÑA");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		lblNewLabel.setBounds(28, 21, 296, 14);
@@ -60,14 +60,15 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cedula = txtCedula.getText();
 				try {
-					if (Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula) != null) {
+					if(!cedula.equals("")) {
+					if (Principal.getInstancia().buscarAdministrador(cedula) != null) {
 						try {
 							String de = "admonmetflix1@gmail.com";
 							String clave = "administrador1";
-							String para = Principal.getInstancia().buscarEmpleadoPorNombreUsuario(cedula).getCorreo();
+							String para = Principal.getInstancia().buscarAdministrador(cedula).getCorreo();
 							String mensaje = "Saludos\nSegun solicitud realizada, "
 									+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
-									+ Principal.getInstancia().recuperarContrasenia(cedula);
+									+ Principal.getInstancia().recuperarContraseniaAdmin(cedula);
 							String asunto = "Contraseña Plataforma METFLIX";
 							EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
 							JOptionPane.showMessageDialog(null,"Un correo electrónico le ha sido enviado con su contraseña.","Contraseña enviada!", JOptionPane.INFORMATION_MESSAGE);
@@ -77,6 +78,9 @@ public class RecuperarContraseñaEmpleado extends JFrame {
 					}else {
 						JOptionPane.showMessageDialog(null,"No hemos podido recuperar su contraseña.\nNo se encontró el usuario con cédula: "+cedula,"Error!", JOptionPane.ERROR_MESSAGE);
 					}
+					}else {JOptionPane.showMessageDialog(null,
+							"Todos los campos son obligatorios.\nPor favor rellene los campos faltantes para recuperar su contraseña.",
+							"Error al recuperar contraseña!", JOptionPane.ERROR_MESSAGE);}
 				} catch (ElementoRegistradorException | InformacionRepetidaException e2) {
 					e2.printStackTrace();
 				}

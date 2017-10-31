@@ -1,26 +1,21 @@
 package Interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Principal;
-import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
-import excepciones.ElementoRegistradorException;
-import excepciones.InformacionRepetidaException;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import java.awt.Font;
-import java.awt.Color;
 
 public class BuscarPelicula extends JFrame {
 
@@ -101,6 +96,7 @@ public class BuscarPelicula extends JFrame {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		btnBuscar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String nombre= txtNombrePelicula.getText();
 				try {
@@ -108,7 +104,8 @@ public class BuscarPelicula extends JFrame {
 					if(pelicula != null) {
 						lblnombre.setText(pelicula.getNombre());
 						lbldesc.setText(pelicula.getDescripcion());
-						lblfecha.setText(String.valueOf(pelicula.getAnio_lanzamiento()));
+						SimpleDateFormat df = new SimpleDateFormat("yyyy");
+						lblfecha.setText(String.valueOf(df.format(pelicula.getAnio_lanzamiento())));
 					}else {
 						lbldesc.setText("");
 						lblfecha.setText("");

@@ -23,6 +23,8 @@ public class Administrador extends JFrame {
 	EliminarPelicula eliminarPelicula = new EliminarPelicula(this);
 	BuscarPelicula buscarPelicula = new BuscarPelicula(this);
 	ModificarPelicula modificar = new ModificarPelicula(this);
+	VerPeliculasCompradas verPeliculasCompradas = new VerPeliculasCompradas(this);
+	PeliculasPorCalificacion peliculasClasificacion = new PeliculasPorCalificacion(this);
 	private JPanel contentPane;
 
 	/**
@@ -32,7 +34,7 @@ public class Administrador extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		setBounds(100, 100, 440, 503);
+		setBounds(100, 100, 386, 539);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -115,7 +117,7 @@ public class Administrador extends JFrame {
 				dispose();
 			}
 		});
-		btnSalir.setBounds(325, 430, 97, 25);
+		btnSalir.setBounds(267, 478, 97, 25);
 		contentPane.add(btnSalir);
 
 		JPanel panelPelicula = new JPanel();
@@ -180,7 +182,7 @@ public class Administrador extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		panel.setBounds(12, 324, 352, 75);
+		panel.setBounds(12, 324, 352, 143);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -198,8 +200,31 @@ public class Administrador extends JFrame {
 			}
 		});
 		btnCambiarContrasea.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-		btnCambiarContrasea.setBounds(12, 37, 175, 25);
+		btnCambiarContrasea.setBounds(12, 107, 175, 25);
 		panel.add(btnCambiarContrasea);
+		
+		JButton btnNewButton = new JButton("Ver Películas Por Calificación");
+		btnNewButton.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				peliculasClasificacion.resetear();
+				peliculasClasificacion.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(12, 74, 204, 23);
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Consultar Número de Películas Compradas");
+		btnNewButton_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				verPeliculasCompradas.resetear();
+				verPeliculasCompradas.setVisible(true);
+			}
+		});
+		btnNewButton_1.setBounds(12, 40, 279, 23);
+		panel.add(btnNewButton_1);
 	}
-
 }

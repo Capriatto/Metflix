@@ -22,7 +22,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({
-		@NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula WHERE pelicula.nombre=:nombre AND pelicula.estado=1") })
+		@NamedQuery(name = Pelicula.GET_ALL, query = "SELECT pelicula FROM Pelicula pelicula WHERE pelicula.nombre=:nombre AND pelicula.estado=1"),
+		@NamedQuery(name = Pelicula.GET_PELICULASCALIFICADAS, query = "SELECT p FROM Pelicula p, Calificacion_pelicula cp WHERE p.id_pelicula = cp.id AND cp.calificacion=:calificacion AND p.estado=1")
+})
 public class Pelicula implements Serializable {
 
 	@Id
@@ -46,6 +48,8 @@ public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public static final String GET_ALL = "pelicula_GetAll"; // named query
+	
+	public static final String GET_PELICULASCALIFICADAS = "pelicula_GetPeliculasPorCalificacion"; // named query
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Pelicula

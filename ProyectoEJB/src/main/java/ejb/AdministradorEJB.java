@@ -2,9 +2,10 @@ package ejb;
 
 import java.sql.Date;
 import java.text.DateFormat;
-import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -13,12 +14,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.omg.CORBA.DATA_CONVERSION;
-
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
-import co.edu.uniquindio.com.Persona;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 import excepciones.PersonaNoEncontradaException;
@@ -238,7 +237,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			query.setParameter("nombre", nombre);
 			return query.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println("Pelicula no econtrado");
+			System.out.println("Pelicula no econtrada");
 			return null;
 		}
 	}
@@ -252,14 +251,8 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			double precio)throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		if (buscarPeliculaPorNombre(nombre) != null) {
 			try {
-				String fecha = String.valueOf(añoLanzamiento);
-				Date año;
-				DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-				año = (Date) formato.parse(fecha);
-				System.out.println(añoLanzamiento);
-				System.out.println(año);
 				Pelicula pelicula = buscarPeliculaPorNombre(nombre);				
-				pelicula.setAnio_lanzamiento(año);
+				pelicula.setAnio_lanzamiento(añoLanzamiento);
 				pelicula.setDescripcion(descripcion);				
 				pelicula.setPrecio(precio);
 				entityManager.merge(pelicula);
@@ -293,4 +286,37 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		}
 		return false;
 	}
+	
+	/**
+	 * Metodo que retorna las compras realizadas en un periodo dado
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public long peliculasCompradasEntreFechas(Date desde, Date hasta) {
+		try {
+		    TypedQuery<Long> query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASRANGOFECHAS, Long.class);
+			query.setParameter("desde", desde);
+			query.setParameter("hasta", hasta);
+			return (Long)query.getSingleResult();
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	/**
+	 * Metodo que retorna las peliculas con determinada calificacion
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public List<Pelicula> peliculasPorCalificacion(int calificacion) {
+		TypedQuery<Pelicula> query = entityManager.createNamedQuery(Pelicula.GET_PELICULASCALIFICADAS, Pelicula.class );
+		query.setParameter("calificacion", calificacion);
+		List<Pelicula> res = query.getResultList(); 
+		return res;
+	}
+	
+	
 }

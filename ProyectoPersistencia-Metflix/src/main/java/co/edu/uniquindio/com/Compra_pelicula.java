@@ -34,6 +34,9 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = Compra_pelicula.GET_COMPRAPELICULAS, query = "SELECT Compra_pelicula  FROM Compra_pelicula Compra_pelicula INNER JOIN Compra_pelicula.pelicula_ids pelis WHERE Compra_pelicula.pelicula_ids=:idpelicula"), 
 		//named query guia 11 EJB capa de negocio
 		@NamedQuery(name = Compra_pelicula.GET_VENTA, query = "SELECT compra  FROM  Compra_pelicula compra WHERE compra.id=:idCompra"),
+		//named query para obtener cantidad de compras en rango de fechas
+		@NamedQuery(name = Compra_pelicula.GET_PELICULASRANGOFECHAS, query = "SELECT COUNT(cp.id) FROM Compra_pelicula cp WHERE cp.f_compra BETWEEN :desde AND :hasta"),
+		
 })
 public class Compra_pelicula implements Serializable {
 
@@ -58,6 +61,8 @@ public class Compra_pelicula implements Serializable {
 	public static final String GET_COMPRAPELICULAS = "comprapelicula_comprapeliculas";
 	//named query guia 11 EJB capa de negocio
 	public static final String GET_VENTA = "comprapelicula_GETVENTA";
+	//named query para obtener cantidad de compras en rango de fechas
+		public static final String GET_PELICULASRANGOFECHAS = "comprapelicula_compradasentrefechas";
 	/*
 	 * Metodo constructor de la clase(Entidad) compra_pelicula
 	 */

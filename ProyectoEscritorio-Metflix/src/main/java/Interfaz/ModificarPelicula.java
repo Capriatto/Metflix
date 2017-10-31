@@ -15,6 +15,7 @@ import excepciones.InformacionRepetidaException;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -101,8 +102,9 @@ public class ModificarPelicula extends JFrame {
 				Pelicula pelicula = Principal.getInstancia().buscarPeliculaPorNombre(txtNombre.getText());
 				System.out.println(pelicula);
 				if (pelicula != null) {
-					txtFecha.setText(String.valueOf(pelicula.getAnio_lanzamiento()));
 					txtPrecio.setText(String.valueOf(pelicula.getPrecio()));
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+					txtFecha.setText(String.valueOf(df.format(pelicula.getAnio_lanzamiento())));
 					txtDescripcion.setText(pelicula.getDescripcion());
 				} else {
 					JOptionPane.showMessageDialog(null,
