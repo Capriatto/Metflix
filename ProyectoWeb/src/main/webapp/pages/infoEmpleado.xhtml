@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta charset="UTF-8" />
+<title>Información Empleado</title>
+</head>
+<body>
+	<form >
+		Cedula: <Label for="cedulaEmpleado">#{empleadoBean.cedula}</Label><br/>
+		Nombre: <Label for="nombreEmpleado">#{empleadoBean.nombre}</Label><br/>
+		Edad: <Label for="apellidoEmpleado">#{empleadoBean.apellido}</Label><br/>
+		NombreUsuario: <Label for="usuarioEmpleado">#{empleadoBean.usuario}</Label><br/>
+		Clave: <Label for="contrasenaEmpleado">#{empleadoBean.contraseña}</Label><br/>
+		Estado: <Label for="estadoEmpleado">#{empleadoBean.estado}</Label><br/>
+		Email: <Label for="corrreoEmpleado">#{empleadoBean.corrreo}</Label><br/>
+	</form>	
+</body>
+</html>

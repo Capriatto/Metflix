@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 
+import co.edu.uniquindio.com.Empleado;
 import ejb.AdministradorEJB;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
@@ -34,7 +35,7 @@ public class EmpleadoBean {
 	 * 
 	 * @return
 	 */
-	public void registrarEmpleado() {
+	public String registrarEmpleado() {
 		try {
 			if (administradorEJB.registroEmpleado(cedula, apellido, contrasena, correo, estado, nombre, usuario)) {
 				cedula = "";
@@ -45,12 +46,14 @@ public class EmpleadoBean {
 				nombre = "";
 				usuario = "";
 				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "registro Exitoso");
+				return "/pages/infoEmpleado";
 			}
 		} catch (ElementoRegistradorException e) {
 			e.printStackTrace();
 		} catch (InformacionRepetidaException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public String getCedula() {
