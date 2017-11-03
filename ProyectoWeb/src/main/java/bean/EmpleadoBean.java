@@ -38,6 +38,7 @@ public class EmpleadoBean {
 	public String registrarEmpleado() {
 		try {
 			if (administradorEJB.registroEmpleado(cedula, apellido, contrasena, correo, estado, nombre, usuario)) {
+				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "registro Exitoso");
 				cedula = "";
 				apellido = "";
 				contrasena = "";
@@ -45,7 +46,6 @@ public class EmpleadoBean {
 				estado = 0;
 				nombre = "";
 				usuario = "";
-				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "registro Exitoso");
 				return "/pages/infoEmpleado";
 			}
 		} catch (ElementoRegistradorException e) {
