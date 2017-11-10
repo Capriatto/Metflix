@@ -5,9 +5,13 @@
 2_2.xsd"
 	version="2.2">
 	<application>
+		<locale-config>
+			<default-locale>es</default-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
 		<resource-bundle>
-			<base-name>resources.mensaje</base-name>
-			<var>msg</var>
+			<base-name>resources.mensajes</base-name>
+			<var>mensaje</var>
 		</resource-bundle>
 	</application>
 </faces-config>
