@@ -2,20 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <head>
 <meta charset="UTF-8" />
 <title>Información Empleado</title>
 </head>
 <body>
-	<form>
-		Cedula: <Label for="cedulaEmpleado">#{empleadoBean.cedula}</Label><br />
-		Nombre: <Label for="nombreEmpleado">#{empleadoBean.nombre}</Label><br />
-		Edad: <Label for="apellidoEmpleado">#{empleadoBean.apellido}</Label><br />
-		NombreUsuario: <Label for="usuarioEmpleado">#{empleadoBean.usuario}</Label><br />
-		Clave: <Label for="contrasenaEmpleado">#{empleadoBean.contraseña}</Label><br />
-		Estado: <Label for="estadoEmpleado">#{empleadoBean.estado}</Label><br />
-		Email: <Label for="corrreoEmpleado">#{empleadoBean.corrreo}</Label><br />
-	</form>
+	<h:form>	
+		<h:panelGrid columns="2">
+		
+		<label for ="cedula">#{mensaje['label.cedula']}</label><Label for="cedulaEmpleado">#{empleadoBean.cedula}</Label><br />
+		<label for ="nombre">#{mensaje['label.nombre']}</label><Label for="nombreEmpleado">#{empleadoBean.nombre}</Label><br />
+		<label for ="apellido">#{mensaje['label.apellido']}</label><Label for="apellidoEmpleado">#{empleadoBean.apellido}</Label><br />
+		<label for ="usuario">#{mensaje['label.usuario']}</label><Label for="usuarioEmpleado">#{empleadoBean.usuario}</Label><br />
+		<label for ="clave">#{mensaje['label.clave']}</label><Label for="contrasenaEmpleado">#{empleadoBean.contraseña}</Label><br />
+		<label for ="correo">#{mensaje['label.email']}</label><Label for="corrreoEmpleado">#{empleadoBean.corrreo}</Label><br />	
+			
+		</h:panelGrid>
+				
+		<h:commandButton ajax="false" value="#{mensaje['label.idioma']}" action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+		
+	</h:form>
 </body>
 </html>

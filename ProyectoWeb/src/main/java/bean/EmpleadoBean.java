@@ -3,6 +3,7 @@ package bean;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import co.edu.uniquindio.com.Empleado;
 import ejb.AdministradorEJB;
@@ -16,10 +17,11 @@ import excepciones.InformacionRepetidaException;
  *
  */
 @ManagedBean
+@SessionScoped
 public class EmpleadoBean {
 
 	private String cedula, apellido, contrasena, correo, nombre, usuario;
-	private int estado;
+	
 	@EJB
 	private AdministradorEJB administradorEJB;
 
@@ -37,7 +39,7 @@ public class EmpleadoBean {
 	 */
 	public String registrarEmpleado() {
 		try {
-			if (administradorEJB.registroEmpleado(cedula, apellido, contrasena, correo, estado, nombre, usuario)) {
+			if (administradorEJB.registroEmpleado(cedula, apellido, contrasena, correo, 1, nombre, usuario)) {
 				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "registro Exitoso");
 				return "/pages/infoEmpleado";
 			}
@@ -47,6 +49,15 @@ public class EmpleadoBean {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void limpiarEmpleado() {
+		cedula="";
+		apellido="";
+		contrasena="";
+		correo="";
+		nombre="";
+	    usuario="";
 	}
 
 	public String getCedula() {
@@ -96,12 +107,5 @@ public class EmpleadoBean {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-
-	public int getEstado() {
-		return estado;
-	}
-
-	public void setEstado(int estado) {
-		this.estado = estado;
-	}
+	
 }

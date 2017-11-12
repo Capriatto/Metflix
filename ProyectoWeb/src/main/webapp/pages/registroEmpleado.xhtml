@@ -5,38 +5,70 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-
 <head>
-
 	<meta charset="UTF-8" />
 	<title>Registrar Empleado</title>
-
 </head>
 <body>
-	<form jsf:id="formularioRegistro">
-		<label for="cedulaEmpleado">Cedula:</label> 
-		<input id="cedulaEmpleado" type="text" jsf:value="#{empleadoBean.cedula}"/>
-		<br />
-		<label for="nombreEmpleado">Nombre:</label> 
-		<input id="nombreEmpleado" type="text" jsf:value="#{empleadoBean.nombre}"/>
-		<br />
-		<label for="apellidoEmpleado">Apellido:</label> 
-		<input id="apellidoEmpleado" type="text" jsf:value="#{empleadoBean.apellido}"/>
-		<br />
-		<label for="contrasenaEmpleado">Contraseña:</label> 
-		<input id="contrasenaEmpleado" type="password" jsf:value="#{empleadoBean.contraseña}"/>
-		<br />
-		<label for="correoEmpleado">Correo:</label> 
-		<input id="correoEmpleado" type="email" jsf:value="#{empleadoBean.corrreo}"/>
-		<br />
-		<label for="estadoEmpleado">Estado:</label> 
-		<input id="estadoEmpleado" type="number" jsf:value="#{empleadoBean.estado}"/>
-		<br />
-		<label for="usuarioEmpleado">Usuario:</label> 
-		<input id="usuarioEmpleado" type="text" jsf:value="#{empleadoBean.usuario}"/>
-		<br />
-		<input type="submit" jsf:action="#{empleadoBean.registrarEmpleado}" value="Enviar"/>
-	</form>
-	<h:messages /><br />
+	<h:form id="FormularioRegistro">
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel for="cedula" value="#{mensaje['label.cedula']}"></h:outputLabel>
+			<h:inputText id="cedula" value="#{empleadoBean.cedula}" required="true">
+			<f:validateLongRange minimum="1"/>
+			<f:validateLength minimum="1" maximum="10"/>
+			</h:inputText>
+			
+			<h:outputLabel for="nombre" value="#{mensaje['label.nombre']}"></h:outputLabel>
+			<h:inputText id="nombre" value="#{empleadoBean.nombre}" required="true">
+			<f:validateLength minimum="3" maximum="30"/>
+			</h:inputText>
+			
+			<h:outputLabel for="apellido" value="#{mensaje['label.apellido']}"></h:outputLabel>
+			<h:inputText id="apellido" value="#{empleadoBean.apellido}" required="true">
+			<f:validateLength minimum="2" maximum="30"/>
+			</h:inputText>
+			
+			<h:outputLabel for="clave" value="#{mensaje['label.clave']}"></h:outputLabel>
+			<h:inputSecret id="clave" value="#{empleadoBean.contraseña}" required="true">
+			<f:validateLength minimum="4" maximum="8"/>
+			</h:inputSecret>
+			
+			<h:outputLabel for="email" value="#{mensaje['label.email']}"></h:outputLabel>
+			<h:inputText id="email" type="email" value="#{empleadoBean.corrreo}" required="true"			
+			validatorMessage="Invalid email format">
+	  		<f:validateRegex pattern="^(.+)@(.+)$" />
+	  		<f:validateLength minimum="2" maximum="40"/>
+			</h:inputText>			
+						
+			<h:outputLabel for="usuario" value="#{mensaje['label.usuario']}"></h:outputLabel>
+			<h:inputText id="usuario" value="#{empleadoBean.usuario}" required="true">
+			<f:validateLength minimum="4" maximum="15" />
+			</h:inputText>
+			
+			<br/>
+			<h:commandButton value="#{mensaje['label.enviar']}" action="#{empleadoBean.registrarEmpleado}"></h:commandButton>			
+			<br/>			
+
+		</h:panelGrid>
+	</h:form>
+	
+	<h:form>
+	<h:commandButton ajax="false" value="#{mensaje['label.idioma']}" action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+	<h:commandButton ajax="false" value="#{mensaje['label.borrar']}" action="#{empleadoBean.limpiarEmpleado}"></h:commandButton>
+	</h:form>
+	
+	<h:message for="cedula"/>
+	<br/>
+	<h:message for="nombre"/>
+	<br/>
+	<h:message for="apellido"/>
+	<br/>
+	<h:message for="clave"/>
+	<br/>
+	<h:message for="email"/>
+	<br/>
+	<h:message for="usuario"/>
+		
 </body>
 </html>
