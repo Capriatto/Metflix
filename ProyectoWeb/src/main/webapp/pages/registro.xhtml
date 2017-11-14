@@ -44,49 +44,39 @@
 			<form class="bootstrap-form-with-validation"
 				jsf:id="formularioRegistro">
 				<div class="form-group">
-					<label class="control-label" for="text-input">Nombre </label> <input
-						class="form-control" type="text" required="required"
-						jsf:value="#{clienteBean.nombre}" />
+					<label class="control-label" for="text-input">Nombre </label> 
+					<input class="form-control" type="text" required="required" jsf:value="#{clienteBean.nombre}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="password-input">Apellidos
-					</label> <input class="form-control" type="text" required="required"
-						jsf:value="#{clienteBean.apellido}" />
+					<label class="control-label" for="password-input">Apellidos </label> 
+					<input class="form-control" type="text" required="required" jsf:value="#{clienteBean.apellido}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="text-input">Cedula </label> <input
-						class="form-control" type="number" required="required"
-						jsf:value="#{clienteBean.cedula}" />
+					<label class="control-label" for="text-input">Cedula </label> 
+					<input class="form-control" type="number" required="required" jsf:value="#{clienteBean.cedula}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="correoelectronico">Correo
-						Electronico</label> <input class="form-control" type="email" name="correo"
-						required="required" jsf:value="#{clienteBean.corrreo}" />
+					<label class="control-label" for="correoelectronico">Correo Electronico</label> 
+						<input class="form-control" type="email" name="correo" required="required" jsf:value="#{clienteBean.corrreo}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="email-input">Telefono </label> <input
-						class="form-control" type="tel" name="telefono"
-						required="required" jsf:value="#{clienteBean.telefono}" />
+					<label class="control-label" for="email-input">Telefono </label> 
+					<input class="form-control" type="tel" name="telefono" required="required" jsf:value="#{clienteBean.telefono}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="text-input">Usuario </label> <input
-						class="form-control" type="text" required="required"
-						jsf:value="#{clienteBean.usuario}" />
+					<label class="control-label" for="text-input">Usuario </label> 
+					<input class="form-control" type="text" required="required" jsf:value="#{clienteBean.usuario}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="text-input">Contraseña </label> <input
-						class="form-control" type="password" required="required"
-						jsf:value="#{clienteBean.contraseña}" />
+					<label class="control-label" for="text-input">Contraseña </label> 
+					<input class="form-control" type="password" required="required" jsf:value="#{clienteBean.contraseña}" />
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="text-input">Fecha De
-						Nacimiento</label> <input class="form-control" type="date"
-						name="fechanacimiento" required="required"
-						jsf:value="#{clienteBean.fechaNacimiento}" />
+					<label class="control-label" for="text-input">Fecha De Nacimiento</label> 
+						<input class="form-control" type="date" name="fechanacimiento" required="required" jsf:value="#{clienteBean.fechaNacimiento}" />
 				</div>
 				<div class="form-group">
-					<button class="btn btn-primary" type="submit"
-						jsf:action="#{clienteBean.registrarEmpleado}">Registrar</button>
+					<button class="btn btn-primary" type="submit" jsf:action="#{clienteBean.registrarEmpleado}">Registrar</button>
 				</div>
 			</form>
 		</div>

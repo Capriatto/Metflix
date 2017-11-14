@@ -6,24 +6,106 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <head>
-<meta charset="UTF-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="assets/css/user.css" />
+<link rel="stylesheet" href="assets/bootstrap/fonts/font-awesome.min.css" />
 <title>Información Empleado</title>
 </head>
 <body>
-	<h:form>	
-		<h:panelGrid columns="2">
-		
-		<label for ="cedula">#{mensaje['label.cedula']}</label><Label for="cedulaEmpleado">#{empleadoBean.cedula}</Label><br />
-		<label for ="nombre">#{mensaje['label.nombre']}</label><Label for="nombreEmpleado">#{empleadoBean.nombre}</Label><br />
-		<label for ="apellido">#{mensaje['label.apellido']}</label><Label for="apellidoEmpleado">#{empleadoBean.apellido}</Label><br />
-		<label for ="usuario">#{mensaje['label.usuario']}</label><Label for="usuarioEmpleado">#{empleadoBean.usuario}</Label><br />
-		<label for ="clave">#{mensaje['label.clave']}</label><Label for="contrasenaEmpleado">#{empleadoBean.contraseña}</Label><br />
-		<label for ="correo">#{mensaje['label.email']}</label><Label for="corrreoEmpleado">#{empleadoBean.corrreo}</Label><br />	
-			
-		</h:panelGrid>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navcol-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand navbar-link" href="../index.xhtml">me<span
+					style="text-decoration: line-through;">t</span>flix
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<h:form>
+					<h:commandButton class="btn btn-primary navbar-btn navbar-right"
+						ajax="false" value="#{mensaje['label.idioma']}"
+						action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+				</h:form>
+				<a class="btn btn-primary navbar-btn navbar-right" role="button"
+					href="ingresar.xhtml">#{mensaje['btn.iniciarSesion']}</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>#{mensaje['label.infoEmpleado']}</h1>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+			<h:form>
 				
-		<h:commandButton ajax="false" value="#{mensaje['label.idioma']}" action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
-		
-	</h:form>
+				<div class="form-group">
+					<label for="cedula">#{mensaje['label.cedula']}</label>
+					<Label for="cedulaEmpleado">#{empleadoBean.cedula}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="nombre">#{mensaje['label.nombre']}</label>
+					<Label for="nombreEmpleado">#{empleadoBean.nombre}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="apellido">#{mensaje['label.apellido']}</label>
+					<Label for="apellidoEmpleado">#{empleadoBean.apellido}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="usuario">#{mensaje['label.usuario']}</label>
+					<Label for="usuarioEmpleado">#{empleadoBean.usuario}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="clave">#{mensaje['label.clave']}</label>
+					<Label for="contrasenaEmpleado">#{empleadoBean.contraseña}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="correo">#{mensaje['label.email']}</label>
+					<Label for="corrreoEmpleado">#{empleadoBean.corrreo}</Label>
+				</div>
+				
+				<div class="form-group">
+
+				<h:commandButton class="btn btn-primary" ajax="false" value="#{mensaje['label.idioma']}"
+					action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+				</div>
+				
+
+			</h:form>
+
+		</div>
+	</div>
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<h5 class="text-uppercase">
+						Me<span style="text-decoration: line-through;">t</span>flix © 2017
+					</h5>
+				</div>
+				<div class="col-sm-6 social-icons">
+					<a href="www.github.com/capriatto/proyectoMetflix" target="_blank"><span
+						class="fa fa-github"></span></a><a href="www.fb.com" target="_blank"><span
+						class="fa fa-facebook"></span></a><a href="www.twitter.com"
+						target="_blank"><span class="fa fa-twitter"></span></a> <a
+						href="www.instagram.com" target="_blank"><span
+						class="fa fa-instagram"></span></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
