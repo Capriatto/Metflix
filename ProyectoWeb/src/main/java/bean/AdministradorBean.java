@@ -101,4 +101,6 @@ public class AdministradorBean {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+	
+	
 }

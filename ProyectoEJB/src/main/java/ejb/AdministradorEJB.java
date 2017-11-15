@@ -35,6 +35,14 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	public AdministradorEJB() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Carga lista de empleados
+	 * @return
+	 */
+	public List<Empleado> generarListaEmpleados(){
+		return entityManager.createNamedQuery(Empleado.GET_TODOS, Empleado.class).getResultList();
+	}
 
 	@PersistenceContext
 	private EntityManager entityManager;
