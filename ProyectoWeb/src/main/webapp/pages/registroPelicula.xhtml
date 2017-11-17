@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registrar Película</title>
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="assets/css/user.css" />
+<link rel="stylesheet"
+	href="assets/bootstrap/fonts/font-awesome.min.css" />
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navcol-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand navbar-link" href="../index.xhtml">me<span
+					style="text-decoration: line-through;">t</span>flix
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navcol-1">
+			<h:form>
+				<h:commandButton  class="btn btn-primary navbar-btn navbar-right" ajax="false" value="#{mensaje['label.idioma']}" action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+			</h:form>
+				<a class="btn btn-primary navbar-btn navbar-right" role="button"
+					href="ingresar.xhtml">#{mensaje['btn.iniciarSesion']}</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>#{mensaje['label.registroEmpleado']}</h1>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+			<h:form id="FormularioRegistro">
+				<div class="form-group">
+					<h:outputLabel class="control-label" for="cedula" value="#{mensaje['label.cedula']}"></h:outputLabel>
+					<h:inputText class="form-control" id="cedula" value="#{empleadoBean.cedula}"
+						required="true">
+						<f:validateLongRange minimum="1" />
+						<f:validateLength minimum="1" maximum="10" />
+					</h:inputText>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel class="control-label" for="nombre" value="#{mensaje['label.nombre']}"></h:outputLabel>
+					<h:inputText class="form-control" id="nombre" value="#{empleadoBean.nombre}"
+						required="true">
+						<f:validateLength minimum="3" maximum="30" />
+					</h:inputText>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel class="control-label" for="apellido" value="#{mensaje['label.apellido']}"></h:outputLabel>
+					<h:inputText class="form-control" id="apellido" value="#{empleadoBean.apellido}"
+						required="true">
+						<f:validateLength minimum="2" maximum="30" />
+					</h:inputText>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel class="control-label" for="clave" value="#{mensaje['label.clave']}"></h:outputLabel>
+					<h:inputSecret class="form-control" id="clave" value="#{empleadoBean.contraseña}"
+						required="true">
+						<f:validateLength minimum="4" maximum="8" />
+					</h:inputSecret>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel class="control-label" for="email" value="#{mensaje['label.email']}"></h:outputLabel>
+					<h:inputText class="form-control" id="email" type="email"
+						value="#{empleadoBean.corrreo}" required="true"
+						validatorMessage="Invalid email format">
+						<f:validateRegex pattern="^(.+)@(.+)$" />
+						<f:validateLength minimum="2" maximum="40" />
+					</h:inputText>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel class="control-label" for="usuario" value="#{mensaje['label.usuario']}"></h:outputLabel>
+					<h:inputText class="form-control" id="usuario" value="#{empleadoBean.usuario}"
+						required="true">
+						<f:validateLength minimum="4" maximum="15" />
+					</h:inputText>
+				</div>
+				
+				
+				<br />
+				<h:commandButton class="btn btn-primary" value="#{mensaje['label.enviar']}" action="#{empleadoBean.registrarEmpleado}"></h:commandButton>
+				<br />
+
+			</h:form>
+			<h:form>
+				<h:commandButton ajax="false" value="#{mensaje['label.idioma']}"
+					action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+				<h:commandButton ajax="false" value="#{mensaje['label.borrar']}"
+					action="#{empleadoBean.limpiarEmpleado}"></h:commandButton>
+			</h:form>
+			
+
+		</div>
+	</div>
+
+	<h:message for="cedula" />
+	<br />
+	<h:message for="nombre" />
+	<br />
+	<h:message for="apellido" />
+	<br />
+	<h:message for="clave" />
+	<br />
+	<h:message for="email" />
+	<br />
+	<h:message for="usuario" />
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<h5 class="text-uppercase">
+						Me<span style="text-decoration: line-through;">t</span>flix © 2017
+					</h5>
+				</div>
+				<div class="col-sm-6 social-icons">
+					<a href="www.github.com/capriatto/proyectoMetflix" target="_blank"><span
+						class="fa fa-github"></span></a><a href="www.fb.com" target="_blank"><span
+						class="fa fa-facebook"></span></a><a href="www.twitter.com"
+						target="_blank"><span class="fa fa-twitter"></span></a> <a
+						href="www.instagram.com" target="_blank"><span
+						class="fa fa-instagram"></span></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
