@@ -318,5 +318,9 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		return res;
 	}
 	
+	/**
+	 *  
+	 */
+	
 	
 }
