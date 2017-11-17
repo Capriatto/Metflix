@@ -25,7 +25,7 @@ public class SesionBean {
 	
 	public String autenticar() {
 		// TODO: hacer peticion al EJB
-		return "";
+		return "/pages/menu";
 	}
 	
 	public String getNombre_usuario() {

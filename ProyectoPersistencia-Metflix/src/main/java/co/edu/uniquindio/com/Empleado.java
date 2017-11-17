@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = Empleado.GET_ALL, query = "SELECT empleado FROM Empleado empleado where empleado.cedula=:cedula and empleado.estado=1"),
+		@NamedQuery(name = Empleado.GET_TODOS, query = "SELECT empleado FROM Empleado empleado where empleado.estado=1"),
 		@NamedQuery(name = Empleado.CREDENCIALES, query = "SELECT empleado FROM Empleado empleado,Persona persona where persona.cedula=:cedula"),
 		@NamedQuery(name = Empleado.REMOVER, query = "DELETE FROM Empleado empleado where empleado.cedula=:cedula"),
 		@NamedQuery(name = Empleado.MODIFICAR, query = "UPDATE Empleado empleado SET empleado.puesto= :puesto,empleado.sueldo= :salario where empleado.cedula= :cedula"),
@@ -30,6 +31,8 @@ public class Empleado extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L; // campo generado por la implementacion de serializable (usado para
 														// la des-serializacion)
 
+	public static final String GET_TODOS = "empleado_GetTODOS"; // named query
+	
 	public static final String GET_ALL = "empleado_GetAll"; // named query
 
 	public static final String GET_PUESTOVENTAS = "empleado_GetEmpleadosVentas"; // named query
@@ -74,6 +77,11 @@ public class Empleado extends Persona implements Serializable {
 	 */
 	public void setPuesto(String puesto) {
 		this.puesto = puesto;
+	}
+	
+	@Override
+	public String toString() {
+		return this.getNombre();
 	}
 
 }
