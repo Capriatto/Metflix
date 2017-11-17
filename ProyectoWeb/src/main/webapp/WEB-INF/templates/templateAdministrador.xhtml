@@ -48,8 +48,20 @@
 
 	<div id="content">
 		<ui:insert name="content">
-    	Contenido Plantilla
-  </ui:insert>
+			<h:panelGroup rendered="#{!sessionBean.autenticado}">
+				<ui:insert name="login">
+					<h:form>
+						<h:panelGrid columns="2">
+							<h:outputText value="Nombre Usuario" />
+							<h:inputText value="#{sessionBean.nombreUsuario}" />
+							<h:outputText value="Clave" />
+							<h:inputSecret value="#{sessionBean.clave}" />
+						</h:panelGrid>
+						<h:commandButton value="Aceptar" action="#{sesionBean.autenticar}" />
+					</h:form>
+				</ui:insert>
+			</h:panelGroup>
+		</ui:insert>
 	</div>
 
 	<div id="footer">
