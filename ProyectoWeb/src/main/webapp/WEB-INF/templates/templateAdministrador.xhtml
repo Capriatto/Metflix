@@ -48,14 +48,14 @@
 
 	<div id="content">
 		<ui:insert name="content">
-			<h:panelGroup rendered="#{!sessionBean.autenticado}">
+			<h:panelGroup rendered="#{!sesionBean.autenticado}">
 				<ui:insert name="login">
 					<h:form>
 						<h:panelGrid columns="2">
 							<h:outputText value="Nombre Usuario" />
-							<h:inputText value="#{sessionBean.nombreUsuario}" />
+							<h:inputText value="#{sesionBean.nombreUsuario}" />
 							<h:outputText value="Clave" />
-							<h:inputSecret value="#{sessionBean.clave}" />
+							<h:inputSecret value="#{sesionBean.clave}" />
 						</h:panelGrid>
 						<h:commandButton value="Aceptar" action="#{sesionBean.autenticar}" />
 					</h:form>

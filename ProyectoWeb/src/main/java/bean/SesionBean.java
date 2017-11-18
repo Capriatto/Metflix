@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 @ManagedBean
 public class SesionBean {
-	private String nombre_usuario, clave;
+	private String nombreUsuario, clave;
 	private boolean autenticado;
 	
 	/**
@@ -20,20 +20,21 @@ public class SesionBean {
 	 */
 	public SesionBean() {
 		autenticado=false;
+		autenticar();
 	}
 	
 	
 	public String autenticar() {
 		// TODO: hacer peticion al EJB
-		return "/pages/menu";
+		return "/pages/Menu";
 	}
 	
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public String getClave() {
