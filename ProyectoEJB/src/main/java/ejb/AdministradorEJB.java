@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import co.edu.uniquindio.com.Administrador;
+import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
@@ -102,6 +103,24 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		}
 	}
 	
+
+	/**
+	 * Permite buscar un cliente por su id
+	 * 
+	 * @param cedula
+	 *            cedula cliente
+	 * @return el usuario encontrado
+	 */
+	public Cliente buscarCliente(String cedula) {
+		try {
+			TypedQuery<Cliente> query = entityManager.createNamedQuery(Cliente.GET_ALL, Cliente.class);
+			query.setParameter("cedula", cedula);
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println("cliente no encontrado");
+			return null;
+		}
+	}
 	
 	/**
 	 * Permite buscar un administrador por su id
@@ -193,6 +212,8 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		admin = entityManager.find(Administrador.class, cedula);
 		return admin.getContrasena();
 	}
+	
+	
 
 	////////////////////// CRUD PELICULA/////////////////////////////////////
 
@@ -325,10 +346,5 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		List<Pelicula> res = query.getResultList(); 
 		return res;
 	}
-	
-	/**
-	 *  
-	 */
-	
 	
 }
