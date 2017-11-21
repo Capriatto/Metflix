@@ -347,4 +347,47 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		return res;
 	}
 	
+	
+	
+	//-----------------------------------------CRUD CLIENTE-----------------------------//
+	
+	
+	//---------------------Registro Cliente------------------------//
+	/**
+	 * Metodo que permite registrar un Cliente en la base de datos
+	 * 
+	 * @param cedula
+	 * @param apellido
+	 * @param contrasena
+	 * @param correo
+	 * @param estado
+	 * @param nombre
+	 * @param usuario
+	 * @return devuelve true si el empleado fue registrado con exito
+	 * @throws ElementoRegistradorException
+	 * @throws InformacionRepetidaException
+	 */
+	public boolean registroCliente(String cedula, String apellido, String contrasena, String correo, int estado,
+			String nombre, String usuario) throws ElementoRegistradorException, InformacionRepetidaException {
+		if (entityManager.find(Empleado.class, cedula) != null) {
+			throw new ElementoRegistradorException("Cliente ya fue registrado");
+		}
+		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
+			throw new InformacionRepetidaException("Usuario ya existe");
+		} else {
+			Cliente cliente = new  Cliente();
+			cliente.setCedula(cedula);
+			cliente.setApellido(apellido);
+			cliente.setContrasena(contrasena);
+			cliente.setCorreo(correo);
+			cliente.setEstado(estado);
+			cliente.setNombre(nombre);
+			cliente.setUsuario(usuario);
+			entityManager.persist(cliente);
+			return true;
+		}
+	}
+	
+	//---------------------------------------------------------------------//
+	
 }

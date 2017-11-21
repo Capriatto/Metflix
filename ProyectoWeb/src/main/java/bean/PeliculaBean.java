@@ -18,7 +18,7 @@ import excepciones.InformacionRepetidaException;
  */
 @ManagedBean
 @SessionScoped
-public class EmpleadoBean {
+public class PeliculaBean {
 
 	private String cedula, apellido, contrasena, correo, nombre, usuario;
 
@@ -28,7 +28,7 @@ public class EmpleadoBean {
 	/**
 	 * Metodo constructor
 	 */
-	public EmpleadoBean() {
+	public PeliculaBean() {
 
 	}
 
@@ -37,11 +37,11 @@ public class EmpleadoBean {
 	 * 
 	 * @return
 	 */
-	public String registrarEmpleado() {
+	public String registrarCliente() {
 		try {
-			if (administradorEJB.registroEmpleado(cedula, apellido, contrasena, correo, 1, nombre, usuario)) {
+			if (administradorEJB.registroCliente(cedula, apellido, contrasena, correo, 1, nombre, usuario)) {
 				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "registro Exitoso");
-				return "/pages/infoEmpleado";
+				return "/pages/infoCliente";
 			}
 		} catch (ElementoRegistradorException e) {
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class EmpleadoBean {
 		return null;
 	}
 
-	public void limpiarEmpleado() {
+	public void limpiarCliente() {
 		cedula = "";
 		apellido = "";
 		contrasena = "";
@@ -82,12 +82,12 @@ public class EmpleadoBean {
 	}
 
 	// 3.Recuperar contraseña
-	public void recuperarConstrasenaEmpleado(String cedula) {
+	public void recuperarConstrasenaCliente(String cedula) {
 		if (!cedula.equals("")) {
-			if (administradorEJB.buscarEmpleadoPorNombreUsuario(cedula) != null) {
+			if (administradorEJB.buscarCliente(cedula) != null) {
 				String de = "admonmetflix1@gmail.com";
 				String clave = "administrador1";
-				String para = administradorEJB.buscarEmpleadoPorNombreUsuario(cedula).getCorreo();
+				String para = administradorEJB.buscarCliente(cedula).getCorreo();
 				String mensaje = "Saludos\nSegun solicitud realizada, "
 						+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
 						+ administradorEJB.recuperarContrasenia(cedula);
@@ -107,6 +107,19 @@ public class EmpleadoBean {
 					"Error al recuperar contraseña!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	
+	//4.Comprar Peliculas, confirmar por correo.
+	
+	//5.Calificar Peliculas
+	
+	//6.Ver Peliculas Recomendadas
+	
+	//7.Ver informacion de peliculas
+	
+	//8.Buscar peliculas
+	
+	
 
 	
 	//------------------Metodo GET y SET------------------------//
