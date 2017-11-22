@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.swing.JOptionPane;
 
+import co.edu.uniquindio.com.Cliente;
 import ejb.AdministradorEJB;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
@@ -70,6 +71,12 @@ public class ClienteBean {
 	 */
 	public String consultarCliente(String cedula) {
 		if (administradorEJB.buscarCliente(cedula) != null) {
+			Cliente cliente =administradorEJB.buscarCliente(cedula);
+			cedula = cliente.getCedula();
+			apellido = cliente.getApellido();			
+			correo =cliente.getCorreo();
+			nombre =cliente.getNombre();
+			usuario =cliente.getUsuario();
 			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Busqueda Exitosa");
 			return "/pages/infoCliente";
 		}
@@ -109,6 +116,8 @@ public class ClienteBean {
 	}
 	
 	
+	//--------------Pelicula Bean---------------------------//
+	
 	//4.Comprar Peliculas, confirmar por correo.
 	
 	//5.Calificar Peliculas
@@ -119,19 +128,9 @@ public class ClienteBean {
 	
 	//8.Buscar peliculas
 	
-	/**
-	 * Metodo que permite buscar una pelicula
-	 * 
-	 * @param cedula
-	 * @return
-	 */
-	public String consultarPelicula(String nombre) {
-		if (administradorEJB.buscarPeliculaPorNombre(nombre)!= null) {
-			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Busqueda Exitosa");
-			return "/pages/infoPelicula";
-		}
-		return null;
-	}
+	//-------------------------------------------------------//
+	
+	
 	
 	
 
