@@ -90,13 +90,16 @@ public class PeliculaBean {
 		
 	
 	
-	//4.Comprar Peliculas, confirmar por correo.
+	//4.Comprar Peliculas, confirmar por correo.  ------Ocampo--------		
+		
 	
-	//5.Calificar Peliculas
+	//5.Calificar Peliculas ---------Ocampo-----------
+		
 	
-	//6.Ver Peliculas Recomendadas
+	//6.Ver Peliculas Recomendadas   -------Ocampo-----------
+		
 	
-	//7.Ver informacion de peliculas
+	
 	
 
 	
