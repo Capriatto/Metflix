@@ -8,7 +8,17 @@
 
 <ui:composition template="/WEB-INF/templates/templateAI.xhtml">
 	<ui:define name="content">
-	    
+		<div class="col-md-4 col-md-offset-4">
+			<form class="bootstrap-form-with-validation">
+					<div class="form-group">
+						<label class="control-label" for="text-input">#{mensaje['label.cedula']} </label> 
+						<input class="form-control" type="number" required="required" max="9999999999" />
+					</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">#{mensaje['btn.recuperarContrasena']}</button>
+				</div>
+			</form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
