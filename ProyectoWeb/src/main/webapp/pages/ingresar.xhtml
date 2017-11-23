@@ -13,26 +13,28 @@
 	<ui:define name="content">
 		<div class="container">
 			<div class="jumbotron">
-				<h1>Iniciar Sesión</h1>
+				<h1>#{mensaje['btn.iniciarSesion']}</h1>
 			</div>
 		</div>
 		<div class="container">
 			<div class="col-md-4 col-md-offset-4">
 				<form class="bootstrap-form-with-validation">
 					<div class="form-group">
-						<label class="control-label" for="text-input">Usuario</label> <input
+						<label class="control-label" for="text-input">#{mensaje['label.usuario']}</label> <input
 							class="form-control" type="text" name="usuario"
 							jsf:value="#{clienteBean.usuario}" required="required"
 							id="usuario" />
 					</div>
 					<div class="form-group">
-						<label class="control-label" for="password-input">Contraseña</label>
+						<label class="control-label" for="password-input">#{mensaje['label.clave']}</label>
 						<input class="form-control" type="password" name="contrasena"
 							jsf:value="#{clienteBean.contraseña}" required="required"
 							id="contrasena" />
 					</div>
+					
+					<a class="btn btn-link btn-lg" role="button" href="recuperarContrasena.xhtml">#{mensaje['btn.recuperarContrasena']}</a>
 					<div class="form-group">
-						<button class="btn btn-primary" type="submit">Entrar</button>
+						<button class="btn btn-primary" type="submit">#{mensaje['btn.iniciarSesion']}</button>
 					</div>
 				</form>
 			</div>
