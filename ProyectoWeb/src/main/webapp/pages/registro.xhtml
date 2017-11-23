@@ -20,17 +20,17 @@
 					jsf:id="formularioRegistro">
 					<div class="form-group">
 						<label class="control-label" for="text-input">Nombre </label> <input
-							class="form-control" type="text" required="required"
+							class="form-control" type="text" required="required" maxlength="30"
 							jsf:value="#{clienteBean.nombre}" />
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="password-input">Apellidos
-						</label> <input class="form-control" type="text" required="required"
+						</label> <input class="form-control" type="text" required="required" maxlength="30"
 							jsf:value="#{clienteBean.apellido}" />
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="text-input">Cedula </label> <input
-							class="form-control" type="number" required="required"
+							class="form-control" type="number" required="required" max="9999999999"
 							jsf:value="#{clienteBean.cedula}" />
 					</div>
 					<div class="form-group">
@@ -41,12 +41,12 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="text-input">Usuario </label> <input
-							class="form-control" type="text" required="required"
+							class="form-control" type="text" required="required" maxlength="15"
 							jsf:value="#{clienteBean.usuario}" />
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="text-input">Contraseña </label>
-						<input class="form-control" type="password" required="required"
+						<input class="form-control" type="password" maxlength="8" required="required"
 							jsf:value="#{clienteBean.contraseña}" />
 					</div>
 					<div class="form-group">
