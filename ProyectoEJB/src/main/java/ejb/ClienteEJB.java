@@ -1,9 +1,10 @@
 package ejb;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -23,7 +24,7 @@ import excepciones.PersonaNoEncontradaException;
 @Stateless
 @LocalBean
 public class ClienteEJB implements ClienteEJBRemote {
-
+	EntityManager em;
 	/**
 	 * Default constructor.
 	 */
@@ -120,9 +121,10 @@ public class ClienteEJB implements ClienteEJBRemote {
 		consulta_tec.setF_consultatecnica(f_consulta_tecnica);
 		consulta_tec.setCliente_id(cliente);
 		consulta_tec.setEmpleado_id(empleado);
-		TypedQuery<Empleado> query = entityManager.createNamedQuery(Empleado.GET_RANDOMEMPLEADO, Empleado.class);
-		query.setMaxResults(1);
-		entityManager.persist(query.getSingleResult());
+//		String query = "SELECT * FROM empleado ORDER BY random()";
+//		Query q = (Query) em.createQuery(query);
+//		((javax.persistence.Query) q).setMaxResults(5);
+//		entityManager.persist(q.);
 		return true;
 
 	}
@@ -209,4 +211,6 @@ public class ClienteEJB implements ClienteEJBRemote {
 		return empleado.getContrasena();
 
 	}
+
+
 }
