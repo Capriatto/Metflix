@@ -43,7 +43,7 @@ public class ConsultaTecnicaBean {
 	 * permite registrar una consulta tecnica
 	 * @return registra una consulta tecnica
 	 */
-	public String registrarConsulta() {
+	public String registro() {
 		
 		System.out.println(String.format("El empleado seleccionado es: %s", empleado));
 		

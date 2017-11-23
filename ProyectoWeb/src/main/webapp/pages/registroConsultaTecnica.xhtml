@@ -12,18 +12,26 @@
 <ui:composition template="/WEB-INF/templates/templateAI.xhtml">
 	<ui:define name="content">
 		<div class="container">
-
-			<h:form>
-				<h:selectOneMenu value="#{consultaTecnicaBean.empleado}">
-					<f:selectItem itemLabel="Seleccione Un Empleado"
-						noSelectionValue="true"></f:selectItem>
-					<f:selectItems value="#{consultaTecnicaBean.empleados}"
-						var="empleado" itemValue="#{empleado}"></f:selectItems>
-				</h:selectOneMenu>
-
-				<h:commandButton value="Registrar"
-					action="#{consultaTecnicaBean.registrarConsulta}"></h:commandButton>
-			</h:form>
+		<div class="jumbotron">
+				<h1>#{mensaje['label.registroConsultaTecnica']}</h1>
+		</div>
+		<div class="row">
+		<form role="form" id="contact-form" class="contact-form">
+                  	<div class="row">
+                  		<div class="col-md-12">
+                  		<div class="form-group">
+                            <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="Consulta"></textarea>
+                  		</div>
+                  	</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary pull-right" jsf:action="#{consultaTecnicaBean.registro}">Registrar</button>
+                  </div>
+                  </div>
+                </form>
+		</div>
+			
 		</div>
 	</ui:define>
 </ui:composition>
