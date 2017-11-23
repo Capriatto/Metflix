@@ -47,7 +47,7 @@ public class ConsultaTecnicaBean {
 		
 		System.out.println(String.format("El empleado seleccionado es: %s", empleado));
 		
-		return "pages/infoConsultaTecnica";
+		return "pages/cliente/infoConsultaTecnica";
 	}
 	
 	public List<Empleado> getEmpleados() {
