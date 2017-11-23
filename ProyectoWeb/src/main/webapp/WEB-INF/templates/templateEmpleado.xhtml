@@ -15,7 +15,6 @@
 <link rel="stylesheet"
 	href="../resources/assets/bootstrap/fonts/font-awesome.min.css" />
 </head>
-
 <body>
 	<ui:debug hotkey="x"
 		rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}" />
@@ -31,17 +30,23 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand navbar-link" href="../index.xhtml">me<span
+					<a class="navbar-brand navbar-link" href="index.xhtml">me<span
 						style="text-decoration: line-through;">t</span>flix
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="navcol-1">
+					<ul class="nav navbar-nav">
+						<li role="presentation"><a href="Empleados.xhtml">Empleados</a></li>
+						<li role="presentation"><a href="Compras.xhtml">Compras</a></li>
+						<li role="presentation"><a href="Calificaciones.xhtml">Calificaciones</a></li>
+						<li role="presentation"><a href="Peliculas.xhtml">Peliculas</a></li>
+						<li role="presentation"></li>
+					</ul>
 					<a class="btn btn-primary navbar-btn navbar-right" role="button"
-						href="registro.xhtml">Registrar </a>
+						href="logout.xhtml">Cerrar Sesión <span class="fa fa-sign-out"></span></a>
 				</div>
 			</div>
 			</nav>
-
 		</ui:insert>
 	</div>
 
@@ -56,6 +61,7 @@
 
 	<div id="footer">
 		<ui:insert name="footer">
+			<footer class="site-footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
@@ -66,10 +72,13 @@
 					</div>
 				</div>
 			</div>
+			</footer>
+
+			<script src="../resources/assets/js/jquery.min.js"></script>
+			<script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
 		</ui:insert>
 	</div>
-<script src="../resources/assets/js/jquery.min.js"></script>
-	<script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

@@ -9,11 +9,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Metflix Administrador</title>
-<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../resources/assets/css/user.css" />
+<title>Metflix</title>
 <link rel="stylesheet"
-	href="../resources/assets/bootstrap/fonts/font-awesome.min.css" />
+	href="resources/assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="resources/assets/css/user.css" />
+<link rel="stylesheet"
+	href="resources/assets/bootstrap/fonts/font-awesome.min.css" />
 </head>
 
 <body>
@@ -37,20 +38,17 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navcol-1">
 					<a class="btn btn-primary navbar-btn navbar-right" role="button"
-						href="registro.xhtml">Registrar </a>
+						href="registro.xhtml">Registrar </a> <a
+						class="btn btn-primary navbar-btn navbar-right" role="button"
+						href="ingresar.xhtml">Ingresar </a>
 				</div>
 			</div>
 			</nav>
-
 		</ui:insert>
 	</div>
-
-
 	<div id="content">
 		<ui:insert name="content">
-			<h:panelGroup rendered="#{!sesionBean.autenticado}">
-				<body onLoad = "parent.location = '../ingresar.xhtml'"/>
-			</h:panelGroup>
+			
 		</ui:insert>
 	</div>
 
@@ -68,8 +66,8 @@
 			</div>
 		</ui:insert>
 	</div>
-<script src="../resources/assets/js/jquery.min.js"></script>
-	<script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/assets/js/jquery.min.js"></script>
+	<script src="resources/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
