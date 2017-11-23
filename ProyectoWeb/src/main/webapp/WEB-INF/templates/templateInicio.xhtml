@@ -37,10 +37,16 @@
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="navcol-1">
+					<h:form>
+						<h:commandButton ajax="false"
+							class="btn btn-primary navbar-btn navbar-right"
+							value="#{mensaje['label.idioma']}"
+							action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+					</h:form>
 					<a class="btn btn-primary navbar-btn navbar-right" role="button"
-						href="pages/registro.xhtml">Registrar </a> <a
+						href="pages/registro.xhtml">#{mensaje['label.registro']} </a> <a
 						class="btn btn-primary navbar-btn navbar-right" role="button"
-						href="pages/ingresar.xhtml">Ingresar </a>
+						href="pages/ingresar.xhtml">#{mensaje['btn.iniciarSesion']} </a>
 				</div>
 			</div>
 			</nav>
@@ -48,7 +54,7 @@
 	</div>
 	<div id="content">
 		<ui:insert name="content">
-			
+
 		</ui:insert>
 	</div>
 

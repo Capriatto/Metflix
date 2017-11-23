@@ -36,12 +36,15 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navcol-1">
 					<ul class="nav navbar-nav">
-						<li role="presentation"><a href="Empleados.xhtml">Empleados</a></li>
-						<li role="presentation"><a href="Compras.xhtml">Compras</a></li>
-						<li role="presentation"><a href="Calificaciones.xhtml">Calificaciones</a></li>
-						<li role="presentation"><a href="Peliculas.xhtml">Peliculas</a></li>
+						<li role="presentation"><a href="Compras.xhtml">#{mensaje['label.compras']}</a></li>
+						<li role="presentation"><a href="Calificaciones.xhtml">#{mensaje['label.califiaciones']}</a></li>
+						<li role="presentation"><a href="Peliculas.xhtml">#{mensaje['label.peliculas']}</a></li>
 						<li role="presentation"></li>
 					</ul>
+					<h:form>
+						<h:commandButton ajax="false" class="btn btn-primary navbar-btn navbar-right" value="#{mensaje['label.idioma']}"
+							action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+					</h:form>
 					<a class="btn btn-primary navbar-btn navbar-right" role="button"
 						href="logout.xhtml">Cerrar Sesión <span class="fa fa-sign-out"></span></a>
 				</div>

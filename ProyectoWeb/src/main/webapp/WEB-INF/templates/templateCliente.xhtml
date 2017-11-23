@@ -10,7 +10,8 @@
 <meta charset="UTF-8" />
 <title>Metflix</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="../resources/assets/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../resources/assets/css/user.css" />
 <link rel="stylesheet"
 	href="../resources/assets/bootstrap/fonts/font-awesome.min.css" />
@@ -36,6 +37,12 @@
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="navcol-1">
+					<h:form>
+						<h:commandButton ajax="false"
+							class="btn btn-primary navbar-btn navbar-right"
+							value="#{mensaje['label.idioma']}"
+							action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+					</h:form>
 					<a class="btn btn-primary navbar-btn navbar-right" role="button"
 						href="registro.xhtml">Registrar </a>
 				</div>
@@ -49,7 +56,7 @@
 	<div id="content">
 		<ui:insert name="content">
 			<h:panelGroup rendered="#{!sesionBean.autenticado}">
-				<body onLoad = "parent.location = '../ingresar.xhtml'"/>
+				<body onLoad="parent.location = '../ingresar.xhtml'" />
 			</h:panelGroup>
 		</ui:insert>
 	</div>
@@ -68,7 +75,7 @@
 			</div>
 		</ui:insert>
 	</div>
-<script src="../resources/assets/js/jquery.min.js"></script>
+	<script src="../resources/assets/js/jquery.min.js"></script>
 	<script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
