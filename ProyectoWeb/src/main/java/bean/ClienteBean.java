@@ -4,7 +4,6 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.swing.JOptionPane;
 
 import co.edu.uniquindio.com.Cliente;
 import ejb.AdministradorEJB;
@@ -21,7 +20,7 @@ import excepciones.InformacionRepetidaException;
 @SessionScoped
 public class ClienteBean {
 
-	private String cedula, apellido, contrasena, correo, nombre, usuario;
+	private String cedula, apellido, contrasena, correo, nombre, usuario, consultaTecnica;
 
 	@EJB
 	private AdministradorEJB administradorEJB;
@@ -71,12 +70,12 @@ public class ClienteBean {
 	 */
 	public String consultarCliente(String cedula) {
 		if (administradorEJB.buscarCliente(cedula) != null) {
-			Cliente cliente =administradorEJB.buscarCliente(cedula);
+			Cliente cliente = administradorEJB.buscarCliente(cedula);
 			cedula = cliente.getCedula();
-			apellido = cliente.getApellido();			
-			correo =cliente.getCorreo();
-			nombre =cliente.getNombre();
-			usuario =cliente.getUsuario();
+			apellido = cliente.getApellido();
+			correo = cliente.getCorreo();
+			nombre = cliente.getNombre();
+			usuario = cliente.getUsuario();
 			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Busqueda Exitosa");
 			return "/pages/infoCliente";
 		}
@@ -84,8 +83,9 @@ public class ClienteBean {
 	}
 
 	// 2.Consulta tecnica por parte de los Clientes--------- Ocampo---------
-	public void consultaTecnica() {
-
+	public String consultaTecnica() {
+		
+		return null;
 	}
 
 	// 3.Recuperar contraseña
@@ -100,43 +100,35 @@ public class ClienteBean {
 						+ administradorEJB.recuperarContrasenia(cedula);
 				String asunto = "Contraseña Plataforma METFLIX";
 				EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
-				JOptionPane.showMessageDialog(null,
-						"Un correo electrónico le ha sido enviado con su contraseña.", "Contraseña enviada!",
-						JOptionPane.INFORMATION_MESSAGE);
+				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO,
+						"Un correo electrónico le ha sido enviado con su contraseña.");
+
 			} else {
-				JOptionPane.showMessageDialog(null,
-						"No hemos podido recuperar su contraseña.\nNo se encontró el usuario con cédula: " + cedula,
-						"Error!", JOptionPane.ERROR_MESSAGE);
+				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO,
+						"No hemos podido recuperar su contraseña.\nNo se encontró el usuario con cédula: ");
 			}
 		} else {
-			JOptionPane.showMessageDialog(null,
-					"Todos los campos son obligatorios.\nPor favor rellene los campos faltantes para recuperar su contraseña.",
-					"Error al recuperar contraseña!", JOptionPane.ERROR_MESSAGE);
+			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO,
+					"Todos los campos son obligatorios.\nPor favor rellene los campos faltantes para recuperar su contraseña.");
 		}
 	}
-	
-	
-	//--------------Pelicula Bean---------------------------//
-	
-	//4.Comprar Peliculas, confirmar por correo.
-	
-	//5.Calificar Peliculas
-	
-	//6.Ver Peliculas Recomendadas
-	
-	//7.Ver informacion de peliculas
-	
-	//8.Buscar peliculas
-	
-	//-------------------------------------------------------//
-	
-	
-	
-	
 
-	
-	//------------------Metodo GET y SET------------------------//
-	
+	// --------------Pelicula Bean---------------------------//
+
+	// 4.Comprar Peliculas, confirmar por correo.
+
+	// 5.Calificar Peliculas
+
+	// 6.Ver Peliculas Recomendadas
+
+	// 7.Ver informacion de peliculas
+
+	// 8.Buscar peliculas
+
+	// -------------------------------------------------------//
+
+	// ------------------Metodo GET y SET------------------------//
+
 	public String getCedula() {
 		return cedula;
 	}
@@ -184,7 +176,7 @@ public class ClienteBean {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	
-	//----------------------------------------------------------//
+
+	// ----------------------------------------------------------//
 
 }

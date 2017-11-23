@@ -55,7 +55,7 @@ public interface ClienteEJBRemote {
 	 * @param empleado
 	 * @return
 	 */
-	public boolean registroConsultaTecnica(String id, String consulta, int estado, Date f_consulta_tecnica,
+	public boolean registroConsultaTecnica(String consulta, int estado, Date f_consulta_tecnica,
 			Cliente cliente, Empleado empleado);
 
 	/**

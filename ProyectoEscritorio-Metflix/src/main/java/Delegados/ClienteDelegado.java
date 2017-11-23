@@ -49,7 +49,7 @@ public class ClienteDelegado implements ClienteEJBRemote {
 	}
 
 	@Override
-	public boolean registroConsultaTecnica(String id, String consulta, int estado, Date f_consulta_tecnica,
+	public boolean registroConsultaTecnica(String consulta, int estado, Date f_consulta_tecnica,
 			Cliente cliente, Empleado empleado) {
 		// TODO Auto-generated method stub
 		return false;

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({ @NamedQuery(name = Cliente.GET_ALL, query = "SELECT cliente FROM Cliente cliente where cliente.cedula=:cedula and cliente.estado=1"),
 	@NamedQuery(name = Cliente.CREDENCIALES, query = "SELECT cliente FROM Cliente cliente,Persona persona where persona.usuario=:usuario"),
-	
+	@NamedQuery(name = Cliente.CREDENCIALES, query = "SELECT cliente FROM Cliente cliente,Persona persona where persona.usuario=:usuario"),
 
 @NamedQuery(name = Cliente.GET_CREDENTIALS, query = "SELECT c FROM Cliente c, Persona p WHERE c.usuario=:usuario AND c.contrasena=:contrasena AND c.cedula=p.cedula")
 		 })
@@ -40,7 +40,6 @@ public class Cliente extends Persona implements Serializable {
 	public static final String GET_ALL = "cliente_GetAll"; // named query
 	public static final String CREDENCIALES = "cliente_GetCredenciales"; // named query
 	public static final String GET_CREDENTIALS = "persona_GetCredenciales"; //named query
-
 
 	/*
 	 * Metodo constructor de la clase(Entidad) Cliente

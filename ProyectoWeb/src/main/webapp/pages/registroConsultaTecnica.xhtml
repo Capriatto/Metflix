@@ -20,18 +20,17 @@
                   	<div class="row">
                   		<div class="col-md-12">
                   		<div class="form-group">
-                            <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="Consulta"></textarea>
+                            <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="#{mensaje['label.consulta']}"></textarea>
                   		</div>
                   	</div>
                     </div>
                     <div class="row">
                     <div class="col-md-12">
-                  <button type="submit" class="btn btn-primary pull-right" jsf:action="#{consultaTecnicaBean.registro}">Registrar</button>
+                  <button type="submit" class="btn btn-primary pull-right" jsf:action="#{consultaTecnicaBean.registrarConsultaTecnica}">#{mensaje['label.registro']}</button>
                   </div>
                   </div>
                 </form>
 		</div>
-			
 		</div>
 	</ui:define>
 </ui:composition>
