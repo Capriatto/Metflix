@@ -3,8 +3,11 @@ package bean;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.swing.JOptionPane;
 
+import co.edu.uniquindio.com.Persona;
 import ejb.AdministradorEJB;
+import ejb.EmailSenderService;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 
@@ -44,6 +47,30 @@ public class AdministradorBean {
 		} catch (InformacionRepetidaException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * Metodo para recuperar constraseña de una persona
+	 * @param cedula
+	 */
+	public void recuperarConstrasena(String cedula) {
+		Persona persona = administradorEJB.buscarPersona(cedula);
+
+		if (persona != null) {
+			String de = "admonmetflix1@gmail.com";
+			String clave = "administrador1";
+			String para = persona.getCorreo();
+			String mensaje = "Saludos\nSegun solicitud realizada, "
+					+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
+					+ administradorEJB.recuperarContrasenia(cedula);
+			String asunto = "Contraseña Plataforma METFLIX";
+			EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
+			
+		} else {
+		
+		}
+
 	}
 
 	public String getCedula() {

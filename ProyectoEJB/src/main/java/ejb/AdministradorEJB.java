@@ -8,16 +8,20 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
+
 
 import co.edu.uniquindio.com.Administrador;
 import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Compra_pelicula;
 import co.edu.uniquindio.com.Empleado;
 import co.edu.uniquindio.com.Pelicula;
+import co.edu.uniquindio.com.Persona;
 import excepciones.ElementoRegistradorException;
 import excepciones.InformacionRepetidaException;
 import excepciones.PersonaNoEncontradaException;
@@ -35,12 +39,13 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	public AdministradorEJB() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * Carga lista de empleados
+	 * 
 	 * @return
 	 */
-	public List<Empleado> generarListaEmpleados(){
+	public List<Empleado> generarListaEmpleados() {
 		return entityManager.createNamedQuery(Empleado.GET_TODOS, Empleado.class).getResultList();
 	}
 
@@ -101,7 +106,27 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			return null;
 		}
 	}
+
+	/**
+	 * Permite buscar un cliente por su id
+	 * 
+	 * @param cedula
+	 *            cedula persona
+	 * @return el usuario encontrado
+	 */
+	public Persona buscarPersona(String cedula) {
+		try {
+			TypedQuery<Persona> query = entityManager.createNamedQuery(Persona.GET_ALL, Persona.class);
+			query.setParameter("cedula", cedula);
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println("cliente no encontrado");
+			return null;
+		}
+	}
+
 	
+
 
 	/**
 	 * Permite buscar un cliente por su id
@@ -120,7 +145,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Permite buscar un administrador por su id
 	 * 
@@ -130,7 +155,8 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 */
 	public Administrador buscarAdministrador(String cedula) {
 		try {
-			TypedQuery<Administrador> query = entityManager.createNamedQuery(Administrador.GET_ALL, Administrador.class);
+			TypedQuery<Administrador> query = entityManager.createNamedQuery(Administrador.GET_ALL,
+					Administrador.class);
 			query.setParameter("cedula", cedula);
 			return query.getSingleResult();
 		} catch (NoResultException e) {
@@ -168,9 +194,9 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			try {
 				Empleado empleado = entityManager.find(Empleado.class, cedula);
-				if(!puesto.equals(""))
+				if (!puesto.equals(""))
 					empleado.setPuesto(puesto);
-				if(salario!=0.0)
+				if (salario != 0.0)
 					empleado.setSueldo(salario);
 				entityManager.merge(empleado);
 				return true;
@@ -190,29 +216,28 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 */
 
 	public String recuperarContrasenia(String cedula) {
-		Empleado empleado = new Empleado();
-		if (entityManager.find(Empleado.class, cedula) != null) {
-			System.out.println("Empleado no encontrado");
+		Persona persona = new Persona();
+		if (entityManager.find(Persona.class, cedula) != null) {
+			System.out.println("Persona no encontrada");
 		}
-		empleado = entityManager.find(Empleado.class, cedula);
-		return empleado.getContrasena();
+		persona	 = entityManager.find(Empleado.class, cedula);
+		return persona.getContrasena();
 	}
-	
+
 	/**
 	 * Metodo para recuperar constraseña administrador
+	 * 
 	 * @param cedula
 	 * @return
 	 */
 	public String recuperarContraseniaAdmin(String cedula) {
-		Administrador admin= new Administrador();
+		Administrador admin = new Administrador();
 		if (entityManager.find(Administrador.class, cedula) != null) {
 			System.out.println("Empleado no encontrado");
 		}
 		admin = entityManager.find(Administrador.class, cedula);
 		return admin.getContrasena();
 	}
-	
-	
 
 	////////////////////// CRUD PELICULA/////////////////////////////////////
 
@@ -230,8 +255,8 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @throws InformacionRepetidaException
 	 * @throws ParseException
 	 */
-	public boolean registroPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio) throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
+	public boolean registroPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre, double precio)
+			throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		if (buscarPeliculaPorNombre(nombre) != null) {
 			throw new ElementoRegistradorException("Pelicula ya fue registrada");
 		}
@@ -275,13 +300,13 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * 
 	 * @throws ParseException
 	 */
-	public boolean modificarPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre,
-			double precio)throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
+	public boolean modificarPelicula(Date añoLanzamiento, String descripcion, int estado, String nombre, double precio)
+			throws ElementoRegistradorException, InformacionRepetidaException, ParseException {
 		if (buscarPeliculaPorNombre(nombre) != null) {
 			try {
-				Pelicula pelicula = buscarPeliculaPorNombre(nombre);				
+				Pelicula pelicula = buscarPeliculaPorNombre(nombre);
 				pelicula.setAnio_lanzamiento(añoLanzamiento);
-				pelicula.setDescripcion(descripcion);				
+				pelicula.setDescripcion(descripcion);
 				pelicula.setPrecio(precio);
 				entityManager.merge(pelicula);
 				return true;
@@ -314,7 +339,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Metodo que retorna las compras realizadas en un periodo dado
 	 * 
@@ -323,16 +348,17 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 */
 	public long peliculasCompradasEntreFechas(Date desde, Date hasta) {
 		try {
-		    TypedQuery<Long> query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASRANGOFECHAS, Long.class);
+			TypedQuery<Long> query = entityManager.createNamedQuery(Compra_pelicula.GET_PELICULASRANGOFECHAS,
+					Long.class);
 			query.setParameter("desde", desde);
 			query.setParameter("hasta", hasta);
-			return (Long)query.getSingleResult();
+			return (Long) query.getSingleResult();
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * Metodo que retorna las peliculas con determinada calificacion
 	 * 
@@ -340,18 +366,16 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 	 * @return
 	 */
 	public List<Pelicula> peliculasPorCalificacion(int calificacion) {
-		TypedQuery<Pelicula> query = entityManager.createNamedQuery(Pelicula.GET_PELICULASCALIFICADAS, Pelicula.class );
+		TypedQuery<Pelicula> query = entityManager.createNamedQuery(Pelicula.GET_PELICULASCALIFICADAS, Pelicula.class);
 		query.setParameter("calificacion", calificacion);
-		List<Pelicula> res = query.getResultList(); 
+		List<Pelicula> res = query.getResultList();
 		return res;
 	}
-	
-	
-	
-	//-----------------------------------------CRUD CLIENTE-----------------------------//
-	
-	
-	//---------------------Registro Cliente------------------------//
+
+	// -----------------------------------------CRUD
+	// CLIENTE-----------------------------//
+
+	// ---------------------Registro Cliente------------------------//
 	/**
 	 * Metodo que permite registrar un Cliente en la base de datos
 	 * 
@@ -374,7 +398,7 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 		if (buscarEmpleadoPorNombreUsuario(cedula) != null) {
 			throw new InformacionRepetidaException("Usuario ya existe");
 		} else {
-			Cliente cliente = new  Cliente();
+			Cliente cliente = new Cliente();
 			cliente.setCedula(cedula);
 			cliente.setApellido(apellido);
 			cliente.setContrasena(contrasena);
@@ -386,7 +410,11 @@ public class AdministradorEJB implements AdministradorEJBRemote {
 			return true;
 		}
 	}
-	
-	//---------------------------------------------------------------------//
-	
+
+	public void registrarCompraPelicula(String idCompra, String fechaCompra, String idCliente) {
+
+	}
+
+	// ---------------------------------------------------------------------//
+
 }

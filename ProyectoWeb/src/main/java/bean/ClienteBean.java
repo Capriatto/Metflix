@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.swing.JOptionPane;
 
 import co.edu.uniquindio.com.Cliente;
 import ejb.AdministradorEJB;
@@ -20,7 +21,7 @@ import excepciones.InformacionRepetidaException;
 @SessionScoped
 public class ClienteBean {
 
-	private String cedula, apellido, contrasena, correo, nombre, usuario, consultaTecnica;
+	private String cedula, apellido, contrasena, correo, nombre, usuario;
 
 	@EJB
 	private AdministradorEJB administradorEJB;
@@ -70,13 +71,12 @@ public class ClienteBean {
 	 */
 	public String consultarCliente(String cedula) {
 		if (administradorEJB.buscarCliente(cedula) != null) {
-			Cliente cliente = administradorEJB.buscarCliente(cedula);
+			Cliente cliente =administradorEJB.buscarCliente(cedula);
 			cedula = cliente.getCedula();
-			apellido = cliente.getApellido();
-			correo = cliente.getCorreo();
-			nombre = cliente.getNombre();
-			usuario = cliente.getUsuario();
-			System.out.println("asdfasdfasdfasdfasdfasdfasdfasdfasdf");
+			apellido = cliente.getApellido();			
+			correo =cliente.getCorreo();
+			nombre =cliente.getNombre();
+			usuario =cliente.getUsuario();
 			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Busqueda Exitosa");
 			return "/pages/empleado/infoCliente";
 		}
@@ -84,52 +84,36 @@ public class ClienteBean {
 	}
 
 	// 2.Consulta tecnica por parte de los Clientes--------- Ocampo---------
-	public String consultaTecnica() {
-		
-		return null;
+	public void consultaTecnica() {
+
 	}
 
-	// 3.Recuperar contraseña
-	public void recuperarConstrasenaCliente(String cedula) {
-		if (!cedula.equals("")) {
-			if (administradorEJB.buscarCliente(cedula) != null) {
-				String de = "admonmetflix1@gmail.com";
-				String clave = "administrador1";
-				String para = administradorEJB.buscarCliente(cedula).getCorreo();
-				String mensaje = "Saludos\nSegun solicitud realizada, "
-						+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
-						+ administradorEJB.recuperarContrasenia(cedula);
-				String asunto = "Contraseña Plataforma METFLIX";
-				EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
-				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO,
-						"Un correo electrónico le ha sido enviado con su contraseña.");
+	// 3.Recuperar contraseña unico metodo en la clase administrador.
+	
+	
+	
+	//--------------Pelicula Bean---------------------------//
+	
+	//4.Comprar Peliculas, confirmar por correo.
+	
+	
+	//5.Calificar Peliculas
+	
+	//6.Ver Peliculas Recomendadas
+	
+	//7.Ver informacion de peliculas
+	
+	//8.Buscar peliculas
+	
+	//-------------------------------------------------------//
+	
+	
+	
+	
 
-			} else {
-				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO,
-						"No hemos podido recuperar su contraseña.\nNo se encontró el usuario con cédula: ");
-			}
-		} else {
-			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO,
-					"Todos los campos son obligatorios.\nPor favor rellene los campos faltantes para recuperar su contraseña.");
-		}
-	}
-
-	// --------------Pelicula Bean---------------------------//
-
-	// 4.Comprar Peliculas, confirmar por correo.
-
-	// 5.Calificar Peliculas
-
-	// 6.Ver Peliculas Recomendadas
-
-	// 7.Ver informacion de peliculas
-
-	// 8.Buscar peliculas
-
-	// -------------------------------------------------------//
-
-	// ------------------Metodo GET y SET------------------------//
-
+	
+	//------------------Metodo GET y SET------------------------//
+	
 	public String getCedula() {
 		return cedula;
 	}
@@ -177,7 +161,7 @@ public class ClienteBean {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-
-	// ----------------------------------------------------------//
+	
+	//----------------------------------------------------------//
 
 }

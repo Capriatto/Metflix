@@ -81,32 +81,8 @@ public class EmpleadoBean {
 
 	}
 
-	// 3.Recuperar contraseña
-	public void recuperarConstrasenaEmpleado(String cedula) {
-		if (!cedula.equals("")) {
-			if (administradorEJB.buscarEmpleadoPorNombreUsuario(cedula) != null) {
-				String de = "admonmetflix1@gmail.com";
-				String clave = "administrador1";
-				String para = administradorEJB.buscarEmpleadoPorNombreUsuario(cedula).getCorreo();
-				String mensaje = "Saludos\nSegun solicitud realizada, "
-						+ "te recordamos tu clave de acceso a la plataforma METFLIX.\n\nClave:"
-						+ administradorEJB.recuperarContrasenia(cedula);
-				String asunto = "Contraseña Plataforma METFLIX";
-				EmailSenderService.getInstancia().enviarcorreo(de, clave, para, mensaje, asunto);
-				JOptionPane.showMessageDialog(null,
-						"Un correo electrónico le ha sido enviado con su contraseña.", "Contraseña enviada!",
-						JOptionPane.INFORMATION_MESSAGE);
-			} else {
-				JOptionPane.showMessageDialog(null,
-						"No hemos podido recuperar su contraseña.\nNo se encontró el usuario con cédula: " + cedula,
-						"Error!", JOptionPane.ERROR_MESSAGE);
-			}
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"Todos los campos son obligatorios.\nPor favor rellene los campos faltantes para recuperar su contraseña.",
-					"Error al recuperar contraseña!", JOptionPane.ERROR_MESSAGE);
-		}
-	}
+	// 3.Recuperar contraseña metodo en adminsitradorbean.
+	
 
 	
 	//------------------Metodo GET y SET------------------------//
