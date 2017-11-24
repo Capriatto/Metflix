@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<ui:composition template="/WEB-INF/templates/templateAI.xhtml">
+	<ui:define name="content">
+	
+	<div class="container">
+		<div class="jumbotron">
+			<h1>#{mensaje['label.infoCliente']}</h1>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+			<h:form>
+				
+				<div class="form-group">
+					<label for="cedula">#{mensaje['label.cedula']}</label>
+					<Label for="cedulaEmpleado">#{clienteBean.cedula}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="nombre">#{mensaje['label.nombre']}</label>
+					<Label for="nombreEmpleado">#{clienteBean.nombre}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="apellido">#{mensaje['label.apellido']}</label>
+					<Label for="apellidoEmpleado">#{clienteBean.apellido}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="usuario">#{mensaje['label.usuario']}</label>
+					<Label for="usuarioEmpleado">#{clienteBean.usuario}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="clave">#{mensaje['label.clave']}</label>
+					<Label for="contrasenaEmpleado">#{clienteBean.contraseña}</Label>
+				</div>
+				
+				<div class="form-group">
+					<label for="correo">#{mensaje['label.email']}</label>
+					<Label for="corrreoEmpleado">#{clienteBean.corrreo}</Label>
+				</div>
+				
+				<div class="form-group">
+
+				<h:commandButton class="btn btn-primary" ajax="false" value="#{mensaje['label.idioma']}"
+					action="#{internacionalizacionBean.cambiarIdioma}"></h:commandButton>
+				</div>
+				
+
+			</h:form>
+
+		</div>
+	</div>
+	</ui:define>
+</ui:composition>
+</html>

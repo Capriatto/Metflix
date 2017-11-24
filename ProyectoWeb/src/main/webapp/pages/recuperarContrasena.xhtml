@@ -9,13 +9,14 @@
 <ui:composition template="/WEB-INF/templates/templateAI.xhtml">
 	<ui:define name="content">
 		<div class="col-md-4 col-md-offset-4">
-			<form class="bootstrap-form-with-validation">
+			<form class="bootstrap-form-with-validation" jsf:id="formularioRecuperarContrasena">
 					<div class="form-group">
 						<label class="control-label" for="text-input">#{mensaje['label.cedula']} </label> 
-						<input class="form-control" type="number" required="required" max="9999999999" />
+						<input class="form-control" type="number" required="required" max="9999999999" jsf:value="#{empleadoBean.cedula}"/>
 					</div>
 				<div class="form-group">
-					<button class="btn btn-primary" type="submit">#{mensaje['btn.recuperarContrasena']}</button>
+					<button class="btn btn-primary" type="submit"
+							action="#{clienteBean.recuperarContrasena}">#{mensaje['label.registro']}</button>
 				</div>
 			</form>
 		</div>

@@ -76,8 +76,9 @@ public class ClienteBean {
 			correo = cliente.getCorreo();
 			nombre = cliente.getNombre();
 			usuario = cliente.getUsuario();
+			System.out.println("asdfasdfasdfasdfasdfasdfasdfasdfasdf");
 			Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Busqueda Exitosa");
-			return "/pages/infoCliente";
+			return "/pages/empleado/infoCliente";
 		}
 		return null;
 	}
