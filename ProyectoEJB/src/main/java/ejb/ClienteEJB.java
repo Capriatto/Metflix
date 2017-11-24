@@ -114,17 +114,14 @@ public class ClienteEJB implements ClienteEJBRemote {
 	 * @return
 	 */
 	public boolean registroConsultaTecnica(String consulta, int estado, Date f_consulta_tecnica,
-			Cliente cliente, Empleado empleado) {
+		Cliente cliente, Empleado empleado) {
 		Consulta_tecnica consulta_tec = new Consulta_tecnica();
 		consulta_tec.setConsulta(consulta);
 		consulta_tec.setEstado(estado);
 		consulta_tec.setF_consultatecnica(f_consulta_tecnica);
 		consulta_tec.setCliente_id(cliente);
 		consulta_tec.setEmpleado_id(empleado);
-//		String query = "SELECT * FROM empleado ORDER BY random()";
-//		Query q = (Query) em.createQuery(query);
-//		((javax.persistence.Query) q).setMaxResults(5);
-//		entityManager.persist(q.);
+		entityManager.persist(consulta_tec);
 		return true;
 
 	}

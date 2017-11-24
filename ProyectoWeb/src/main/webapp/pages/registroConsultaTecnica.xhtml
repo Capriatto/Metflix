@@ -9,14 +9,14 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
-<ui:composition template="/WEB-INF/templates/templateCliente.xhtml">
+<ui:composition template="/WEB-INF/templates/templateAI.xhtml">
 	<ui:define name="content">
 		<div class="container">
 			<div class="jumbotron">
 				<h1>#{mensaje['label.registroConsultaTecnica']}</h1>
 		</div>
 		<div class="row">
-		<form role="form" id="contact-form" class="contact-form">
+		<form  class="bootstrap-form-with-validation" jsf:id="formularioRegistro1">
                   	<div class="row">
                   		<div class="col-md-12">
                   		<div class="form-group">

@@ -3,12 +3,12 @@ package bean;
 import java.util.Date;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import co.edu.uniquindio.com.Cliente;
 import co.edu.uniquindio.com.Empleado;
-import ejb.AdministradorEJB;
 import ejb.ClienteEJB;
 
 @ManagedBean
@@ -16,7 +16,6 @@ import ejb.ClienteEJB;
 public class ConsultaTecnicaBean {
 	private String consulta;
 	private int estado;
-	private Date f_consultatecnica;
 	Cliente cliente;
 	Empleado empleado;
 	
@@ -25,8 +24,16 @@ public class ConsultaTecnicaBean {
 	private ClienteEJB clienteEJB;
 	
 	public String registrarConsultaTecnica() {
-		if(clienteEJB.registroConsultaTecnica(consulta, estado, new Date(), cliente, empleado)) {
-			
+		try {
+			if(clienteEJB.registroConsultaTecnica(consulta, estado, new Date(), cliente, empleado)) {
+				Util.mostrarMensaje(FacesMessage.SEVERITY_INFO, "registro Exitoso");
+				return "/pages/ingresar";
+			}else {
+				System.out.println("No se pudo registrar");
+			}
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
