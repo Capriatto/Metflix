@@ -15,7 +15,7 @@ import static javax.persistence.InheritanceType.JOINED;
  * @author Carlos Alberto Lopez Mazo
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = Persona.GET_ALL, query = "SELECT p FROM Persona p")  })
+@NamedQueries({ @NamedQuery(name = Persona.GET_ALL, query = "SELECT persona FROM Persona persona where persona.cedula=:cedula")  })
 @Inheritance(strategy = JOINED)
 public class Persona implements Serializable {
 
@@ -46,8 +46,8 @@ public class Persona implements Serializable {
 	/*
 	 * Metodo constructor de la clase(Entidad) Persona
 	 */
-	protected Persona() {
-
+	public Persona() {
+		super();
 	}
 
 	/*

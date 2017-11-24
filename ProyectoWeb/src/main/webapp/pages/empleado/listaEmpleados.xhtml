@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/templateEmpleado.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="jumbotron">
+				<h1>#{mensaje['label.responderConsultaTecnica']}</h1>
+			</div>
+		</div>
+		<div class="container">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#{mensaje['label.fecha']}</th>
+							<th>#{mensaje['label.pregunta']}</th>
+							<th>#{mensaje['label.opciones']}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><a class="btn btn-default" role="button" href="#"> <span
+									class="fa fa-check"></span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
