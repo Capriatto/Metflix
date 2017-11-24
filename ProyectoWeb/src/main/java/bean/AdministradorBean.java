@@ -54,7 +54,7 @@ public class AdministradorBean {
 	 * Metodo para recuperar constraseña de una persona
 	 * @param cedula
 	 */
-	public void recuperarConstrasena(String cedula) {
+	public void recuperar(String cedula) {
 		Persona persona = administradorEJB.buscarPersona(cedula);
 
 		if (persona != null) {
